@@ -81,3 +81,16 @@ deploy:
 	type: git
 	repo: https://github.com/clownote/clownote.github.io
 	branch: master
+
+
+# hexo-renderer-markdown-it-plus
+markdown_it_plus:
+    highlight: true
+    html: true
+    xhtmlOut: true
+    breaks: true
+    langPrefix:
+    linkify: true
+    typographer:
+    quotes: “”‘’
+    pre_class: highlight
