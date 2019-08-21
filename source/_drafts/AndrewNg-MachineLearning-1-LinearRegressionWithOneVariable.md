@@ -159,7 +159,7 @@ Same as last time, we want to unserstand the hypothesis $h$ and the cost functio
 
 An example:
 
-![image-20190820205719025](../../../Library/Application Support/typora-user-images/image-20190820205719025.png)
+![屏幕快照 2019-08-21 09.29.48](http://ww3.sinaimg.cn/large/006y8mN6gy1g673ule5evj30p40cqafx.jpg)
 
 Taking any color and going along the 'circle', one would expect to get the same value of the cost function. 
 
@@ -167,7 +167,7 @@ To touch our optimization objective, we can try to setting the parameters $\thet
 
 When $\theta_0 = 360$ and $\theta_1 = 0$, the value of $J(\theta_0, \theta_1)$ in the contour plot **gets closer to the center thus reducing the cost function error**. Now we get a result in a better fit of the data:
 
-![屏幕快照 2019-08-21 09.29.48](../../../Desktop/屏幕快照 2019-08-21 09.29.48.png)
+![屏幕快照 2019-08-21 09.29.58](http://ww3.sinaimg.cn/large/006y8mN6gy1g673vbnti4j30o20bggqp.jpg)
 
 Minimizing the cost function as much as possible and consequently, the result of $\theta_1$ and $\theta_0$ tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
 
