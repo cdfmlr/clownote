@@ -108,6 +108,8 @@ And if we are working with a linear regression with one variable, the $h_\theta(
 
 ## Cost Function - Intuition I
 
+Let's draw some pictures for better understanding of what the values of the cost function.
+
 To getting start, we are going to work with a simplified hypothesis function:
 
 ![屏幕快照 2019-08-19 22.44.10](http://ww2.sinaimg.cn/large/006tNc79ly1g65ddr26d9j30ja0a4778.jpg)
@@ -171,12 +173,41 @@ When $\theta_0 = 360$ and $\theta_1 = 0$, the value of $J(\theta_0, \theta_1)$ i
 
 Minimizing the cost function as much as possible and consequently, the result of $\theta_1$ and $\theta_0$ tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
 
-Obviously, we dislike to write a software to just plot out a contour plot and then try to manually read off the numbers to reach our goal. We want **an efficient algorithm for automatically finding the value of $\theta_0$ and $\theta_1$ that minimizes the cost function $J$**.
+Obviously, we dislike to write a software to just plot out a contour plot and then try to manually read off the numbers to reach our goal. We want **an efficient algorithm for automatically finding the value of $\theta_0$ and $\theta_1$ that minimizes the cost function $J$**. Actually, the *gradient descent* algorithm that we will talk about works great on this question.
 
+## Gradient Descent
 
+There is a algorithm called **gradient descent** for **minimizing the cost function $J$**. And we can use it not only in linear regression as it's actually used all over the place in machine learning.
 
-TODO: Upload the pictures above.
+Let's talk about gradient descent for minimizing some arbitrary function $J$. So here's the problem setup:
 
+![image-20190821172439919](http://ww2.sinaimg.cn/large/006y8mN6ly1g67fcs8k0mj30gs09gjsz.jpg)
+
+We put $\theta_0$ on the `x` axis and $\theta_1$ on the `y` axis, with the **cost function** on the vertical `z` axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup:
+
+![image-20190821204112216](http://ww2.sinaimg.cn/large/006y8mN6gy1g67l1ajh02j30no0con68.jpg)
+
+We will know that we have succeeded when our cost function is at the very bottom of the pits in our graph, i.e. when its value is the minimum. The red arrows show the minimum points in the graph.
+
+Image that we are physically standing at a point on a hill, in gradient descent, what we're going to do is to spin 360 degrees around and just look all around us, and ask, "If I were to take a little step in some direction, and I want to go down the hill as quickly as possible, what direction should I take?" then you take a step in that direction. Repeat doing this until you converge to a local minimum. Like the black line in the picture above shows.
+
+Notice that if we choose different points to grandient descent, we may reach different local optimums.
+
+Mathematically, this is the definition of the gradient descent algorithm:
+
+> **Gradient Descent Algorithm**
+>
+> repeat until convergence {
+> 
+>$\qquad\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1)\qquad \textrm{(for } j=0 \textrm{ and } j=1 \textrm{)}$
+>
+> }
+
+The $\alpha$ is a number that is called the **`learning rate`**. It basically controls how big a step we take downhill with gradient descent.
+
+At each iteration $j$, one should simultaneously update the parameters θ1,θ2,...,θn. Updating a specific parameter prior to calculating another one on the `j(th)` iteration would yield to a wrong implementation:
+
+![屏幕快照 2019-08-21 21.24.15](http://ww3.sinaimg.cn/large/006y8mN6ly1g67magihpyj30wo0hu7iy.jpg)
 
 
 [1]: http://clownote.github.io/about/index.html#数学公式
