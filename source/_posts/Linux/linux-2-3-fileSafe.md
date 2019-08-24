@@ -2,6 +2,9 @@
 title: linux-2.3-文件的安全控制
 date: 2016-12-24 15:38:20
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 文件的安全控制

@@ -1,10 +1,13 @@
 ---
-title: linux-6-Computation
+title: linux-6-计算与逃逸
 date: 2017-01-05 09:33:44
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
-# 计算、逃逸
+# 计算与逃逸
 
 1. 用Linux命令进行数字运算
 

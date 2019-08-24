@@ -2,6 +2,9 @@
 title: linux-1.0-用户信息
 date: 2016-12-18 14:06:52
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 用户信息

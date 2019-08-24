@@ -2,6 +2,9 @@
 title: linux-1.1-系统信息
 date: 2016-12-19 14:14:14
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 系统信息

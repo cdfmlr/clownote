@@ -2,6 +2,9 @@
 title: linux-2.1-用户
 date: 2016-12-22 15:25:29
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 用户（User）

@@ -2,6 +2,9 @@
 title: linux-2.2-群组
 date: 2016-12-23 15:32:56
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 群组（Group）

@@ -2,6 +2,9 @@
 title: linux-3.1.2-磁盘，可移除式媒体
 date: 2016-12-29 22:38:11
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 磁盘，可移除式媒体

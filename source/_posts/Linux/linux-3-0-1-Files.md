@@ -2,6 +2,9 @@
 title: linux-3.0.1-文件及其操作
 date: 2016-12-26 16:06:36
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 文件及其操作

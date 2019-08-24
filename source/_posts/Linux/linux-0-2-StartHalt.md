@@ -2,6 +2,9 @@
 title: linux-0.2-系统开关
 date: 2016-12-17 13:57:31
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 系统开关

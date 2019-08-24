@@ -1,7 +1,10 @@
 ---
-title: linux-5-ShellShortcuts
+title: linux-5-快捷操作
 date: 2017-01-04 10:10:35
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 快捷操作

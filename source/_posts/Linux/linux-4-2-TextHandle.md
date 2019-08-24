@@ -2,6 +2,9 @@
 title: linux-4.2-正文处理
 date: 2017-01-03 12:55:26
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 正文.处理

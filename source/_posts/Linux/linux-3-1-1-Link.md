@@ -2,6 +2,9 @@
 title: linux-3.1.1-连接(link)
 date: 2016-12-28 22:30:27
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 连接(link)

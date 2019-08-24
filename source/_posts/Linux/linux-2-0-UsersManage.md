@@ -2,6 +2,9 @@
 title: linux-2.0-用户管理
 date: 2016-12-21 14:26:02
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 用户管理

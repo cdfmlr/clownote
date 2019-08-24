@@ -2,6 +2,9 @@
 title: linux-3.0.0-目录及其操作
 date: 2016-12-25 15:59:10
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 目录及其操作

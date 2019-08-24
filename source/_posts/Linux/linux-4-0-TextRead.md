@@ -2,6 +2,9 @@
 title: linux-4.0-正文浏览
 date: 2017-01-01 12:46:55
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 正文浏览

@@ -2,6 +2,9 @@
 title: linux-3.1.3-文件归档与压缩
 date: 2016-12-30 22:46:15
 tags: Linux
+categories:
+	- Linux
+	- Beginning
 ---
 
 # 文件归档与压缩
