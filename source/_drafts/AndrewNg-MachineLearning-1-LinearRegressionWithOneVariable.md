@@ -209,5 +209,85 @@ At each iteration $j$, one should simultaneously update the parameters θ1,θ2,.
 
 ![屏幕快照 2019-08-21 21.24.15](http://ww3.sinaimg.cn/large/006y8mN6ly1g67magihpyj30wo0hu7iy.jpg)
 
+## Gradient Descent Intuition
+
+Let's explore the scenario where we used **one parameter $\theta_1$ ** and plotted its cost function to implement a gradient descent. Our formula for a single parameter was : Repeat until convergence:
+$$
+\theta_1:=\alpha\frac{d}{d\theta_1}J(\theta_1)
+$$
+
+
+Regardless of the slope's sign for $\frac{d}{d\theta_1}J(\theta_1)$ eventually converges to its minimum value. 
+
+The following graph shows that when the slope is negative, the value of $\theta_1$ increases and when it is positive, the value of $\theta_1$ decreases:![image-20190826211520863](https://tva1.sinaimg.cn/large/006y8mN6ly1g6de48b49qj30i50af0ui.jpg)
+
+
+
+On a side note, we should adjust our parameter $\alpha$ to ensure that the gradient descent algorithm converges in a reasonable time. Failure to converge or too much time to obtain the minimum value imply that our step size is wrong.
+
+![image-20190826211727240](https://tva1.sinaimg.cn/large/006y8mN6ly1g6de6eemuhj30im0astb9.jpg)
+
+
+
+How does gradient descent converge with a fixed step size $\alpha$?
+The intuition behind the convergence is that $\frac{d}{d\theta_1}J(\theta_1)$ approaches 0 as we approach the bottom of our convex function. At the minimum, the derivative will always be 0 and thus we get:
+
+![image-20190826211936126](https://tva1.sinaimg.cn/large/006y8mN6ly1g6de8nmhaoj30ia0a4why.jpg)
+
+
+
+## Gradient Descent for Linear Regression
+
+Now, we have learnt the gradient descent, the linear regression model and the squared error cost function as well. This time, we are going to put together gradient descent with our cost function that will give us an algorithm for linear regression for fitting a straight line to our data.
+
+This is what we worked out:
+
+![image-20190826212442071](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dedxiq58j30ej052aay.jpg)
+
+We are going to apply gradient descent algorithm to minimize our squared error cost function.
+
+The key term is the derivative term:
+
+$$
+\begin{eqnarray}
+&\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1) &= \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2\\
+&&=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[\theta_0+\theta_1x^{(i)}-y^{(i)}]^2\\
+\end{eqnarray}\\\\
+$$
+
+$$
+\begin{eqnarray}
+
+&j=0&:\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]\\
+&j=1&:\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x^{(i)}\\
+\end{eqnarray}
+$$
+
+
+
+Plug them back into our gradient descent algorithm:
+
+> repeat until convergence {
+>
+> $\qquad\theta_0 := \theta_0 - \alpha\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]$
+> 
+>$\qquad\theta_1 := \theta_1 - \alpha\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x^{(i)}$
+>
+> }
+
+Notice: update $\theta_0$ and $\theta_1$ simultaneously.
+
+The point of all this is that if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate. So, this is simply gradient descent on the original cost function J. 
+
+This method looks at every example in the entire training set on every step, and is called **batch gradient descent**. 
+
+Note that, while gradient descent can be susceptible to local minima in general, the optimization problem we have	 posed here for linear regression has only one global, and no other local,optima; thus gradient descent always converges (assuming the learning rate α is not too large) to the global minimum. Indeed, J is a convex quadratic function. Here is an example of gradient descent as it is run to minimize a quadratic function.
+
+![image-20190826231632514](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dhmaf0chj308q06qgml.jpg)
+
+The ellipses shown above are the contours of a quadratic function. Also shown is the trajectory taken by gradient descent, which was initialized at (48,30). The x’s in the figure (joined by straight lines) mark the successive values of θ that gradient descent went through as itconverged to its minimum.
+
+
 
 [1]: http://clownote.github.io/about/index.html#数学公式
+
