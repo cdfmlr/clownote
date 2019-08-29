@@ -80,7 +80,7 @@ The function $(1)$ is our *cost function* exactly. Take a look at it:
 * $h_\theta(x^{(i)})-y^{(i)}$ shows the difference between the predicted value and the actual value.
 
 * $\frac{1}{m}\sum^{m}_{i=1}...$ offers the mean of the squares of $h_\theta(x^{(i)})-y^{(i)}$
-* The mean is halved ($\frac{1}{2}$) as a convenience for the computation of the **gradient descent**, as the $\frac{1}{2}f^2 = f$.
+* The mean is halved ($\frac{1}{2}$) as a convenience for the computati::on of the **gradient descent**, as the $\frac{1}{2}f^2 = f$.
 
 P.S. This function is otherwise called the "*Squared error function*", or "*Mean squared error*".
 
@@ -286,6 +286,156 @@ Note that, while gradient descent can be susceptible to local minima in general,
 ![image-20190826231632514](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dhmaf0chj308q06qgml.jpg)
 
 The ellipses shown above are the contours of a quadratic function. Also shown is the trajectory taken by gradient descent, which was initialized at (48,30). The x’s in the figure (joined by straight lines) mark the successive values of θ that gradient descent went through as itconverged to its minimum.
+
+---
+
+## Test
+
+A Wild Implement of Linear Regression with One Variable via Gradient Descent in Python Made by Myself
+
+```python
+# 
+# linregress.py
+# Linear Regression with one variable via Gradient Descent
+# 
+# Created by CDFMLR on 2019/8/28.
+# Copyright © CDFMLR. All right reserved.
+#
+
+import math
+import random
+
+
+class LinearRegressionWithOneVariable(object):
+    '''
+    # Linear regression with one variable
+    
+    > Given a training set, to find a set of parameters (theta_0, theta_1) of hypothesis function `h(x) = theta_0 + theta_1 * x` via gradient descent so that h(x) is a "good" predictor for the corresponding value of y.
+
+    Properties
+        
+        - `training_set`
+        - `theta`
+
+    Methods
+
+        - `regress`: to find a set of thetas to make hypothesis a "good" predictor
+        - `hypothesis`: to get a predicted value
+
+    Example
+
+    ``python
+    >>> model = LinearRegressionWithOneVariable([(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)])
+    >>> model.regress(verbose=True, epsilon=0.0001)
+    theta_0:        0.025486336182825836
+    theta_1:        0.9940305813471573
+    cost:           9.99815680487604e-05
+    hypothesis:     h(x) = 0.025486336182825836 + 0.9940305813471573*x
+    >>> model.hypothesis(10)
+    9.9657921496544
+		``
+    '''
+    def __init__(self, training_set):
+        '''
+        training_set: training set
+        '''
+        self.training_set = training_set    # [(x: int, y: int), ...]
+        self.theta = [0, 0]
+    
+    def _hypothesis(self, x, theta):
+        return theta[0] + theta[1] * x
+    
+    def _cost(self, dataset, theta):
+        s = 0
+        for i in dataset:
+            s += (self._hypothesis(i[0], theta) - i[1]) ** 2
+        return s / (2 * len(dataset))
+    
+    def _gradient_descent(self, dataset, starting_theta, learning_rate, epsilon, max_count=4294967296):
+        theta = list.copy(starting_theta)
+        last_theta = list.copy(starting_theta)
+        cost = self._cost(dataset, theta)
+        last_cost = cost * 2
+        count = 0
+        epsilon = abs(epsilon)
+        diff = epsilon + 1
+        while (diff > epsilon):
+            count += 1
+            if count >= max_count:
+                raise RuntimeError("Failed in gradient descent: cannot convergence after {mc} iterations.".format(mc=max_count))
+    
+            try:
+                t_sum= sum((self._hypothesis(i[0], theta) - i[1] for i in dataset))
+                theta[0] = theta[0] - learning_rate * t_sum / len(dataset)
+    
+                t_sum = sum(
+                    ((self._hypothesis(i[0], theta) - i[1]) * i[0] for i in dataset)
+                    )
+                theta[1] = theta[1] - learning_rate * t_sum / len(dataset)
+    
+                last_cost = cost
+                cost = self._cost(dataset, theta)
+    
+                if not any((math.isnan(x) or math.isinf(x) for x in theta)) and abs(cost) <= abs(last_cost):
+                    diff = max((abs(last_theta[i] - theta[i]) for i in range(len(theta))))
+                    last_theta = list.copy(theta)
+                    learning_rate += learning_rate * 4
+                else:
+                    theta = list.copy(last_theta)
+                    learning_rate /= 10
+                    if (learning_rate == 0):
+                        learning_rate = self._get_learning_rate(self.training_set)
+    
+                # print('[DEBUG] (%s) theta: %s, diff=%s, learning_rate=%s, cost=%s' % (count, theta, diff, learning_rate, cost))
+            except OverflowError:
+                theta = list.copy(last_theta)
+                learning_rate /= 10
+                if (learning_rate == 0):
+                    learning_rate = self._get_learning_rate(self.training_set)
+
+
+        return theta, count
+    
+    def _get_learning_rate(self, dataset):
+        return 1 / max((i[1] for i in dataset))
+    
+    def regress(self, epsilon=1, learning_rate=0, verbose=False):
+        '''
+        To find a set of thetas to make hypothesis a "good" predictor
+    
+        Parms:
+            - epsilon: when the difference between new theta and last theta less then epsilon, finish regressing
+            - learning_rate: about the "step length" of gtadient descent. Too small will take a long time to regress, and too big will raise a Overflow error. `0` to allow the algorithm to select an appropriate value automatically.
+            - verbose: true to print the result of regression
+        '''
+        init_theta = [random.random(), random.random()]
+    
+        if learning_rate == 0:
+            learning_rate = self._get_learning_rate(self.training_set)
+        
+        self.theta, count = self._gradient_descent(self.training_set, init_theta, learning_rate, epsilon)
+        
+        if verbose:
+            print('Gradient descent finished after {count} iterations:\ntheta_0:\t{t0}\ntheta_1:\t{t1}\ncost:\t\t{cost}\nhypothesis:\th(x) = {t0} + {t1}*x'.format(
+                    count=count, t0=self.theta[0], t1=self.theta[1], cost=self._cost(self.training_set, self.theta)))
+    
+    def hypothesis(self, x):
+        '''
+        To get a predicted y value of giving x
+        
+        Parms:
+            - x: x value of the point you want to predict
+        '''
+        return self._hypothesis(x, self.theta)
+
+
+if __name__ == '__main__':
+    model = LinearRegressionWithOneVariable([(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)])
+    model.regress(verbose=True, epsilon=0.0000000001)
+    model.hypothesis(10)
+```
+
+
 
 
 

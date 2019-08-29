@@ -230,6 +230,7 @@ from scipy import optimize
 
 f = lambda x: x[0] ** 2 + x[1] **2 + x[2] ** 2 + 8
 
+# Notice：eq ==; ineq >=
 cons = ({'type': 'ineq', 'fun': lambda x: x[0]**2 - x[1] + x[2]**2},
         {'type': 'ineq', 'fun': lambda x: -x[0] - x[1] - x[2]**3 + 20},
         {'type': 'eq', 'fun': lambda x: -x[0] - x[1]**2 + 2},
@@ -260,7 +261,159 @@ print(res)
 
 #### 符号解
 
+> 第三方依赖库：`sympy`。
+
+e.g. 求多元函数 $f(x，y) = x^3 - y^3 + 3x^2 + 3y^2 - 9x$ 的极值
+
+思路：求驻点，代入Hessian矩阵，正定则为极小值，负定极大，不定不是极值点。
+
+**解**：
+
+```python
+import sympy
+
+f, x, y = sympy.symbols("f x y")
+
+f = x**3 - y**3 + 3 * x**2 + 3 * y**2 - 9 * x
+funs = sympy.Matrix([f])
+args = sympy.Matrix([x, y])
+
+df = funs.jacobian(args)        # 一阶偏导
+d2f = df.jacobian(args)         # Hessian 矩阵
+
+stationaryPoints = sympy.solve(df)      # 驻点
+
+for i in stationaryPoints:
+    a = d2f.subs(x, i[x]).subs(y, i[y])	# 驻点处的Hessian
+    b = a.eigenvals(multiple=True)      # 求Hessian矩阵的特征值
+    fv = f.subs(x, i[x]).subs(y, i[y])	# 驻点处的函数值
+    
+    if all((j > 0 for j in b)):
+        print('点({x}, {y})是极小值点，对应的极小值为: f({x}, {y}) = {f}'.format(x=i[x], y=i[y], f=fv))
+    elif all((j < 0 for j in b)):
+        print('点({x}, {y})是极大值点，对应的极大值为: f({x}, {y}) = {f}'.format(x=i[x], y=i[y], f=fv))
+    elif any((j < 0 for j in b)) and any((j > 0 for j in b)):
+        print('点({x}, {y})不是极值点'.format(x=i[x], y=i[y]))
+    else:
+        print('无法判断点({x}, {y})是否为极值点'.format(x=i[x], y=i[y]))
+```
+
+输出：
+
+```
+点(-3, 0)不是极值点
+点(-3, 2)是极大值点，对应的极大值为: f(-3, 2) = 31
+点(1, 0)是极小值点，对应的极小值为: f(1, 0) = -5
+点(1, 2)不是极值点
+```
+
 
 
 #### 数值解
+
+> 第三方依赖库：`numpy` , `scipy`。
+
+利用 Python 求无约束极值的数值解与我们在非线性规划模型中的操作类似，我们依然使用 `minimize` 函数求解，不过这次连 constraints 都不用了。
+
+e.g. 求多元函数 $f(x，y) = x^3 - y^3 + 3x^2 + 3y^2 - 9x$ 的最值
+
+```
+import numpy as np
+from scipy import optimize
+
+f = lambda x: x[0]**3 - x[1]**3 + 3 * x[0]**2 + 3 * x[1]**2 - 9 * x[0]
+
+resMin = optimize.minimize(f, (0, 0))		# 求最小值
+resMax = optimize.minimize(lambda x: -f(x), (0, 0))		# 求最大值
+
+print("最小值：\n")
+print(resMin)
+print("最大值：\n")
+print(resMax)
+```
+
+输出：
+
+```
+极小值：
+
+      fun: -5.0
+ hess_inv: array([[8.34028325e-02, 3.27721596e-09],
+       [3.27721596e-09, 1.00000000e+00]])
+      jac: array([1.1920929e-07, 0.0000000e+00])
+  message: 'Optimization terminated successfully.'
+     nfev: 20
+      nit: 4
+     njev: 5
+   status: 0
+  success: True
+        x: array([ 1.00000000e+00, -5.40966234e-09])
+极大值：
+
+      fun: -30.99999999999847
+ hess_inv: array([[0.08280865, 0.00036445],
+       [0.00036445, 0.16672048]])
+      jac: array([ 9.53674316e-07, -4.29153442e-06])
+  message: 'Optimization terminated successfully.'
+     nfev: 172
+      nit: 11
+     njev: 43
+   status: 0
+  success: True
+        x: array([-2.99999994,  1.99999929])
+```
+
+
+#### 求函数的零点和方程组的解
+
+> 第三方依赖库：`sympy`。
+
+使用 `sympy.solve` 函数可以求出方程/方程组的符号解，得到的每个根可以调用其 `evalf` 方法转化为近似的数值。
+
+1. 求多项式 $f(x)=x^3-x^2+2x-3$ 的零点
+
+```python
+>>> import sympy
+>>> x = sympy.Symbol('x')
+>>> s = sympy.solve(x**3 - x**2 + 2 * x -3)		# 求符号解
+>>> s
+[1/3 + (-1/2 - sqrt(3)*I/2)*(65/54 + 5*sqrt(21)/18)**(1/3) - 5/(9*(-1/2 - sqrt(3)*I/2)*(65/54 + 5*sqrt(21)/18)**(1/3)), 1/3 - 5/(9*(-1/2 + sqrt(3)*I/2)*(65/54 + 5*sqrt(21)/18)**(1/3)) + (-1/2 + sqrt(3)*I/2)*(65/54 + 5*sqrt(21)/18)**(1/3), -5/(9*(65/54 + 5*sqrt(21)/18)**(1/3)) + 1/3 + (65/54 + 5*sqrt(21)/18)**(1/3)]
+>>> for i in s:
+...     print(i.evalf())		# 近似数值
+... 
+-0.137841101825493 - 1.52731225088663*I
+-0.137841101825493 + 1.52731225088663*I
+1.27568220365098
+
+```
+
+
+
+2. 求如下方程组的解
+
+$$
+\left\{\begin{array}{l}
+x^2+y-6=0\\
+y^2+x-6=0\\
+\end{array}\right.
+$$
+
+```python
+>>> import sympy
+>>> x, y = sympy.symbols('x y')
+>>> s = sympy.solve((x**2+y-6, y**2+x-6))
+>>> s
+[{x: -3, y: -3}, {x: 2, y: 2}, {x: 6 - (1/2 - sqrt(21)/2)**2, y: 1/2 - sqrt(21)/2}, {x: 6 - (1/2 + sqrt(21)/2)**2, y: 1/2 + sqrt(21)/2}]
+>>> for i in s:
+...     print('({x}, {y})'.format(x=i[x].evalf(), y=i[y].evalf()))
+... 
+(-3.00000000000000, -3.00000000000000)
+(2.00000000000000, 2.00000000000000)
+(2.79128784747792, -1.79128784747792)
+(-1.79128784747792, 2.79128784747792)
+```
+
+### 约束极值问题
+
+参考上文 “无约束问题的 Python 解法”。
 
