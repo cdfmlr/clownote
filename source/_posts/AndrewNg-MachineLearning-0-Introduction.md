@@ -1,9 +1,9 @@
 ---
-title: AndrewNg-MachineLearning-0-Introduction
+title: 吴恩达机器学习0——序章
 date: 2019-08-18 16:37:53
-tags: MachineLearning
+tags: Machine Learning
 categories:	
-	- MachineLearning
+	- Machine Learning
 	- AndrewNg
 ---
 

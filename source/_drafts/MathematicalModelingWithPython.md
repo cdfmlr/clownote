@@ -1,5 +1,5 @@
 ---
-title: Mathematical Modeling With Python
+title: 用 Python 做数学建模
 tags: Mathematical Modeling
 ---
 

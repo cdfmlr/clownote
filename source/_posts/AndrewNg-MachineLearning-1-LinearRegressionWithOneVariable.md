@@ -1,11 +1,12 @@
 ---
-title: AndrewNg-MachineLearning-1-LinearRegressionWithOneVariable
+title: 吴恩达机器学习1——单变量线性回归
+tags: Machine Learning
+categories:
+  - Machine Learning
+  - AndrewNg
 date: 2019-08-18 21:09:53
-tags: MachineLearning
-categories:	
-	- MachineLearning
-	- AndrewNg
 ---
+
 
 # Notes of Andrew Ng’s Machine Learning —— (1) Linear Regression with One Variable
 
@@ -219,7 +220,9 @@ $$
 
 Regardless of the slope's sign for $\frac{d}{d\theta_1}J(\theta_1)$ eventually converges to its minimum value. 
 
-The following graph shows that when the slope is negative, the value of $\theta_1$ increases and when it is positive, the value of $\theta_1$ decreases:![image-20190826211520863](https://tva1.sinaimg.cn/large/006y8mN6ly1g6de48b49qj30i50af0ui.jpg)
+The following graph shows that when the slope is negative, the value of $\theta_1$ increases and when it is positive, the value of $\theta_1$ decreases:
+
+![image-20190826211520863](https://tva1.sinaimg.cn/large/006y8mN6ly1g6de48b49qj30i50af0ui.jpg)
 
 
 
@@ -249,18 +252,17 @@ We are going to apply gradient descent algorithm to minimize our squared error c
 The key term is the derivative term:
 
 $$
-\begin{eqnarray}
-&\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1) &= \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2\\
-&&=\frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[\theta_0+\theta_1x^{(i)}-y^{(i)}]^2\\
-\end{eqnarray}\\\\
+\begin{array}{ll}
+&\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1) &=& \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2\\
+& &=& \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[\theta_0+\theta_1x^{(i)}-y^{(i)}]^2\\
+\end{array}
 $$
 
 $$
-\begin{eqnarray}
-
-&j=0&:\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]\\
-&j=1&:\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x^{(i)}\\
-\end{eqnarray}
+\begin{array}{ll}
+& j=0:& \frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]\\
+& j=1:& \frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x^{(i)}\\
+\end{array}
 $$
 
 
@@ -289,14 +291,14 @@ The ellipses shown above are the contours of a quadratic function. Also shown is
 
 ---
 
-## Test
+## Experiment
 
-A Wild Implement of Linear Regression with One Variable via Gradient Descent in Python Made by Myself
+A Wild Implement of Linear Regression with One Variable via Gradient Descent in Python Made by Myself:
 
 ```python
 # 
 # linregress.py
-# Linear Regression with one variable via Gradient Descent
+# Linear Regression with one variable via a Batch Gradient Descent
 # 
 # Created by CDFMLR on 2019/8/28.
 # Copyright © CDFMLR. All right reserved.
