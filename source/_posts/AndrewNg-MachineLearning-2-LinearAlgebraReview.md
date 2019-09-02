@@ -1,10 +1,12 @@
 ---
-title: AndrewNg-MachineLearning-2-LinearAlgebraReview
-tags:tags: Machine Learning
-categories:	
-	- Machine Learning
-	- AndrewNg
+title: 吴恩达机器学习2-线性代数复习
+tags: Machine Learning
+categories:
+  - Machine Learning
+  - AndrewNg
+date: 2019-09-02 18:17:19
 ---
+
 
 # Notes of Andrew Ng’s Machine Learning —— (2) Linear Algebra Review
 
@@ -273,7 +275,7 @@ Say, we have a set of four sizes of houses, and we have a hypotheses for predict
 
 > House sizes:
 > $$
-> \begin{array}{ll}
+> \begin{array}{c}
 > 2104\\
 > 1416\\
 > 1534\\
@@ -313,14 +315,14 @@ $$
 - Then, the `Predictions` will be clear by calculate a Matrix-Vector Multiplication:
 
 $$
-\begin{array}{e}
+\begin{array}{ll}
 \textrm{Predictions} & = & \textrm{DataMatrix} & * & \textrm{Parameters}\\
- & = & \left[\begin{array}{ll}
+ & = & \left[\begin{array}{c}
 1 & 2104\\
 1 & 1416\\
 1 & 1534\\
 1 & 852\\
-\end{array}\right] & * & \left[\begin{array}{ll}
+\end{array}\right] & * & \left[\begin{array}{c}
 -40\\
 0.25\\
 \end{array}\right]\\
@@ -330,7 +332,7 @@ $$
 The reuslt will be something like this:
 $$
 \textrm{Predictions}=
-\left[\begin{array}{ll}
+\left[\begin{array}{c}
 -40 \times 1 + 0.25 \times 2104\\
 -40 \times 1 + 0.25 \times 1416\\
 \vdots\\
