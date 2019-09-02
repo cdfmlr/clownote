@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://clownote.github.io/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/about/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/archives/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/search/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Golang/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Java/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Linux/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Machine-Learning/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Web/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/31/go-3-MoreTypes/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/31/go-2-ControlStatements/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/31/go-1-PackageVarFunc/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/31/go-0-begining/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/18/AndrewNg-MachineLearning-1-LinearRegressionWithOneVariable/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/18/AndrewNg-MachineLearning-0-Introduction/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/08/15/GitHub%E5%8A%A0Hexo%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/25/Java/Day14_Java_IO/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/24/Java/Day13_Java_Interface/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/23/Java/Day12_Java_Exception/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/archives/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/22/Java/Day11_Java_Collections/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/21/Java/Day10_Java_Array/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/20/Java/Day9_Java_Condition/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/19/Java/Day8_Java_Loop/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/18/Java/Day7_Java_Operators/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/17/Java/Day6_Java_Modifier/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/16/Java/Day5_Java_Variable/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Java/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/12/Linux/linux-9-2-Awk/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/11/Linux/linux-9-1-Sed/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/10/Linux/linux-9-0-Grep/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/09/Linux/linux-8-Mail/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/07/Linux/linux-7-1-Pipes/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/06/Linux/linux-7-0-IORedirections/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/05/Linux/linux-6-Computation/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/04/Linux/linux-5-ShellShortcuts/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/03/Linux/linux-4-2-TextHandle/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/02/Linux/linux-4-1-TextOperate/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Linux/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Golang/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Golang/Beginning/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Machine-Learning/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Machine-Learning/AndrewNg/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Java/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Java/Beginning/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/15/Java/Day4_Java_Types/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/14/Java/Day3_Java_Class/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/13/Java/Day2_OOP/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/archives/page/3/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/12/Java/Day1_Java_Basic/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2019/04/11/Java/Day0_Java_Begining/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Linux/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Linux/Beginning/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2017/01/01/Linux/linux-4-0-TextRead/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/30/Linux/linux-3-1-3-Archiving/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/29/Linux/linux-3-1-2-Disk-RemovableMedia/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/28/Linux/linux-3-1-1-Link/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/27/Linux/linux-3-1-0-FileSystem-inode/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/26/Linux/linux-3-0-1-Files/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/25/Linux/linux-3-0-0-Directory/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/24/Linux/linux-2-3-fileSafe/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/23/Linux/linux-2-2-Group/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/22/Linux/linux-2-1-User/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/tags/Linux/page/3/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Java/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Java/Beginning/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/archives/page/4/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Linux/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Linux/Beginning/page/2/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/21/Linux/linux-2-0-UsersManage/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/20/Linux/linux-1-2-getHelp/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/19/Linux/linux-1-1-SystemInformation/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/18/Linux/linux-1-0-UsersInfomation/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/17/Linux/linux-0-2-StartHalt/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/16/Linux/linux-0-1-Install/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/12/15/Linux/linux-0-0-Linux/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/archives/page/5/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Linux/page/3/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/categories/Linux/Beginning/page/3/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://clownote.github.io/2016/08/14/helloworld/</loc>
+  <lastmod>2019-08-31T02:31:42+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+
+
+</urlset>
