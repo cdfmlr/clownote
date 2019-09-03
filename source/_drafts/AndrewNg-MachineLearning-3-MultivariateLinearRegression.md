@@ -40,4 +40,34 @@ h_\theta(x)=
 $$
 This is a vectorization of our hypothesis function for one training example.
 
-Remark: Note that for convenience reasons, we assume $x^{(i)}_0=1 \quad \textrm{for($i \in 1, ...,m$)}$. This allows us to do matrix operations with $\theta$ and $x$. Hence making two vector $\theta$ and $x^{(i)}$ match each other element-wise (that is, have the same number of elements: n+1)
+Remark: Note that for convenience reasons, we assume **$x^{(i)}_0=1 \quad \textrm{for($i \in 1, ...,m$)}$**. This allows us to do matrix operations with $\theta$ and $x$. Hence making two vector $\theta$ and $x^{(i)}$ match each other element-wise (that is, have the same number of elements: n+1).
+
+## Gradient Descent For Multiple Variables
+
+Let's say the condition about the multiple variables:
+
+> Hypothesis: $h_\theta(x)=\sum_{i=0}^m \theta_ix_i$.
+>
+> Parameters: $\theta_0, \theta_1, ...,\theta_n$.
+>
+> Cost Function: $J(\theta_0, \theta_1, ..., \theta_n)=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$.
+
+Or vectorizedly:
+
+> Hypothesis: $h_\theta(x)=\theta^Tx$.
+>
+> Parameters: $\theta$.
+>
+> Cost Function: $J(\theta)=\frac{1}{2m}\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})^2$.
+
+The Gradient Descent will be like this:
+
+> repeat until convergence {
+>
+> $\qquad\theta_j := \theta_j - \alpha\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x_j^{(i)}\qquad \textrm{for $j:=0, ..., n$}$
+>
+> }
+
+The following image compares gradient descent with one variable to gradient descent with multiple variables:
+
+![img](https://tva1.sinaimg.cn/large/006y8mN6ly1g6ljh8xnnuj30g508ttam.jpg)
