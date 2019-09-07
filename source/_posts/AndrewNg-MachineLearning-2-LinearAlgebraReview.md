@@ -528,6 +528,8 @@ A_{m \times m} \times A^{-1}_{m \times m}=A^{-1}_{m \times m} \times A_{m \times
 $$
 A non square matrix does not have an inverse matrix. We can compute inverses of matrices in octave with the `pinv(A)` function and in Matlab with the `inv(A)` function. Matrices that don't have an inverse are *singular* or *degenerate*.
 
+In practice, when we are using normal equation with Octave, there are two functions to inverse a Matrix -- pinv and inv. For some mathematically reason, The `pinv(A)` will always offer us the value of data that we want, even if A is non-invertible.
+
 ### Transpose
 
 The transposition of a matrix is like rotating the matrix 90º in clockwise direction and then reversing it.
