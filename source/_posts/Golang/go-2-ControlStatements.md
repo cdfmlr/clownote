@@ -1,5 +1,5 @@
 ---
-title: go-2-流程控制语句：for、if、else、switch 和 defer
+title: golang-流程控制语句：for、if、else、switch 和 defer
 date: 2019-08-31 10:21:42
 tags: Golang
 categories:

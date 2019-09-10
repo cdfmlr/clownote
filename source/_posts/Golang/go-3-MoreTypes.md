@@ -1,5 +1,5 @@
 ---
-title: go-3-更多类型：指针、struct、slice和映射
+title: golang-更多类型：指针、struct、slice和映射
 date: 2019-08-31 10:24:03
 tags: Golang
 categories:

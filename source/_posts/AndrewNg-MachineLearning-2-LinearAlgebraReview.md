@@ -1,5 +1,5 @@
 ---
-title: 吴恩达机器学习2-线性代数复习
+title: 线性代数复习
 tags: Machine Learning
 categories:
   - Machine Learning
@@ -17,7 +17,7 @@ date: 2019-09-02 18:17:19
 - **Matrices** are 2-dimensional arrays:
 
 $$
-\left[\begin{array}{ll}
+\left[\begin{array}{ccc}
 a & b & c \\
 d & e & f \\
 g & h & i \\
@@ -30,7 +30,7 @@ The above matrix has four rows and three columns, so it is a `4 x 3 matrix`.
 - **Vector** are matrices with one column and many rows:
 
 $$
-\left[\begin{array}{ll}
+\left[\begin{array}{c}
 w \\
 x \\
 y \\
@@ -109,17 +109,17 @@ A_23 =  6
 
 **Addition** and **subtraction** are element-wise, so you simply add or subtract each corresponding element:
 $$
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 a & b \\
 c & d \\
 \end{array}\right]
 +
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 w & x\\
 y & z\\
 \end{array}\right]
 =
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 a+w & b+x \\
 c+y & d+z \\
 \end{array}\right]
@@ -130,13 +130,13 @@ To add or subtract two matrices, their *dimensions* must be **the same**.
 
 In **scalar multiplication**, we simply multiply every element by the scalar value:
 $$
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 a & b \\
 c & d \\
 \end{array}\right]
 *x
 =
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 ax & bx \\
 cx & dx \\
 \end{array}\right]
@@ -213,18 +213,18 @@ add_As =
 
 We map the column of the vector onto each row of the matrix, multiplying each element and summing the result.
 $$
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 a & b\\
 c & d\\
 e & f\\
 \end{array}\right]
 *
-\left[\begin{array}{ll}
+\left[\begin{array}{c}
 x\\
-y\\
+y
 \end{array}\right]
 =
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 ax & by\\
 cx & dy\\
 ex & fy\\
@@ -294,7 +294,7 @@ It turns out there's neat way of posing this, applying this hypothesis to all of
 
 $$
 \textrm{DataMatrix}=
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 1 & 2104\\
 1 & 1416\\
 1 & 1534\\
@@ -306,7 +306,7 @@ $$
 
 $$
 \textrm{Parameters}=
-\left[\begin{array}{ll}
+\left[\begin{array}{c}
 -40\\
 0.25\\
 \end{array}\right]
@@ -315,17 +315,17 @@ $$
 - Then, the `Predictions` will be clear by calculate a Matrix-Vector Multiplication:
 
 $$
-\begin{array}{ll}
+\begin{array}{ccccc}
 \textrm{Predictions} & = & \textrm{DataMatrix} & * & \textrm{Parameters}\\
- & = & \left[\begin{array}{c}
+ & = & \left[\begin{array}{cc}
 1 & 2104\\
 1 & 1416\\
 1 & 1534\\
-1 & 852\\
+1 & 852
 \end{array}\right] & * & \left[\begin{array}{c}
 -40\\
-0.25\\
-\end{array}\right]\\
+0.25
+\end{array}\right]
 \end{array}
 $$
 
@@ -335,7 +335,7 @@ $$
 \left[\begin{array}{c}
 -40 \times 1 + 0.25 \times 2104\\
 -40 \times 1 + 0.25 \times 1416\\
-\vdots\\
+\vdots
 \end{array}\right]
 $$
 Obviously, it's equal to the codes below:
@@ -358,18 +358,18 @@ Predictions = DataMatrix * Parameters
 
 We multiply two matrices by breaking it into serveral vector multiplications and concatenating the result.
 $$
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 a & b\\
 c & d\\
 e & f\\
 \end{array}\right]
 *
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 w & x\\
 y & z\\
 \end{array}\right]
 =
-\left[\begin{array}{ll}
+\left[\begin{array}{cc}
 aw+by & ax+bz\\
 cw+dy & cx+dz\\
 ew+fy & ex+fz\\
@@ -434,7 +434,7 @@ $$
 
 `Identity matrix`: a matrix that simply has `1`'s on the diagonal (upper left to lower right diagonal) and `0`'s elsewhere.
 $$
-I=\left[\begin{array}{ll}
+I=\left[\begin{array}{ccc}
 1 & 0 & 0\\
 0 & 1 & 0\\
 0 & 0 & 1\\
@@ -537,13 +537,14 @@ The transposition of a matrix is like rotating the matrix 90º in clockwise dire
 In other words: Let $A$ be an $m \times n$ matrix, and let $B=A^T$. Then  $B$ is an $n \times m$ matrix, and $B_{ij}=A_{ji}$.
 $$
 A=
-\left[\begin{array}{l}
+\left[\begin{array}{cc}
 a & b\\
 c & d\\
 e & f\\
 \end{array}\right]
-\qquad A^T=
-\left[\begin{array}{l}
+\qquad
+A^T=
+\left[\begin{array}{ccc}
 a & c & e\\
 b & d & f\\
 \end{array}\right]

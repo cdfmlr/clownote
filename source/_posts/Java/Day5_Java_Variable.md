@@ -1,5 +1,5 @@
 ---
-title: Java-5-变量
+title: Java-变量
 date: 2019-04-16 16:37:53
 tag: Java
 categories:

@@ -1,5 +1,5 @@
 ---
-title: 吴恩达机器学习4——正规方程
+title: 正规方程
 tags: Machine Learning
 categories:
   - Machine Learning

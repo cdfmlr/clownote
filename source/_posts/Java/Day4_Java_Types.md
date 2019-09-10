@@ -1,5 +1,5 @@
 ---
-title: Java-4-基本数据类型
+title: Java-基本数据类型
 date: 2019-04-15 16:37:53
 tag: Java
 categories:

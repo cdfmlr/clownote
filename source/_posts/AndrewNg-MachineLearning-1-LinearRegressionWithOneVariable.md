@@ -1,5 +1,5 @@
 ---
-title: 吴恩达机器学习1——单变量线性回归
+title: 单变量线性回归
 tags: Machine Learning
 categories:
   - Machine Learning
@@ -147,11 +147,14 @@ Unlike before, this time, we won't continue with the simplified hypothesis, we a
 
 Here's our problem formulation as usual:
 $$
-\begin{array}{ll}
- \textrm{Hypothesis: } & h_\theta(x)=\theta_0+\theta_1x\\\\
- \textrm{Parameters: } & \theta_0, \theta_1\\\\
- \textrm{Cost Function: } & J(\theta_0, \theta_1) = \frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2\\\\
- \textrm{Goal: } & \mathop{minimize}\limits_{\theta_0, \theta_1} J(\theta_0, \theta_1)\\
+\begin{array}{rl}
+ \textrm{Hypothesis: } & h_\theta(x)=\theta_0+\theta_1x\\
+  & \\
+ \textrm{Parameters: } & \theta_0, \theta_1\\
+   & \\
+ \textrm{Cost Function: } & J(\theta_0, \theta_1) = \frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2\\
+   & \\
+ \textrm{Goal: } & \mathop{minimize}\limits_{\theta_0, \theta_1} J(\theta_0, \theta_1)
 \end{array}
 $$
 Same as last time, we want to unserstand the hypothesis $h$ and the cost function $J$ via a series of graph. However, we'd like to use a *`contour plot`* to describe our $J(\theta_0, \theta_1)$.
@@ -252,16 +255,16 @@ We are going to apply gradient descent algorithm to minimize our squared error c
 The key term is the derivative term:
 
 $$
-\begin{array}{ll}
-&\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1) &=& \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2\\
-& &=& \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[\theta_0+\theta_1x^{(i)}-y^{(i)}]^2\\
-\end{array}
+\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1) = \frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]^2
+=
+\frac{\partial}{\partial\theta_j}\frac{1}{2m}\sum^m_{i=1}[\theta_0+\theta_1x^{(i)}-y^{(i)}]^2
 $$
 
 $$
-\begin{array}{ll}
-& j=0:& \frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]\\
-& j=1:& \frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x^{(i)}\\
+\begin{array}{rl}
+j=0: & \frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}]\\
+ & \\
+j=1: & \frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)=\frac{1}{m}\sum^m_{i=1}[h_\theta(x^{(i)})-y^{(i)}] \cdot x^{(i)}
 \end{array}
 $$
 

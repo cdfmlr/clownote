@@ -1,5 +1,5 @@
 ---
-title: Java-2-面向对象
+title: Java-面向对象
 date: 2019-04-13 16:37:53
 tag: Java
 categories:
@@ -142,7 +142,6 @@ doStuff(l);
 > 在 Java 中，我们使用 关键字 `abstract` 来说明一个类是抽象的。编译器将阻止创建**抽象类**的实例。
 
 **`interface` 关键字** 将抽象类的概念延伸，它完全禁止所有函数的定义。
-
 
 ---
 

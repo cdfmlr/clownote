@@ -1,5 +1,5 @@
 ---
-title: go-1-包、变量和函数
+title: golang-包、变量和函数
 date: 2019-08-31 10:17:18
 tags: Golang
 categories:

@@ -1,5 +1,5 @@
 ---
-title: 吴恩达机器学习3-多变量线性回归
+title: 多变量线性回归
 tags: Machine Learning
 categories:
   - Machine Learning
@@ -36,13 +36,13 @@ Using the definition of matrix muyltiplication, our multivariable hypothesis fun
 $$
 h_\theta(x)=
 \left[\begin{array}{c}\theta_0 & \theta_1 & \ldots & \theta_n\end{array}\right]
-\left[\begin{array}{c}x_0 \\ x_1 \\ \vdots \\ x_n\end{array}\right]
+\left[\begin{array}{c}x_0 \\ x_1 \\ \vdots \\ x_n \end{array}\right]
 =
 \theta^Tx
 $$
 This is a vectorization of our hypothesis function for one training example.
 
-Remark: Note that for convenience reasons, we assume **$x^{(i)}_0=1 \quad \textrm{for($i \in 1, ...,m$)}$**. This allows us to do matrix operations with $\theta$ and $x$. Hence making two vector $\theta$ and $x^{(i)}$ match each other element-wise (that is, have the same number of elements: n+1).
+Remark: Note that for convenience reasons, we assume **$x^{(i)}_0=1 \quad \textrm{for(}i \in 1, ...,m \textrm{)}$**. This allows us to do matrix operations with $\theta$ and $x$. Hence making two vector $\theta$ and $x^{(i)}$ match each other element-wise (that is, have the same number of elements: n+1).
 
 ## Gradient Descent For Multiple Variables
 
@@ -80,13 +80,15 @@ We can speed up gradient descent by **having each of our input values in roughly
 
 The way to prevent this is to **modify the ranges of our input variables** so that they are all roughly the same. Ideally:
 $$
+\begin{array}{c}
 -1 \le x_{i} \le 1\\
 \textrm{or}\\
 -0.5 \le x_{i} \le 0.5
+\end{array}
 $$
 These aren't exact requirements; we are only trying to speed things up. The goal is to get all input variables into roughly one of these ranges, give or take a few.
 
-In practice, we offen think it's ok for variables in range $[-3,-\frac{1}{3}) \cup (+\frac{1}{3}, +3] $.
+In practice, we offen think it's ok for variables in range $[-3,-\frac{1}{3}) \cup (+\frac{1}{3}, +3]$.
 
 Two techniques to help with this are `feature scaling` and `mean normalization`.
 
@@ -119,9 +121,48 @@ x_i:=\frac{x_i-\mu_i}{s_i}
 $$
 
 * **$\mu_i$** is the **average of all the values for feature (i)**
-* **$s_i$** is the **range of values (`max - min`)**, or $s_i$ could also be the standard deviation.
+* **$s_i$** is the **range of values (`max - min`)**, or $s_i$ could also be the **standard deviation**.
 
 For example, if $x_i$ represents housing prices with a range of 100 to 2000 and a mean value of 1000, then, $x_i := \dfrac{price-1000}{1900}$.
+
+#### In octave
+
+In octave, the function `mean` can offer us the avaerage of values for feature (i), when the function `std` gives us the standard deviation of values for feature (i). So we can program like this:
+
+```octave
+function [X_norm, mu, sigma] = featureNormalize(X)
+%FEATURENORMALIZE Normalizes the features in X 
+%   FEATURENORMALIZE(X) returns a normalized version of X where
+%   the mean value of each feature is 0 and the standard deviation
+%   is 1. This is often a good preprocessing step to do when
+%   working with learning algorithms.
+
+X_norm = X;
+mu = zeros(1, size(X, 2));
+sigma = zeros(1, size(X, 2));
+
+% Instructions: First, for each feature dimension, compute the mean
+%               of the feature and subtract it from the dataset,
+%               storing the mean value in mu. Next, compute the 
+%               standard deviation of each feature and divide
+%               each feature by it's standard deviation, storing
+%               the standard deviation in sigma. 
+%
+%               Note that X is a matrix where each column is a 
+%               feature and each row is an example. You need 
+%               to perform the normalization separately for 
+%               each feature. 
+%
+
+mu = mean(X);
+sigma = std(X);
+X_norm = (X - mu) ./ sigma;
+
+end
+
+```
+
+
 
 ## Learning Rate
 
