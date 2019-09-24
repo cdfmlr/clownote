@@ -1,12 +1,14 @@
 ---
-title: AndrewNg-MachineLearning-6-Classification
+title: 分类问题
 tags: Machine Learning
 categories:
   - Machine Learning
   - AndrewNg
+date: 2019-09-24 16:03:36
 ---
 
-# Notes of Andrew Ng’s Machine Learning —— (6) Classification and Representation
+
+# Notes of Andrew Ng’s Machine Learning —— (6) Classification
 
 ## Intro of Classification
 
@@ -36,13 +38,13 @@ It looks like the following image:
 
 Our new form uses the Simoid Function:
 $$
-\begin{array}{l}h_\theta(X) = g(\theta^TX)\\z = \theta^TX\\g(z) = \frac{1}{1+e^{-z}}\end{array}
+\begin{array}{l}h_\theta(x) = g(\theta^Tx)\\z = \theta^Tx\\g(z) = \frac{1}{1+e^{-z}}\end{array}
 $$
 The logistic function $g(z)$ maps any real numbers to the $(0,1)$ interval, making it useful for transforming a arbitrary-valued function into a function better suited for classfication.
 
 We can also simply write $h_\theta(x)$ like this:
 $$
-h_\theta(X) = \frac{1}{1+e^{-\theta^TX}}
+h_\theta(X) = \frac{1}{1+e^{-\theta^Tx}}
 $$
 **$h_\theta(x)$ will output the probalility that our output is `1`.** For example, $h_\theta(x)=0.7$ gives us a probability of $70\%$ that our output is $1$ (then the probability that it is 0 is 30%):
 $$
@@ -67,7 +69,7 @@ g(z) \ge 0.5 \quad when \quad z \ge 0
 $$
 In fact, we know that:
 $$
-\begin{array}{ccccl}
+\begin{array}{lclcl}
 z \to -\infin &,& e^{\infin} \to \infin & \Rightarrow & g(z) \to 0\\
 z \to 0 &,& e^{0} \to 1 & \Rightarrow & g(z) \to 0.5\\
 z \to +\infin &,& e^{-\infin} \to 0 & \Rightarrow & g(z) \to 1
@@ -116,11 +118,13 @@ In this part, we will implement the logistic regression model.
 $$
 \begin{array}{rcl}
 \textrm{Training set} &:& \{(x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}), \ldots, (x^{(m)},y^{(m)})\}\\
+\\
 \textrm{m examples} &:&
 x \in \left[\begin{array}{c}
 x_0\\x_1\\ \vdots \\ x_n
 \end{array}\right] \textrm{where }(x_0=1)
 ,\quad y \in \{0,1\}\\
+\\
 \textrm{Hypothesis} &:& h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}
 \end{array}
 $$
@@ -154,4 +158,106 @@ $$
 >  If our correct answer 'y' is 0, then the cost function will be 0 if our hypothesis function also outputs 0. If our hypothesis approaches 1, then the cost function will approach infinity.
 >
 > If our correct answer 'y' is 1, then the cost function will be 0 if our hypothesis function outputs 1. If our hypothesis approaches 0, then the cost function will approach infinity.
+
+#### Simplified Cost Function
+
+We can simplify the $Cost$ function by compressing the two conditional cases into one case:
+$$
+Cost(h_\theta(x),y)=-y \cdot log(h_\theta(x))-(1-y) \cdot log(1-h_\theta(x))
+$$
+In this definition, when $y=0$, the term $-(1-y) \cdot log(1-h_\theta(x))$ will be $0$; when $y=0$, the term $-y \cdot log(h_\theta(x))$ will be $0$. Obviously, this is equal to the previous one but more easy to implement.
+
+Now, we can fully write out our entire cost function as follow:
+$$
+J(\theta)=-\frac{1}{m}\sum_{i=1}^m\Bigg[y^{(i)}log\Big(h_\theta(x)\Big)+(1-y^{(i)})log\Big(1-h_\theta(x^{(i)})\Big)\Bigg]
+$$
+And a **vectorized** implementation is:
+$$
+\begin{array}{l}
+h=g(X\theta)\\
+J(\theta)=\frac{1}{m}\cdot\big(-y^T log(h) -(1-y)^T log(1-h)\big)
+\end{array}
+$$
+
+#### Gradient Descent
+
+The general form of gradient descent is:
+$$
+\begin{array}{l}
+Repeat \quad \{\\
+\qquad \theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta)\\
+\}
+\end{array}
+$$
+Work out the derivative part using calculus to get:
+$$
+\begin{array}{l}
+Repeat \quad \{\\
+\qquad \theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})\cdot x_j^{(i)}\\
+\}
+\end{array}
+$$
+Actually, this algorithm is identical to the one we used in linear regression. And notice that we still have to simultaneously update all values in theta.
+
+**Vectorized implementation**:
+$$
+\theta:=\theta-\frac{\alpha}{m}X^T(g(X\theta)-\overrightarrow{y})
+$$
+
+## Advanced Optimization
+
+There are many more sophisticated, faster ways to optimize $\theta$ that can be used instead of gradient descent, such as "*Conjugate gradient*", "*BFGS*" and "*L-BFGS*".
+
+We are not suggest to write these more sophisticated algorithms ourself but use the libraries instead, as they're already tested and highly optimized. Octave provides them.
+
+We can use octave's `fminunc()` optimization algorithm to do that.
+
+To use this advanced optimization, we first need to provide a function that evaluates the following two functions for a given inpuit value $\theta$:
+$$
+J(\theta), \qquad \frac{\partial}{\partial\theta_j}J(\theta)
+$$
+We can write a single function that retunrs both of these:
+
+```octave
+function [jVal, gradient] = costFunction(theta)
+	jVal = <code to compute J(theta)>
+	gradient = <code to compute derivative of J(theta)>
+end
+```
+
+Then we are going to set a `optimset` and a initial theta as well, then send them to `fminunc()`:
+
+```octave
+options = optimset('GradObj', 'on', 'MaxIter', 100);
+initialTheta = zeros(2, 1);
+
+[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
+```
+
+## Multiclass Classification
+
+Now we will approach the classification of data when we have more than two categories. Instead of $y=\{0,1\}$ we will expand our definition so that $y=\{0,1...n\}$.
+
+Since $y=\{0,1...n\}$, we divide our problem into $n+1$ ($+1$ because the index starts at $0$) binary classification problems; in each one, we predict the probability that '$y$' is a member of one of our classes.
+$$
+\begin{array}{l}
+y \in \{0,1,\cdots,n\}\\\\
+h_\theta^{(0)}(x)=P(y=0|x;\theta)\\
+h_\theta^{(0)}(x)=P(y=0|x;\theta)\\
+\vdots\\
+h_\theta^{(0)}(x)=P(y=0|x;\theta)\\\\
+prediction = \mathop{max}\limits_{\theta}\big(h_\theta^{(i)}(x)\big)
+\end{array}
+$$
+We are basically choosing one class and then lumping all the others into a single second class. We do this repeatedly, applying binary logistic regression to each case, and then use the hypothesis that returned the highest value as our prediction.
+
+The following image shows how one could classify 3 classes:
+
+![img](https://tva1.sinaimg.cn/large/006y8mN6ly1g78nj8fvy4j30d507agmp.jpg)
+
+
+
+**To summarize:**
+
+Train a logistic regression classifier $h_\theta(x)$ for each class￼ to predict the probability that ￼ ￼$y=i$￼ ￼. To make a prediction on a new $x$, pick the class ￼that maximizes $h_\theta(x)$.
 
