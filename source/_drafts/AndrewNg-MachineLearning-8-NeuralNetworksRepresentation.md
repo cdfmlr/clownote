@@ -78,5 +78,20 @@ Notice that in this **last step**, between layer $j$ and layer $j+1$, we are doi
 
 A simple example of applying neural networks is by predicting $x_1 \and x_2$, which is the logical 'and' operator and is only true if both $x_1$ and $x_2$ are $1$. The graph of our functions will look like: 
 $$
-\begin{align*}\begin{bmatrix}x_0 \newline x_1 \newline x_2\end{bmatrix} \rightarrow\begin{bmatrix}g(z^{(2)})\end{bmatrix} \rightarrow h_\Theta(x)\end{align*}
+\begin{array}{c}\begin{bmatrix}x_0 \\ x_1 \\ x_2\end{bmatrix} \rightarrow\begin{bmatrix}g(z^{(2)})\end{bmatrix} \rightarrow h_\Theta(x)\end{array}
 $$
+Remember that $x_0$ is our bias variable and is always $1$. The $g(z)$ is the following:
+
+![img](https://tva1.sinaimg.cn/large/006y8mN6gy1g7qukjiuo1j308h04d0sv.jpg)
+
+Let's set our first Theta matrix as:
+$$
+\Theta^{(1)}=\begin{bmatrix} -30 & 20 & 20 \end{bmatrix}
+$$
+This will cause the output of our hypothesis to only be positive if both $x_1$ and $x_2$ are $1$. In other words:
+$$
+\begin{array}{ll}& h_\Theta(x) = g(-30 + 20x_1 + 20x_2) \\ \\ & x_1 = 0 \ \ and \ \ x_2 = 0 \ \ then \ \ g(-30) \approx 0 \\ & x_1 = 0 \ \ and \ \ x_2 = 1 \ \ then \ \ g(-10) \approx 0 \\ & x_1 = 1 \ \ and \ \ x_2 = 0 \ \ then \ \ g(-10) \approx 0 \\ & x_1 = 1 \ \ and \ \ x_2 = 1 \ \ then \ \ g(10) \approx 1\end{array}
+$$
+So we have constructed one of the fundamental operations in computers by using a small neural network rather than using an actual AND gate. Neural networks can also be used to simulate all the other logical gates. The following is an example of the logical operator 'OR', meaning either $x_1$ is true or $x_2$ is true, or both:
+
+![f_ueJLGnEea3qApInhZCFg_a5ff8edc62c9a09900eae075e8502e34_Screenshot-2016-11-23-10.03.48](https://tva1.sinaimg.cn/large/006y8mN6gy1g7qukcx6wij30gb07raaw.jpg)
