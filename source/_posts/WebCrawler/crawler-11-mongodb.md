@@ -151,6 +151,13 @@ collection.find({'name': {'$regex': '^M.*'}})
 | `$text`   | 文本查询   | `{'$text': {'$search': 'Mike'}}`                    | text 类型的属性中包含 Mike 字符串 |
 | `$where`  | 高级条件查询 | `{'$where': 'obj.fans_count == obj.follows_count'}` | 自身粉丝数等于关注数             |
 
+#### 去掉 `_id`
+
+Mongo 返回的数据中会有一项 `_id` （Mongo自动加入的用来识别对象的字段），我们常不想看它 ，可以在查询时加入对结果的过滤：
+
+```python
+collection.find(projection={'_id': False})
+```
 
 ## 计数
 
