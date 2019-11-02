@@ -79,7 +79,7 @@ After training a logistic regression classifier, we plan to make predictions acc
 - Predict $y=1$ if $h_\theta(x)≥threshold$
 - Predict $y=1$ if $h_\theta(x)<threshold$
 
-For different values of the `threshold` parameter, we get different values of precision (P) and recall (R).
+For different values of the `threshold` parameter, we get different values of precision (`P`) and recall (`R`).
 
 ![image-20191026165452692](https://tva1.sinaimg.cn/large/006y8mN6gy1g8bpe4ywhyj30pr0edgth.jpg)
 
@@ -91,7 +91,7 @@ $$
 
 In the worst case where our $P=R=0$, we will get $F_1$ score = 0. And in the best case where $P=R=1$, the F score will equals 1. So a $F_1$ Score will be a value between 0 and 1, the higher $F_1$ Score we get, the better implement it is.
 
-A reasonable way to pick the value to use for the threshold is to measure precision (P) and recall (R) on the   **cross validation set** and choose the value of threshold which maximizes $2\frac{PR}{P+R}$.
+A reasonable way to pick the value to use for the threshold is to measure precision (`P`) and recall (`R`) on the   **cross validation set** and choose the value of threshold which maximizes $2\frac{PR}{P+R}$.
 
 ## Data For Machine Learning
 
