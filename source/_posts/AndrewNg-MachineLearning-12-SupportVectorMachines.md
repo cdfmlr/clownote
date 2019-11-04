@@ -1,10 +1,12 @@
 ---
-title: AndrewNg-MachineLearning-12-SupportVectorMachines
+title: 支持向量机
 tags: Machine Learning
 categories:
   - Machine Learning
   - AndrewNg
+date: 2019-11-04 16:38:39
 ---
+
 
 # Notes of Andrew Ng’s Machine Learning —— (12) Support Vector Machines
 
@@ -156,9 +158,9 @@ $$
 $$
 Where $f_1=x_1,f_2=x_2,f_3=x_1x_2,f_4=x_1^2,...$
 
-If we have a lot of features, then there will be too many polynomial terms, which can become very computationally expensive. So is there a different or a better choice of the features that we can use to plug into this sort of hypothesis form, or in another words, how to define a set of new $f_1,f_2,f_3$ avoiding high polynomial calculations?
+If we have a lot of features, then there will be too many polynomial terms, which can become very computationally expensive. So is there a different or a better choice of the features that we can use to plug into this sort of hypothesis form, or in another words, how to define a set of new $f_1,f_2,f_3$ to avoid  high polynomial calculations?
 
-Here is one idea of how to define our new $f_i$:
+Here is one idea:
 
 ![image-20191102124615797](https://tva1.sinaimg.cn/large/006y8mN6ly1g8jljliww8j30o90dmwjt.jpg)
 
@@ -198,3 +200,102 @@ So, given this definition of the features, let's see what source of hypothesis w
 
 We can see that, in this example, only given the $x$ near $l^{(1)}$ or $l^{(2)}$ will it predict "1", if the $x$ if far from this two landmarks, it will predict "0".
 
+### SVM with Kernels
+
+We have talked about the process of picking a few landmarks. But how to choose our $l^{(i)}$s? Actually we will simply choose the location of our landmarks to be exactly near the locations of our m training examples. Here is what we are going to do:
+
+---
+
+#### The Support Vector Machine With Kernels Algorithm
+
+Given a set of training data: $(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)})$ 
+
+Choose landmarks: $l^{(i)}=x^{(i)} \quad \textrm{for }i=1,2,\cdots,m$
+
+For example $x$: $f_i=\mathop{\textrm{similarity}}(x,l^{(i)}) \quad \textrm{for }i=1,2,\cdots,m$
+
+Group $f_i$s into a vector: $f=[f_0,f_1,f_2,\cdots,f_m]^T$, in which the $f_0 \equiv 1$ is a extra feature for convention.
+
+Hypothesis: 
+
+* Given $x$, compute features $f\in\R^{m+1}$
+* Predict $y=1$ if $\theta^Tf=\theta_0f_0+\theta_1f_1+\cdots\ge 0$ (where $\theta\in\R^{m+1}$)
+
+Training:
+$$
+\min_\theta 
+C\sum_{i=1}^m \large[ y^{(i)} \mathop{\textrm{cost}_1}(\theta^Tf^{(i)})
++ (1 - y^{(i)})\ \mathop{\textrm{cost}_0}(\theta^Tf^{(i)})\large]
++ \frac{1}{2}\sum_{j=1}^n \theta_j^2
+$$
+Notice: instead of $\theta^Tx^{(i)}$ that we use before, now we use $\theta^Tf^{(i)}$. And here our $n$ is equal to $m$. 
+
+Mathematical tricks in practice: Ignoring the $\theta_0$ (s.t. $\theta=[\theta_1,\cdots,\theta_m]^T$), we can get $\sum_j\theta_j^2=\theta^T\theta$. Moreover, for mathematical convenience when deal with a large training set, we gonna use **$\theta^T M \theta$** instead of $\theta^T\theta$.
+
+---
+
+#### SVM parameters
+
+Here are parameters that we are going to choose when use the algorithm above:
+
+* $C$ (=$\frac{1}{m}$)
+  * Large $C$: Lower bias, high variance (small $\lambda$)
+  * Small $C$: Higher bias, low variance (large $\lambda$)
+* $\sigma^2$
+  * Large $\sigma^2$: Features $f_i$ vary more smoothly. Higher bias, lower variance.![屏幕快照 2019-11-02 15.51.46](https://tva1.sinaimg.cn/large/006y8mN6ly1g8jukxlnxkj306u04laad.jpg)
+  * Small $\sigma^2$: Features $f_i$ vary less smoothly. Lower bias, higher variance.![屏幕快照 2019-11-02 15.51.50](https://tva1.sinaimg.cn/large/006y8mN6ly1g8jul1utnaj306i04ezk4.jpg)
+
+E.g. Suppose we train an SVM and find it overfits our training data. A reasonable next step is going to decrease $C$ or increase $\sigma^2$.
+
+## SVM in Practice
+
+### Using An SVM
+
+We are not recommended writing our own software to solve for the parameters via a SVM. We should call some library functions to do that.
+
+When using SVM software package (e.g. `liblinear`, `libsvm`) to solve for parameters $\theta$, we need to specify:
+
+* Choice of parameter $C$;
+* Choice of kernel (similarity function):
+  * **No kernel** ("linear kernel", do our common logistic regression): Predict $y=1$ if $\theta^Tx\ge0$. For large $n$ and small $m$ case (no kernel can avoid overfitting).
+  * **Gaussian kernel**: $f_i=\exp(-\frac{||x-l^{(i)}||^2}{2\sigma^2})$, where $l^{(i)}=x^{(i)}$.(Need to choose $\sigma^2$). For small $n$ and large $m$ case (Gaussian kernel can fit a more complex nonlinear decision boundary).
+
+If we decide to use a Gaussian kernel, here is what we are going to do:
+
+* Provide a kernel (similarity) function:
+  $$
+  \begin{array}{l}
+  \textrm{function f = kernel(x1, x2)}\\
+  \qquad \textrm{f} = \exp(-\frac{||\textrm{x1}-\textrm{x2}||^2}{2\sigma^2})\\
+  \textrm{return}
+  \end{array}
+  $$
+  Note: Do perform feature scaling before using the Gaussian kernel.
+
+### Other choices of kernel
+
+Not all similarity functions $\mathop{\textrm{similarity}}(x,l)$ make valid kernels. (Need to satisfy technical condiction called "Mercer's Theorem" to make sure SVM packages' optimizations run correctly, and do not diverge).
+
+There are many off-the-shelf kernels available, for example:
+
+- Polynomial kernel: $k(x,l)=(X^Tl+constant)^{degree}$, need to choose the $constant$ and $degree$. Usually performs worse than Gaussian kernel. Only for $X$ and $l$ are all strictly non negative.
+- More esoteric: String kernel (for input is text string),  chi-square kernel, histogram intersection kernel, ...
+
+### Multi-class classification
+
+![image-20191102171432072](https://tva1.sinaimg.cn/large/006y8mN6ly1g8jul8myufj30mv0cz0xu.jpg)
+
+### Logistic regression v.s. SVMs
+
+$n$ = number of features ($x\in\R^{n+1}$);
+
+$m$ = number of training examples;
+
+* If $n$ is large (relative to $m$): ($n\ge m$, e.g. $n=10,000, m=10 \sim 1000$)
+  * Use logistic regression, or SVM without a kernel ("linear kernel") 
+* If $n$ is small, $m$ is intermediate: (e.g. $n=1\sim1000,m=50,000+$)
+  * Use SVM with Gaussian kernel
+* If $n$ is small, $m$ is large:
+  * Create/add more features, then use logistic regression or SVM without a kernel
+
+Note: Neural network likely to work well for most of these settings, but may be slower to train.
