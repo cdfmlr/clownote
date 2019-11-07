@@ -1,10 +1,12 @@
 ---
-title: AndrewNg-MachineLearning-13-UnsupervisedLearning
+title: 无监督学习
 tags: Machine Learning
 categories:
   - Machine Learning
   - AndrewNg
+date: 2019-11-07 10:51:48
 ---
+
 
 # Notes of Andrew Ng’s Machine Learning —— (13) Unsupervised Learning
 
@@ -165,4 +167,8 @@ T-shirt sizing for example:
 ![image-20191106172431180](https://tva1.sinaimg.cn/large/006y8mN6gy1g8og2ak66wj30o709l0wr.jpg)
 
 In particular, what we can do is, think about this from the perspective of the T-shirt business and ask: "Well if I have five segments, then how well will my T-shirts fit my  customers and so, how many T-shirts can I sell? How happy will my customers be?" What really makes sense, from the perspective of the T-shirt business, in terms of whether, I want to have Goer T-shirt sizes so that my T-shirts fit my customers better. Or do I want to have fewer T-shirt sizes so that I make fewer sizes of T-shirts. And I can sell them to the customers more cheaply. And so, the t-shirt selling business, that might give you a way to decide, between three clusters versus five clusters.
+
+
+
+
 
