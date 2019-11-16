@@ -299,3 +299,4 @@ $m$ = number of training examples;
   * Create/add more features, then use logistic regression or SVM without a kernel
 
 Note: Neural network likely to work well for most of these settings, but may be slower to train.
+
