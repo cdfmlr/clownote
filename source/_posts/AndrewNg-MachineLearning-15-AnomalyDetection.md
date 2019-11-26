@@ -1,10 +1,12 @@
 ---
-title: AndrewNg-MachineLearning-15-AnomalyDetection
+title: 异常检测
 tags: Machine Learning
 categories:
   - Machine Learning
   - AndrewNg
+date: 2019-11-26 15:02:40
 ---
+
 
 # Notes of Andrew Ng’s Machine Learning —— (15) Anomaly Detection
 
@@ -104,9 +106,9 @@ P.S. this is what people turn to use when handling a machine learning problem, i
 
 4. Anomaly if $p(x)<\epsilon$
 
-### Building an Anomaly Detection System
+## Building an Anomaly Detection System
 
-#### Developing and Evaluating an Anomaly Detection System
+### Developing and Evaluating an Anomaly Detection System
 
 **The importance of real-number evalua-on** 
 
@@ -151,4 +153,136 @@ Possible evaluation matrices:
 - $F_1$-score 
 
 Can also use cross valida-on set to choose parameter $\epsilon$.
+
+### Anomaly Detection vs. Supervised Learning
+
+![image-20191116164047663](https://tva1.sinaimg.cn/large/006y8mN6ly1g8zz0ijc4cj310f0khn20.jpg)
+
+![image-20191116164113192](https://tva1.sinaimg.cn/large/006y8mN6ly1g8zz0b347dj31050jswgw.jpg)
+
+There are some more examples:
+
+* (Anomaly Detection) You run a power utility (supplying electricity to customers) and want to monitor your electric plants to see if any one of them might be behaving strangely.
+
+* (Supervised Learning) You run a power utility and want to predict tomorrow’s expected demand for electricity (so that you can plan to ramp up an appropriate amount of generation capacity).
+
+* (Anomaly Detection) A computer vision / security application, where you examine video images to see if anyone in your company’s parking lot is acting in an unusual way.
+
+* (Supervised Learning) A computer vision application, where you examine an image of a person entering your retail store to determine if the person is male or female.
+
+### Choosing What Features to Use
+
+#### preprocess non-gaussian features
+
+We can use `hist` in octave to plot out the histogram of our data, if we find that it is non-gaussian, we can try to apply a $\log(x+c)$ or $x^{\frac{1}{c}}$ (try different $c$ for a better result) to make it looks more gaussian. For example:
+
+![image-20191117113816740](https://tva1.sinaimg.cn/large/006y8mN6ly1g90vvgj48aj30qs08ijtu.jpg)
+
+#### Error analysis for anomaly detection
+
+What we want is:
+
+- $p(x)$ large for normal examples $x$.
+- $p(x)$ small for anomalous examples $x$.
+
+And the most common problem is:
+
+> $p(x)$ is comparable (say, both large) for normal and anomalous examples.
+
+Suppose our anomaly detection algorithm is performing poorly and outputs a large value of p(x) for many normal examples and for many anomalous examples in the cross validation dataset, what is most likely to help is to try coming up with more features to distinguish between the normal and the anomalous examples.
+
+![image-20191117115423248](https://tva1.sinaimg.cn/large/006y8mN6ly1g90wc7yk3gj30m807x40w.jpg)
+
+## Multivariate Gaussian distribution 
+
+### Multivariate Gaussian Distribution
+
+What we still want to do is:
+
+* Given $x\in\R^n$.
+* Don't model $p(x_1),p(x_2),\cdots$ separately.
+* Model $p(x)$ all in one go.
+
+*Multivariate gaussian* is able to make it:
+$$
+p(x;\mu,\Sigma)=\frac
+{\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)}
+{\sqrt{(2\pi)^{n}|\Sigma|}}
+$$
+P.s. $|\Sigma| = \det\Sigma $ is the determinant of $\Sigma$ .
+
+Where we need parameters:
+
+- $\mu\in\R^n$
+- $\Sigma\in\R^{n\times n}$ (covariance matrix, `Sigma = 1/m * X' * X;`)
+
+Given training set $\{x^{(1)},\cdots,x^{(m)}\}$, we can fit the parameters:
+$$
+\mu=\frac{1}{m}\sum_{i=1}^mx^{(i)} \qquad
+\Sigma=\frac{1}{m}\sum_{i=1}^m\left(x^{(i)}-\mu\right)\left(x^{(i)}-\mu\right)^T
+$$
+
+
+Here are lots of examples:
+
+![屏幕快照 2019-11-17 13.39.08 3](https://tva1.sinaimg.cn/large/006y8mN6ly1g90zj4eo2fj31xy0h37wh.jpg)
+
+![屏幕快照 2019-11-17 13.39.08 2](https://tva1.sinaimg.cn/large/006y8mN6ly1g90zjbm1afj31xy0h31kx.jpg)
+
+
+
+### Anomaly Detection using the Multivariate Gaussian Distribution
+
+#### Using the Multivariate Gaussian Distribution
+
+1. Fit model $p(x)$ by setting:
+   $$
+   \mu=\frac{1}{m}\sum_{i=1}^mx^{(i)} \qquad
+   \Sigma=\frac{1}{m}\sum_{i=1}^m\left(x^{(i)}-\mu\right)\left(x^{(i)}-\mu\right)^T
+   $$
+
+2. Given a new example $x$, compute:
+   $$
+   p(x)=\frac
+   {\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)}
+   {\sqrt{(2\pi)^{n}|\Sigma|}}
+   $$
+
+3. Flag an anomaly if $p(x)<\epsilon$
+
+#### Relationship to original model
+
+Original model: $p(x)=p(x_1;\mu_1,\sigma_1^2)\times p(x_2;\mu_2,\sigma_2^2) \times \cdots \times p(x_n;\mu_n,\sigma_n^2)$
+
+![image-20191118172458083](https://tva1.sinaimg.cn/large/006y8mN6ly1g92bif84qwj30la05ajtx.jpg)
+
+As we can see, the contours of the Original model are always **axis aligned**.
+
+ This model actually corresponds to a special case of a multivariate Gaussian distribution $p(x)=\frac{\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)}
+{\sqrt{(2\pi)^{n}|\Sigma|}}$ where:
+$$
+\Sigma=\left[\begin{array}{cccc}
+\sigma_1^2 \\
+ & \sigma_1^2 \\
+ & & \ddots \\
+ & & & \sigma_n^2
+\end{array}\right]
+$$
+
+#### Original model vs. Multivariate gaussian
+
+Original model:
+
+- $p(x)=p(x_1;\mu_1,\sigma_1^2)\times \cdots \times p(x_n;\mu_n,\sigma_n^2)$
+- Manually create features to capture anomalies where $x_1,x_2$ take unusual combinations of values. (e.g. $x_3=\frac{x_1}{x_2}$)
+- Computationally cheaper (alternatively, scales better to large $n$)
+- OK even if $m$ (training set size) is small
+
+Multivariate gaussian:
+
+- $p(x)=\frac{\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)}
+  {\sqrt{(2\pi)^{n}|\Sigma|}}$
+- Automatically captures correlations between features (no need to create a $x_3=\frac{x_1}{x_2}$)
+- Computationally more expensive
+- Must have $m>n$ & all features are not redundant (need to promise that there are no features that are linearly dependent) or else $\Sigma$ is non-invertible.
 
