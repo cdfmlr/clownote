@@ -46,7 +46,7 @@ $ passwd            修改当前用户密码
 
 ```
 # passwd username    修改某用户密码
-# passwd -**S**username    查看密码状态，【注意】S大写
+# passwd -S username    查看密码状态，【注意】S大写
 ```
 
 - 新建，删除 用户
@@ -54,7 +54,7 @@ $ passwd            修改当前用户密码
 1. useradd：新建用户：`# useradd new_user_name`
 
 ```
-[root@Example ~]# **useradd** newone
+[root@Example ~]# useradd newone
 [root@Example ~]# passwd -S newone
 newone LK [2016-12-18 0 99999 7 -1](tel:2016-12-18 0 99999 7 -1)(密码已被锁定。)       # 说明密码未设定
 [root@Example ~]# passwd newone
