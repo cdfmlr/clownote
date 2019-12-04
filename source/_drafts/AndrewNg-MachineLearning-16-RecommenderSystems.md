@@ -158,3 +158,54 @@ Put everything together, we get the **collaborative filtering algorithm**:
 
 3. For a user with parameters $\theta$ and a movie with (learned) features $x$, predict a star rating of $\theta^Tx$.
 
+## Low Rank Matrix Factorization
+
+### Vectorization: Low Rank Matrix Factorization
+
+To vectorize the collaborative filtering algorithm, we are going to put xs/thetas together:
+
+So, let:
+$$
+X = \left[\begin{array}{ccc}
+- & (x^{(1)})^T & - \\
+  & \vdots & \\
+- & (x^{(n_m)})^T & - \\
+\end{array}\right],
+\qquad
+\Theta = \left[\begin{array}{ccc}
+- & (\theta^{(1)})^T & - \\
+  & \vdots & \\
+- & (\theta^{(n_u)})^T & - \\
+\end{array}\right]
+$$
+Then, we can get prediction by:
+$$
+X\Theta^T= \left[\begin{array}{ccccc} (x^{(1)})^T(\theta^{(1)}) & \ldots & (x^{(1)})^T(\theta^{(n_u)})\\ \vdots & \ddots & \vdots \\ (x^{(n_m)})^T(\theta^{(1)}) & \ldots & (x^{(n_m)})^T(\theta^{(n_u)})\end{array}\right]
+$$
+And this algorithm is called *Low Rank Matrix Factorization*.
+
+#### Finding related movies
+
+For each product (e.g. movie) $i$, we learn a feature vector $x^{(i)}\in\R^n$. We can find a movie $j$ that is most related to movie $i$ by finding a $j$ that has:
+$$
+\mathop{\textrm{smallest}} ||x^{(i)}-x^{(j)}||.
+$$
+
+### Implementational Detail: Mean Normalization
+
+If we use what we talked about above, given a user who ranked no movies, than, our recommend system will output a all zeros result, so we can recommend nothing to this user. We never hope this, so we do a mean normalization:
+$$
+\mu_i=\mathop{\textrm{average}} y^{(i,:)}
+$$
+
+$$
+Y_i = Y_i-\mu_i
+$$
+
+For user $j$, on movie $i$, we predict:
+$$
+\left(\Theta^{(j)}\right)^T\left(x^{(i)}\right)+\mu_i
+$$
+Then we can get a set of "average" recommendation  for a no-ranked user.
+
+We talked about mean normalization. However, unlike some other applications of feature scaling, we did not scale the movie ratings by dividing by the range (max – min value). This is because all the movie ratings are already comparable (e.g., 0 to 5 stars), so they are already on similar scales.
