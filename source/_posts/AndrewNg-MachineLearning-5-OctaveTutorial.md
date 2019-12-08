@@ -224,7 +224,7 @@ D =
 We can generate a gaussian random vector with 10000 elements, and plot a histogram:
 
 ```octave
->> ![image-20190907224821415](../../../Library/Application Support/typora-user-images/image-20190907224821415.png)
+>> randn(1, 10000);
 >> hist(w)
 ```
 
