@@ -1,5 +1,5 @@
 ---
-title: Python爬虫解析库的使用之PyQuery
+title: Python之PyQuery
 date: 2019-02-17 22:49:55
 tags: Crawler
 categories:
