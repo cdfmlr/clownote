@@ -46,10 +46,28 @@ J_{train}(\theta)=\frac{1}{m}\sum_{i=1}^{m}cost\left(\theta,(x^{(i)},y^{(i)})\ri
 1.\quad \textrm{Randomly shuffle(reorder) training examples}\\
 2.\quad \textrm{Repeat } \{ \\
 \qquad\qquad \textrm{for $i:= 1, \cdots,m$ } \{ \\
-\qquad\qquad\qquad\quad \theta_j:=\theta_j-\alpha\frac{1}{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} \quad \textrm{(for every $j=0,\cdots,n$)} \\
+\qquad\qquad\qquad\quad \theta_j:=\theta_j-\alpha(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} \quad \textrm{(for every $j=0,\cdots,n$)} \\
 \qquad\qquad\qquad\quad \} \\
 \qquad\qquad \} \\
 \end{array}
 $$
 Notice that, instead of calculate the sum of all derivatives and change the whole theta, in the inner for loop, each step we only care about the cost of one theta. When the training set size m is very large, stochastic gradient descent can be much faster than gradient descent.
 
+### Mini-Batch Gradient Descent
+
+- Batch gradient descent: Use all $m$ examples in each iteration
+- Stochastic gradient descent: Use $1$ example in each iteration
+- Mini-batch gradient descent: Use $b$ examples in each iteration ($b\in[2, 100]$, Usual $10$)
+
+Mini-batch gradient descent sometimes faster than stochastic gradient descent:
+$$
+\begin{array}{l}
+\textrm{Say $b=10,m=1000$.}\\
+
+\textrm{Repeat } \{ \\
+\qquad \textrm{for $i:= 1, 11, 21, 31, \cdots,991$ } \{ \\
+\qquad\qquad\quad \theta_j:=\theta_j-\alpha\frac{1}{10}\sum_{k=i}^{i+9}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} \quad \textrm{(for every $j=0,\cdots,n$)} \\
+\qquad\qquad\quad \} \\
+\} \\
+\end{array}
+$$
