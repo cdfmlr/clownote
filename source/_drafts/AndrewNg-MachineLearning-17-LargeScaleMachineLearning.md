@@ -53,6 +53,8 @@ J_{train}(\theta)=\frac{1}{m}\sum_{i=1}^{m}cost\left(\theta,(x^{(i)},y^{(i)})\ri
 $$
 Notice that, instead of calculate the sum of all derivatives and change the whole theta, in the inner for loop, each step we only care about the cost of one theta. When the training set size m is very large, stochastic gradient descent can be much faster than gradient descent.
 
+Learning rate $\alpha$ is typically held constant. Can slowly decrease $\alpha$ over time if we want $\theta$ to converge better. (E.g. $\alpha=\frac{CONST_1}{iterationNumber+CONST_2}$)
+
 ### Mini-Batch Gradient Descent
 
 - Batch gradient descent: Use all $m$ examples in each iteration
@@ -71,3 +73,22 @@ $$
 \} \\
 \end{array}
 $$
+
+### Stochastic Gradient Descent Convergence
+
+#### Checking for convergence
+
+- **Batch gradient descent**:
+
+  Plot $J_{train}(\theta)$ as a function of the number of iterations of gradient descent.
+
+  $J_{train}(\theta)=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
+
+- **Stochastic gradient descent**:
+
+  $cost(\theta,(x^{(i)},y^{(i)}))=\frac{1}{2}(h_\theta(x^{(i)})-y^{(i)})^2$
+
+  During learning, compute $cost(\theta,(x^{(i)},y^{(i)}))$ before updating $\theta$ using $(x^{(i)},y^{(i)})$.
+
+  Every 1000 iterations, plot $cost(\theta,(x^{(i)},y^{(i)}))$ averaged over the last 1000 examples processed by algorithm. (If we get a plot that is too noisy to see it's converging or not, try ploting for every 5000 (or summat bigger than 1000) iterations rather than 1000)
+

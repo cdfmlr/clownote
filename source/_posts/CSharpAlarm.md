@@ -59,7 +59,9 @@ iOS 自带的 “时钟” App 给了我们很好的参考（由于它没有圆�
 
 ![IMG_1576](https://tva1.sinaimg.cn/large/006tNbRwly1g9qtdimzaxj31f20u0wop.jpg)
 
-（本来该截 UWP 的图的，但我是在借来的 Windows PC 上生成的 UWP，写这篇文章的时候已经还了，就只好截一个 iOS 的充数了）
+UWP 的效果：
+
+![IMG_1600](https://tva1.sinaimg.cn/large/006tNbRwly1g9vdl50y0qj312o0u0gqs.jpg)
 
 ## 实现
 
@@ -86,7 +88,7 @@ for (int i = 0; i < tickMarks.Length; i++)
 }
 ```
 
-生成 60 个大小相同的正方形 BoxView，并将模5的点稍微加大，然后把它们放置到指定的位置，针对不同位置的正方形做一个使其正对中心的旋转，表盘就完成了。
+上面我们生成了 60 个大小相同的正方形 BoxView，现将模5的点稍微加大，然后把它们放置到指定的位置，针对不同位置的正方形做一个使其正对中心的旋转，表盘就完成了。
 
 ```c#
 // Size and position a tickMark
@@ -497,7 +499,7 @@ await DisplayAlert("整点报时", "现在时间" + hour + "点整。", "OK");
 
 WindowsForms 毕竟是上一个年代的产物了，它设计出来的东西也还是老的 Windows 样式，跟微软现在的 Fluent Design 一点边都不沾，除了历史遗留下来那些部分微软现在自家软件的开发也不用这个了，这东西在 VS 2019 里的设计界面里显示的居然都是个 Windows vista/7 样子的窗体😂。
 
-我没有好好研究 C# 写 WindowsForms 的知识，整个实现基本就是凭 直觉 + 马老师的文章 + 小时候学的 VB 残存的记忆。而且由于我不熟悉 Windows 和 Visual Studio 的操作，我甚至连对新建出来的类的命名都没做（吐槽一下 Windows 下 VS 的逻辑，新建一个 Class 或者其他什么东西的时候居然没有输入名称的地方，自动搞出些 Class1、Class2 之类的东西来，然后咱也不敢去重命名它，怕解决方案里注册的信息不对了（VS For Mac 有这个毛病，不知道 Win 上的如何）），所以不打算详细写了，大致的设计如下：
+我没有好好研究 C# 写 WindowsForms 的知识，整个实现基本就是凭 直觉 + 马老师的文章 + 小时候学 VB 残存的记忆。而且由于我不熟悉 Windows 和 Visual Studio 的操作，我甚至连对新建出来的类的命名都没做（吐槽一下 Windows 下 VS 的逻辑，新建一个 Class 或者其他什么东西的时候居然没有输入名称的地方，自动搞出些 Class1、Class2 之类的东西来，然后咱也不敢去重命名它，怕解决方案里注册的信息不对了（VS For Mac 有这个毛病，不知道 Win 上的如何）），所以不打算详细写了，大致的设计如下：
 
 ```
 WindowsForms 小闹钟程序
@@ -519,5 +521,9 @@ WindowsForms 小闹钟程序
          |      	处理将内存中的闹钟数据储存到磁盘以及从磁盘读取已保存的数据
          |-- class TickMarkDrawHelper: 计算表盘刻度坐标的辅助类
 ```
+
+运行效果：
+
+![1](https://tva1.sinaimg.cn/large/006tNbRwly1g9vdfrwji1j30m40d8dg5.jpg)
 
 写这个实现收获就没有太多了，无非是再熟悉了一下 C# 还有 WindowsForms，但感触倒是颇多。写这个东西的时候，我想起自己一开始学编程的时候接触的 VB，当时用一台磁盘只有 10 GB 的 Windows 98 笔记本，跑年纪比自己还大的 VS6.0 （当时好像还是一个个分开的 VC6.0、VB6.0 什么的），那个时候写的 VB 就和现在这个 WindowsForms in C# 一样，还是那几个熟悉的控件，只是开发语言从 BASIC 变成了 C#。这个时候才猛然回忆起，从我的第一个 Hello World 到今天也有8年了......今后也还会一直继续这段程序人生，虽然写代码从来都不是我最喜欢的事，但是没办法，谁让我乐意呢......
