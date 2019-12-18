@@ -1,9 +1,10 @@
 ---
-title: AndrewNg-MachineLearning-17-GradientDescentWithLargeDatasets
+title: 大数据机器学习
 tags: Machine Learning
 categories:
   - Machine Learning
   - AndrewNg
+date: 2019-12-17 16:17:03
 ---
 
 # Notes of Andrew Ng’s Machine Learning —— (17) Large Scale Machine Learning
@@ -91,4 +92,49 @@ $$
   During learning, compute $cost(\theta,(x^{(i)},y^{(i)}))$ before updating $\theta$ using $(x^{(i)},y^{(i)})$.
 
   Every 1000 iterations, plot $cost(\theta,(x^{(i)},y^{(i)}))$ averaged over the last 1000 examples processed by algorithm. (If we get a plot that is too noisy to see it's converging or not, try ploting for every 5000 (or summat bigger than 1000) iterations rather than 1000)
+
+## Advanced Topics
+
+### Online Learning
+
+An online learning algorithm allows us to learn from a continuous stream of data (have no fixed dataset),  since we use each example once then no longer need to process it again. Another advantage of online learning is also that if we have a changing pool of users, or if the things we're trying to predict are slowly changing, the online learning algorithm can slowly adapt our learned hypothesis to whatever the latest sets of user behaviors are like as well.
+
+Here is an example:
+
+> Shipping service website where user comes, specifies origin and destination, you offer to ship their package for some asking price, and users sometimes choose to use your shipping service ($y=1$), sometimes not ($y=0$).
+>
+> Features $x$ capture properties of user, of origin/destination and asking price. We want to learn $p(y=1|x;\theta)$ to optimize price.
+
+Here is how an online learning version of logistic regression work for this problem:
+$$
+\begin{array}{l}
+\textrm{Repeat forever } \{\\
+\qquad \textrm{Get $(x,y)$ corresponding to user.}\\
+\qquad \textrm{Update $\theta$ using $(x,y)$:}\\
+\qquad \qquad \theta_j:=\theta_j-\alpha(h_\theta(x)-y)\cdot x_j (j=0,\cdots,n) \\
+\}
+\end{array}
+$$
+
+
+![image-20191216220518514](https://tva1.sinaimg.cn/large/006tNbRwly1g9ywywm9hgj30yg0ih79d.jpg)
+
+### Map Reduce and Data Parallelism
+
+We can divide up batch gradient descent and dispatch the cost function for a subset of the data to many different machines so that we can train our algorithm in parallel.
+
+You can split your training set into z subsets corresponding to the number of machines you have. On each of those machines calculate $\displaystyle \sum_{i=p}^{q}(h_{\theta}(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)}$, where we've split the data starting at p and ending at q.
+
+MapReduce will take all these dispatched (or 'mapped') jobs and 'reduce' them by calculating:
+
+$\Theta_j := \Theta_j - \alpha \dfrac{1}{z}(temp_j^{(1)} + temp_j^{(2)} + \cdots + temp_j^{(z)})$
+
+For all $j=0,...,n$.
+
+This is simply taking the computed cost from all the machines, calculating their average, multiplying by the learning rate, and updating theta.
+
+Your learning algorithm is MapReduceable if it can be *expressed as computing sums of functions over the training set*. Linear regression and logistic regression are easily parallelizable.
+
+For neural networks, you can compute forward propagation and back propagation on subsets of your data on many machines. Those machines can report their derivatives back to a 'master' server that will combine them.
+
 
