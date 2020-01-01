@@ -419,6 +419,10 @@ $$
 
 参考上文 “无约束问题的 Python 解法”。
 
+......
+
+**未完但不用待续了，应该没有后续了，我对用 python 做数学建模以及数学建模都失去兴趣了。**
+
 ## 附：numpy
 
 推荐一份质量比较高的 numpy 中文文档：[https://www.numpy.org.cn/index.html](https://www.numpy.org.cn/index.html).
@@ -474,4 +478,3 @@ array([[1., 0., 0.],
        [0., 2., 0.],
        [0., 0., 3.]])
 ```
-
