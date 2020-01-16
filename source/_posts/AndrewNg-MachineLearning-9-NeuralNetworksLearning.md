@@ -213,7 +213,7 @@ Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 
 (Note: the epsilon used above is unrelated to the epsilon from Gradient Checking)
 
-### Putting  It Together
+### Putting It Together
 
 First, pick a network architecture; choose the layout of your neural network, including how many hidden units in each layer and how many layers in total you want to have.
 
@@ -225,7 +225,7 @@ First, pick a network architecture; choose the layout of your neural network, in
 **Training a Neural Network**
 
 1. Randomly initialize the weights
-2. Implement forward propagation to get hΘ(x(i)) for any x(i)*x*(*i*)
+2. Implement forward propagation to get $h_\Theta(x^{(i)})$ for any $x^{(i)}$
 3. Implement the cost function
 4. Implement backpropagation to compute partial derivatives
 5. Use gradient checking to confirm that your backpropagation works. Then disable gradient checking.
