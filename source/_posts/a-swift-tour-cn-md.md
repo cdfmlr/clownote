@@ -6,7 +6,7 @@ tags:
 
 # Swift 掠影
 
-> 本文翻译自 Swift 官网的 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html#)。
+> 本文翻译自 Swift 官网的 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html#) (Swift 5.1)。
 
 按照传统，学习一门新的编程语言时，我们写的第一个程序应该是在屏幕上打印出“Hello, world!”。在 Swift 中，只要一行代码就可以完成这个仪式：
 
