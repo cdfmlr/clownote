@@ -5,7 +5,7 @@ tags: Swift
 
 # Notes of *A Swift Tour*
 
-Swift 入门，学习 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html#) 的笔记。
+Swift 官方入门 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html#) 的笔记。
 
 ## Hello World
 
@@ -17,9 +17,9 @@ print("Hello, world!")
 
 ## Simple Values
 
-### 常数 & 变量
+### 常量 & 变量
 
-* `let` 声明 **常数**
+* `let` 声明 **常量**
 * `var` 声明 **变量**
 
 ```swift
@@ -39,7 +39,7 @@ let implicitInteger = 70
 let implicitDouble = 70.0
 ```
 
-* 指明类型，可以给浮点数赋整形值（不能倒过来）：
+* **类型批注**：指明类型，可以给浮点数赋整形值（此例不能倒过来）：
 
 ```swift
 let explicitDouble: Double = 70
