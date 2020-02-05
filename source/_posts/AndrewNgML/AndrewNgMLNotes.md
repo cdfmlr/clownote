@@ -971,7 +971,7 @@ $$
 优化目标：
 $$
 \min_{
-\begin{array}
+\begin{array}{c}
 	{1}c^{(1)},\cdots,c^{(m)},\\
 	\mu_1,\cdots,\mu_K
 \end{array}}
