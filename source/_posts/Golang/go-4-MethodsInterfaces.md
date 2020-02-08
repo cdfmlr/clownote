@@ -1,7 +1,10 @@
 ---
 title: golang-方法和接口
 date: 2020-02-07 10:59:12
-tags:
+tags: Golang
+categories:
+	- Golang
+	- Beginning
 ---
 
 ## 方法和接口
