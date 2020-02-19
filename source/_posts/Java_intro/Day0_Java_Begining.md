@@ -28,7 +28,15 @@ Java可运行于多个平台，如Windows, Mac OS，及其他多种UNIX版本的
 > Eclipse 是一个很好的 Java 开发环境。   
 
 * [官网](https://www.eclipse.org)下载 
-* 安装 
+* 安装 (不再推荐使用 Eclipse，要安装的话方法自寻)
+
+（Update 2020.02.19👆对 Eclipse 的推荐时很长很长时间前写的了，那时候我还没有接触过 IDEA。时至今日，我不否为 Eclipse 仍然还是强大的 IDE，但我现在更喜欢更加现代化、人性化、更加优雅强大的IDEA）
+
+### IntelliJ IDEA （推荐）
+
+[JetBrains](https://www.jetbrains.com) 出品的强大现代化 IDE。
+
+* [官网](https://www.jetbrains.com/idea/)
 
 ## Hello World 
 
@@ -42,7 +50,7 @@ public class HelloWorld {
 ```
 
 #### 运行方法 
-``` 
+```
 $ vim HelloWorld.java 
 $ javac hello.java 
 $ java HelloWorld 
@@ -55,4 +63,3 @@ $ java HelloWorld
 
 ⚠️【注意】文件名必须和类名一致！否则会出现如下错误： 
 `错误: 类 HelloWorld 是公共的, 应在名为 HelloWorld.java 的文件中声明` 
-
