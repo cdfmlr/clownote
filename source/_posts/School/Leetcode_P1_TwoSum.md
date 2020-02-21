@@ -77,9 +77,9 @@ func twoSum(nums []int, target int) []int {
 
 这个就勉强看得过去了，时间 $O(n)$，空间 $O(n)$。通过用了 4ms、3.8MB。时间上战胜了 96.76%、空间是 44.82%，，，还行。
 
-## 后话
+---
 
-哈，看了一眼官方题解，我这刚好是第一个方法和最后一个方法。
+哈，看了一眼官方题解，上述两个解法刚好是题解的第一个方法和最后一个方法。
 
 其实我写哈希表的时候差点写成了官方题解的*方法二*，先构建一张完整的表再找符合的两数，后来发现它这个题目说：
 
@@ -88,4 +88,25 @@ func twoSum(nums []int, target int) []int {
 先构建一张表出来我跑了一下执行会有重复😂，key已经有了的时候，会更新值嘛，碰到输入 `[1, 1, 1], target=2`，这种就会返回 `[2, 2]`，炸了。
 
 要避免这个问题，可以像题解里方法二那种。但还可以更好，就有点类似与动规那种感觉嘛，放一个 for 里迭代，有了返回，没有再更新表就好了——实现就是上面写的第二版本代码。
+
+## 最短代码解法（Just for fun）
+
+既然是 leetcode 的第一道题，我觉得我们应该可以用更少的代码来完成它。
+
+虽然不想 [P26](https://blog.csdn.net/u012419550/article/details/104402182)、[P27](https://blog.csdn.net/u012419550/article/details/104411279) 那种可以直接一行代码解决，但我想到了一个比较有趣的 4 行代码的 Python3 解法：
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i, v in enumerate(nums):
+            cis = [nums.index(c) for c in nums if c == target - v]
+            if cis and cis[-1] is not i:
+                return [i, cis[-1]]
+```
+
+> 行用时 :4972 ms, 在所有 Python3 提交中击败了17.35%的用户
+>
+> 内存消耗 :29.6 MB, 在所有 Python3 提交中击败了5.04%的用户
+
+你可能说用你用 Python 搞一个暴力解法也是 4 行代码，但是，我觉得用列表生成器更可爱😕。
 
