@@ -209,6 +209,7 @@ func maxSubArray(nums []int) int {
 （好乱啊，没写代码，边思考边来写思路好怪，其实我还没完全搞懂这个算法是在干什么，不管了，来试一下代码实现，代码出来思路就清晰了。）
 
 ```go
+// V6
 func maxSubArray(nums []int) int {
 	return getMaxSubArray(nums, 0, len(nums)-1)
 }
@@ -271,4 +272,64 @@ func maxI(a, b, c int) int {
 P.S. 我前面写的思路不太清楚，所以补一张图来说明这个算法是在干什么（我思考的时候随手画的，不一定正确，仅供参考）：
 
 ![image-20200225230422143](https://tva1.sinaimg.cn/large/0082zybpgy1gc91o1k64ij30u00yegro.jpg)
+
+## 暴力
+
+再补一个暴力解法吧，把这道题主要的几种方法都写全。
+
+暴力法就是把所有的可能子序都搞出来，比较它们的和，返回最大的。
+
+Golang 实现：
+
+```go
+// V7
+func maxSubArray(nums []int) int {
+	maxSubSum := nums[0]
+	for l := 0; l < len(nums); l++ {
+		part := 0
+		for r := l; r < len(nums); r++ {
+			part += nums[r]
+			if part > maxSubSum {
+				maxSubSum = part
+			}
+		}
+	}
+	return maxSubSum
+}
+```
+
+![屏幕快照 2020-02-26 08.37.10](https://tva1.sinaimg.cn/large/0082zybpgy1gc9ibdwblmj319q0u04qg.jpg)
+
+## 一行代码的解法
+
+按照传统，我还是尽力想出一个使用最短代码行数的解法。
+
+我们首先来看一个两行代码的 Python3 解法：（不算`import`）。
+
+```python
+# V8
+from functools import reduce
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        nums[0] = (nums[0], nums[0])
+        return reduce(lambda x, y: (max(x[0]+y, y), max(x[1], x[0]+y, y)), nums)[1]
+```
+
+其实这就是我们的贪心/动规解法嘛，只是利用了 reduce 来在一行代码里完成所有操作（另一行代码为这一行代码做了必要的准备），我挺喜欢这个解法的，还是很优雅的。
+
+![屏幕快照 2020-02-26 09.21.26](https://tva1.sinaimg.cn/large/0082zybpgy1gc9jkwzn71j319q0u04pc.jpg)
+
+再来把代码减少到一行：
+
+```python
+# V9
+from functools import reduce
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        return reduce(lambda x, y: (max(x[0]+y[0], y[0]), max(x[1], x[0]+y[0], y[0])), [(i, i) for i in nums])[1]
+```
+
+为了完成一行代码的任务，我们用了一个生成器生成了好多无用的数据，造成了时间、空间的浪费，结果就不太好了：
+
+![image-20200226094257065](https://tva1.sinaimg.cn/large/0082zybpgy1gc9k4h6ab8j31d90u01kx.jpg)
 
