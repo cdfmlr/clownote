@@ -77,7 +77,7 @@ $ docker exec -it Mysql_Test mysql -p
 ```mysql
 mysql> use mysql;
 mysql> select host, user, plugin from user;
-mysql> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123abczMF';
+mysql> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '233333';
 mysql> select host, user, plugin from user;
 ```
 
