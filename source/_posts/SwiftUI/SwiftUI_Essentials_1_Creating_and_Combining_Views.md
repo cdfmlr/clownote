@@ -1,22 +1,25 @@
 ---
-title: 用 SwiftUI 创造 App
+title: SwiftUI基础——创建并组合视图
+tags:
+	- SwiftUI
+	- iOS
+categories:
+	- Learn to Make Apps with SwiftUI
 ---
 
+# Swift UI 基础
 
-
-# 用 SwiftUI 创造 App
+今天开 2020 年的 WWDC 了，所以来学习一下 Apple 的 app 开发吧。😜
 
 > 翻译自：Learn to Make Apps with SwiftUI
 >
 > 英文原文：https://developer.apple.com/tutorials/swiftui/tutorials
 >
-> 这篇文章是 Apple 给的 SwiftUI 官方教程啊，我随便搜了一下居然没找到中文翻译版。。。没人做我就自己翻吧。
+> 这篇文章是 Apple 给的 SwiftUI 官方教程的一部分，我自己阅读学习的时候顺便翻译的。
 
-跟着这一系列教程学习用 SwiftUI 和 Xcode 制作 App。
+## 创建并组合视图
 
-## SwiftUI 基本
-
-### 创建、组合 Views
+> 原文链接：https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
 
 这个教程教你构建一个 iOS app —— *Landmarks*。这个 App 是用来发现、分享你喜欢的地点的。我们会从构建一个显示地标(Landmarks) 详情的 View 开始。
 
@@ -32,7 +35,7 @@ title: 用 SwiftUI 创造 App
 
 [^1]: combine and layer，我的理解是 combine 在同一水平面组合，layer 做垂直方向上堆放
 
-#### § 1 创建新项目和探索画布
+### § 1 创建新项目和探索画布
 
 > 原文链接：https://developer.apple.com/tutorials/swiftui/creating-and-combining-views#create-a-new-project-and-explore-the-canvas
 
@@ -106,7 +109,7 @@ PlaygroundPage.current.setLiveView(HelloWoldView())
 [^2]: 本人使用 MacOS Mojave 10.14，所以无法使用预览的功能，我采取的代替方案是在 Playground 中写 SwiftUI：![一个 Playground 的截图，图中写了一段显示 Hello SwiftUI 文本的程序，右边显示出了预览](https://tva1.sinaimg.cn/large/007S8ZIlgy1gepd5aetotj31e00u0nkd.jpg)
 [^3]: 分享一个让我很感动的细节，Apple 的文档里，居然对这样的一张截图写了如此详细的 alt 说明：![Apple文档的截图，显示了 apple 对网页上的一张图片写了特别详细的 alt 说明](https://tva1.sinaimg.cn/large/007S8ZIlgy1geowgmdd4nj31aa0u0tyk.jpg) 扪心自问，我从来不认真写 alt，总认为这东西又看不见写它干嘛！看到了 Apple 的做法，不禁思索，万一正在阅读你的文章的人因为网络、计算机、甚至是视觉问题无法看到这张图片，我们难道没有义务为这样的特殊人群写一段图片说明嘛？尤其是对有视觉障碍的人士！以后我会尽可能认真写 alt！第一步就是——这篇文章翻译里包括这些 alt！
 
-#### § 2 定制文本视图(Text View)
+### § 2 定制文本视图(Text View)
 
 > 原文链接: https://developer.apple.com/tutorials/swiftui/creating-and-combining-views#customize-the-text-view
 
@@ -154,6 +157,8 @@ PlaygroundPage.current.setLiveView(HelloWoldView())
 
 ![原文里的代码和预览的截图](https://tva1.sinaimg.cn/large/007S8ZIlgy1gg27bz7r5sj317o0ougod.jpg)
 
+---
+
 完成这一节后，我们的主要代码看上去是这样的：
 
 ```swift
@@ -166,7 +171,7 @@ struct ContentView: View {
 }
 ```
 
-#### § 3 用 Stacks 组合视图
+### § 3 用 Stacks 组合视图
 
 > 原文链接: https://developer.apple.com/tutorials/swiftui/creating-and-combining-views#Combine-Views-Using-Stacks
 
@@ -233,6 +238,8 @@ Text("Joshua Tree National Park")
 
 ![代码和预览的截图](https://tva1.sinaimg.cn/large/007S8ZIlgy1gg2alkmh6oj30zn0u0791.jpg)
 
+---
+
 完成这一节后，我们的主要代码看上去是这样的：
 
 ```swift
@@ -254,7 +261,7 @@ struct ContentView: View {
 }
 ```
 
-#### § 4 创建自定义图片视图(Custom Image View)
+### § 4 创建自定义图片视图(Custom Image View)
 
 现在，咱们的地标名称、位置都已经安排好了。下一步，我们打算加一张地标的图片。
 
@@ -312,6 +319,8 @@ struct ContentView: View {
 
 现在，我们的自定义图片视图就完成了。
 
+---
+
 完成这一节后，我们的主要代码看上去是这样的：
 
 ```swift
@@ -326,7 +335,7 @@ struct CircleImage: View {
 }
 ```
 
-#### § 5 同时使用 SwiftUI 和 UIKit
+### § 5 同时使用 SwiftUI 和 UIKit
 
 现在，咱打算做一个地图视图了。我们可以用一个来自 `MapKit` 的 `MKMapView` 类来提供一个地图视图。
 
@@ -400,6 +409,8 @@ func updateUIView(_ uiView: MKMapView, context: Context) {
 
 现在，我们将看见一张显示着 Joshua Tree National Park 的地图——这就是我们的地标 Turtle Rock 的家。
 
+---
+
 这一节里，我们完成的主要代码看上去是这样的：
 
 ```swift
@@ -418,7 +429,7 @@ struct MapView: UIViewRepresentable {
 }
 ```
 
-#### § 6 组成 Detail 视图
+### § 6 组成 Detail 视图
 
 现在，我们已经构建完了我们需要的一切——地标的名字和位置、一张圆形的图片以及其所在位置的地图。
 
@@ -462,17 +473,40 @@ struct MapView: UIViewRepresentable {
 
 **Step 8.** 最后一步，为了能让我们的地图拓展到屏幕顶部边缘（说直白点就是伸到刘海里😂），给地图视图加一个 `edgesIgnoringSafeArea(.top)` 修饰。
 
+---
 
+这一节里，我们完成的主要代码看上去是这样的：
 
-## 绘图和动画
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            MapView()
+                .edgesIgnoringSafeArea(.top)
+                .frame(height: 300)
 
+            CircleImage()
+                .offset(y: -130)
+                .padding(.bottom, -130)
 
+            VStack(alignment: .leading) {
+                Text("Turtle Rock")
+                    .font(.title)
+                HStack(alignment: .top) {
+                    Text("Joshua Tree National Park")
+                        .font(.subheadline)
+                    Spacer()
+                    Text("California")
+                        .font(.subheadline)
+                }
+            }
+            .padding()
 
-## App 设计和布局
-
-
-
-## 框架整合
+            Spacer()
+        }
+    }
+}
+```
 
 
 
