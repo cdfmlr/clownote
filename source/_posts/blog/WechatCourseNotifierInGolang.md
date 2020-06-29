@@ -19,7 +19,7 @@ categories:
 
 ---
 
-由于时间、空间有限很多地方我写的不太清晰。所以在开始阅读本文之前，我建议你打开源码，对照阅读。：[https://github.com/cdfmlr/CoursesNotifier](https://github.com/cdfmlr/CoursesNotifier)。
+由于时间、空间有限很多地方我写的不太清晰。所以在开始阅读本文之前，我建议你打开源码，对照阅读。：[https://github.com/cdfmlr/CoursesNotifier](https://github.com/cdfmlr/CoursesNotifier)（我仍在持续对该项目进行其调整和拓展，本文所述试用于 `72e6165` 版本，which is committed on Mar 25, 2020）
 
 ---
 
