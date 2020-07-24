@@ -5,10 +5,12 @@ jobs:
     name: clean-generate-deploy
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v2
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.1.1
+    - name: Install Hexo
+      run: npm install hexo --save
     - name: Clean
       uses: heowc/action-hexo@master
       with:
