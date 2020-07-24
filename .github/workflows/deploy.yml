@@ -31,7 +31,7 @@ jobs:
       uses: sma11black/hexo-action@v1.0.2
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
-        user_name: clownote
+        user_name: clownote-ci-bot
         user_email: clownote@163.com
         commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
     # Use the output from the `deploy` step(use for test action)
