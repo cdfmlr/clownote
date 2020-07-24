@@ -1,0 +1,22 @@
+on: push
+name: Deploy
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clean
+      uses: heowc/action-hexo@master
+      with:
+        args: clean
+    - name: Generate
+      uses: heowc/action-hexo@master
+      with:
+        args: generate
+    - name: Deploy
+      uses: heowc/action-hexo@master
+      env:
+        EMAIL: cdfmlr@163.com
+        NAME: cdfmlr
+      with:
+        args: deploy
