@@ -79,7 +79,7 @@ theme: cactus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 	type: git
-	repo: https://github.com/clownote/clownote.github.io
+	repo: git@github.com:clownote/clownote.github.io.git
 	branch: master
 
 
