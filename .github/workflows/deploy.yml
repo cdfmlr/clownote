@@ -20,3 +20,6 @@ jobs:
         NAME: cdfmlr
       with:
         args: deploy
+    - name: Deploy check
+      run: |
+        echo "clownote deploy: ${{ steps.Deploy.outputs }}"
