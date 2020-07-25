@@ -1,10 +1,10 @@
 ---
-title: 支持向量机
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-11-04 16:38:39
+tags: Machine Learning
+title: 支持向量机
 ---
 
 

@@ -1,10 +1,10 @@
 ---
-title: linux-0.2-系统开关
+categories:
+- Linux
+- Beginning
 date: 2016-12-17 13:57:31
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-0.2-系统开关
 ---
 
 # 系统开关

@@ -1,11 +1,12 @@
 ---
-title: Python深度学习之机器学习基础
-tag:
-  - Machine Learning
-  - Deep Learning
 categories:
-  - Machine Learning
-  - Deep Learning with Python
+- Machine Learning
+- Deep Learning with Python
+date: 2020-07-10 16:59:15
+tag:
+- Machine Learning
+- Deep Learning
+title: Python深度学习之机器学习基础
 ---
 
 # Deep Learning with Python

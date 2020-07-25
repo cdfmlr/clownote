@@ -1,10 +1,10 @@
 ---
-title: linux-2.1-用户
+categories:
+- Linux
+- Beginning
 date: 2016-12-22 15:25:29
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-2.1-用户
 ---
 
 # 用户（User）

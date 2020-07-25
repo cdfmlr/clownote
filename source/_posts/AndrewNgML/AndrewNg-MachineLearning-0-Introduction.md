@@ -1,10 +1,10 @@
 ---
-title: 机器学习引入
+categories:
+- Machine Learning
+- AndrewNg
 date: 2019-08-18 16:37:53
 tags: Machine Learning
-categories:	
-	- Machine Learning
-	- AndrewNg
+title: 机器学习引入
 ---
 
 # Notes of Andrew Ng’s Machine Learning —— (0) Introduction

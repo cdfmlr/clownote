@@ -1,10 +1,10 @@
 ---
-title: linux-5-快捷操作
+categories:
+- Linux
+- Beginning
 date: 2017-01-04 10:10:35
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-5-快捷操作
 ---
 
 # 快捷操作

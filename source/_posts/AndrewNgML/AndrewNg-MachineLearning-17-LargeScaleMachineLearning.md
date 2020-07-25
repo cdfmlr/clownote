@@ -1,10 +1,10 @@
 ---
-title: 大数据机器学习
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-12-17 16:17:03
+tags: Machine Learning
+title: 大数据机器学习
 ---
 
 # Notes of Andrew Ng’s Machine Learning —— (17) Large Scale Machine Learning

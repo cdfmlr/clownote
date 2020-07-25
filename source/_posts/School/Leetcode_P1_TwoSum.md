@@ -1,6 +1,7 @@
 ---
-title: Leetcode P1 两数之和
+date: 2020-02-18 11:17:24
 tags: School
+title: Leetcode P1 两数之和
 ---
 
 # 两数之和

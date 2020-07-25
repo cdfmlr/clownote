@@ -1,10 +1,10 @@
 ---
-title: linux-4.0-正文浏览
+categories:
+- Linux
+- Beginning
 date: 2017-01-01 12:46:55
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-4.0-正文浏览
 ---
 
 # 正文浏览

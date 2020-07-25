@@ -1,10 +1,10 @@
 ---
-title: 神经网络的拟合
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-10-21 17:05:22
+tags: Machine Learning
+title: 神经网络的拟合
 ---
 
 

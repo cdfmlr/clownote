@@ -1,10 +1,10 @@
 ---
-title: 维数约减
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-11-13 16:50:27
+tags: Machine Learning
+title: 维数约减
 ---
 
 

@@ -1,10 +1,10 @@
 ---
-title: Java-数组
+categories:
+- Java
+- Beginning
 date: 2019-04-21 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-数组
 ---
 
 # Java 数组

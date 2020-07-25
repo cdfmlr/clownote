@@ -1,10 +1,10 @@
 ---
-title: linux-2.0-用户管理
+categories:
+- Linux
+- Beginning
 date: 2016-12-21 14:26:02
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-2.0-用户管理
 ---
 
 # 用户管理

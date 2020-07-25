@@ -1,10 +1,10 @@
 ---
-title: linux-1.0-用户信息
+categories:
+- Linux
+- Beginning
 date: 2016-12-18 14:06:52
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-1.0-用户信息
 ---
 
 # 用户信息

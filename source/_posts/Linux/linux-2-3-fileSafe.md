@@ -1,10 +1,10 @@
 ---
-title: linux-2.3-文件的安全控制
+categories:
+- Linux
+- Beginning
 date: 2016-12-24 15:38:20
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-2.3-文件的安全控制
 ---
 
 # 文件的安全控制

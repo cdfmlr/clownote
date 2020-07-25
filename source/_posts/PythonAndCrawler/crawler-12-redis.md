@@ -1,9 +1,9 @@
 ---
-title: Python之Redis
+categories:
+- Crawler
 date: 2019-02-21 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: Python之Redis
 ---
 
 # Python爬虫储存库的使用之Redis

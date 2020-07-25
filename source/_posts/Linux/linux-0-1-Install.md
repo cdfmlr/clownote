@@ -1,11 +1,11 @@
 ---
-title: linux-0.1-系统安装
-date: 2016-12-16 13:52:20
-updated: 2018-08-29 23:07:31
-tags: Linux
 categories:
-	- Linux
-	- Beginning
+- Linux
+- Beginning
+date: 2016-12-16 13:52:20
+tags: Linux
+title: linux-0.1-系统安装
+updated: 2018-08-29 23:07:31
 ---
 
 # 系统安装

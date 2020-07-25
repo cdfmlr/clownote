@@ -1,10 +1,10 @@
 ---
-title: 多变量线性回归
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-09-05 17:11:21
+tags: Machine Learning
+title: 多变量线性回归
 ---
 
 

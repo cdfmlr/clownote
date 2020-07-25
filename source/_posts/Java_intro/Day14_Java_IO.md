@@ -1,10 +1,10 @@
 ---
-title: Java-IO
+categories:
+- Java
+- Beginning
 date: 2019-04-25 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-IO
 ---
 
 # Java I/O

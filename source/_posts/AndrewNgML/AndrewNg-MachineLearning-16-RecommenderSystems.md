@@ -1,10 +1,10 @@
 ---
-title: 推荐系统
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-12-05 21:21:26
+tags: Machine Learning
+title: 推荐系统
 ---
 
 

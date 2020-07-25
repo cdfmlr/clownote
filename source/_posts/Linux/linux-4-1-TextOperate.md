@@ -1,10 +1,10 @@
 ---
-title: linux-4.1-正文文本操作
+categories:
+- Linux
+- Beginning
 date: 2017-01-02 12:51:52
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-4.1-正文文本操作
 ---
 
 # 正文文本操作

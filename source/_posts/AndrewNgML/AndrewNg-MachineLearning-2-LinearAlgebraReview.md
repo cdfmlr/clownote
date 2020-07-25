@@ -1,10 +1,10 @@
 ---
-title: 线性代数复习
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-09-02 18:17:19
+tags: Machine Learning
+title: 线性代数复习
 ---
 
 

@@ -1,10 +1,10 @@
 ---
-title: 单变量线性回归
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-08-18 21:09:53
+tags: Machine Learning
+title: 单变量线性回归
 ---
 
 

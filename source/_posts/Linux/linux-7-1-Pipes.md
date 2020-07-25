@@ -1,10 +1,10 @@
 ---
-title: linux-7.1-管道(|)操作
+categories:
+- Linux
+- Beginning
 date: 2017-01-07 19:38:35
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-7.1-管道(|)操作
 ---
 
 # 管道(|)操作

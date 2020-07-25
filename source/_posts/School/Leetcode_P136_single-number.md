@@ -1,6 +1,7 @@
 ---
-title: Leetcode 136. 只出现一次的数字
+date: 2020-04-08 14:57:55
 tags: School
+title: Leetcode 136. 只出现一次的数字
 ---
 
 # Leetcode [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)

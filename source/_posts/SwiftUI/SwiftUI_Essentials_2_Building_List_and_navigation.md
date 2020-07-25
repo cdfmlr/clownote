@@ -1,10 +1,11 @@
 ---
-title: SwiftUI基础——构建列表和导航
-tags:
-	- SwiftUI
-	- iOS
 categories:
-	- Learn to Make Apps with SwiftUI
+- Learn to Make Apps with SwiftUI
+date: 2020-06-24 08:34:24
+tags:
+- SwiftUI
+- iOS
+title: SwiftUI基础——构建列表和导航
 ---
 
 # Swift UI 基础

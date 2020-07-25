@@ -1,10 +1,10 @@
 ---
-title: Java-集合
+categories:
+- Java
+- Beginning
 date: 2019-04-22 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-集合
 ---
 
 # Java 集合

@@ -1,10 +1,10 @@
 ---
-title: 正规方程
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-09-07 21:30:23
+tags: Machine Learning
+title: 正规方程
 ---
 
 

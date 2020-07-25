@@ -1,11 +1,12 @@
 ---
-title: Python深度学习之初窥神经网络
-tag:
-  - Machine Learning
-  - Deep Learning
 categories:
-  - Machine Learning
-  - Deep Learning with Python
+- Machine Learning
+- Deep Learning with Python
+date: 2020-05-12 09:09:44
+tag:
+- Machine Learning
+- Deep Learning
+title: Python深度学习之初窥神经网络
 ---
 
 # Deep Learning with Python

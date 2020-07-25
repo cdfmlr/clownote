@@ -1,10 +1,10 @@
 ---
-title: linux-3.1.0-文件系统与inode
+categories:
+- Linux
+- Beginning
 date: 2016-12-27 16:13:00
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-3.1.0-文件系统与inode
 ---
 
 # Linux文件系统与inode

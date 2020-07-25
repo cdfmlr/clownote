@@ -1,9 +1,9 @@
 ---
-title: Python3爬虫环境配置
+categories:
+- Crawler
 date: 2019-02-09 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: Python3爬虫环境配置
 ---
 
 # 开发环境配置

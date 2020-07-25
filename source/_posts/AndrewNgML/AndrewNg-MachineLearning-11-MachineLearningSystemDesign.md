@@ -1,10 +1,10 @@
 ---
-title: 机器学习系统设计
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-10-26 21:56:37
+tags: Machine Learning
+title: 机器学习系统设计
 ---
 
 

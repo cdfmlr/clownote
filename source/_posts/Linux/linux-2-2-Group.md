@@ -1,10 +1,10 @@
 ---
-title: linux-2.2-群组
+categories:
+- Linux
+- Beginning
 date: 2016-12-23 15:32:56
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-2.2-群组
 ---
 
 # 群组（Group）

@@ -1,6 +1,7 @@
 ---
-title: Leetcode P27 移除元素
+date: 2020-02-20 11:58:00
 tags: School
+title: Leetcode P27 移除元素
 ---
 
 # Leetcode P27 移除元素

@@ -1,8 +1,9 @@
 ---
-title: Golang 实战——微信公众号课程提醒系统
-tags: Golang
 categories:
-	- Golang
+- Golang
+date: 2020-03-04 16:08:15
+tags: Golang
+title: Golang 实战——微信公众号课程提醒系统
 ---
 
 # Golang 实战——微信公众号课程提醒系统

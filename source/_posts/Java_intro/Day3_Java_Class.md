@@ -1,10 +1,10 @@
 ---
-title: Java-类和对象
+categories:
+- Java
+- Beginning
 date: 2019-04-14 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-类和对象
 ---
 
 # Java 中的类和对象

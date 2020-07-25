@@ -1,9 +1,9 @@
 ---
-title: Python之MongoDB
+categories:
+- Crawler
 date: 2019-02-20 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: Python之MongoDB
 ---
 
 # Python爬虫储存库的使用之MongoDB

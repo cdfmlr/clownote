@@ -1,10 +1,10 @@
 ---
-title: 机器学习的应用建议
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-10-26 12:37:19
+tags: Machine Learning
+title: 机器学习的应用建议
 ---
 
 

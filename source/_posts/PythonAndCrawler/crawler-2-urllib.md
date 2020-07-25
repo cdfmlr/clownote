@@ -1,9 +1,9 @@
 ---
-title:  python请求库urllib
+categories:
+- Crawler
 date: 2019-02-11 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: python请求库urllib
 ---
 
 # 爬虫请求库的使用之Urllib

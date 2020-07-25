@@ -1,10 +1,10 @@
 ---
-title: Andrew Ng 机器学习笔记总结
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2020-01-16 12:39:27
+tags: Machine Learning
+title: Andrew Ng 机器学习笔记总结
 ---
 
 

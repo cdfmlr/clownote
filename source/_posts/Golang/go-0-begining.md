@@ -1,10 +1,10 @@
 ---
-title: golang-Go语言基础
+categories:
+- Golang
+- Beginning
 date: 2019-08-31 10:13:06
 tags: Golang
-categories:
-	- Golang
-	- Beginning
+title: golang-Go语言基础
 ---
 
 # Go 语言基础

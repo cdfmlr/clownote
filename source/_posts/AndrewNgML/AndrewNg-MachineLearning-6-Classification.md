@@ -1,10 +1,10 @@
 ---
-title: 分类问题
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-09-24 16:03:36
+tags: Machine Learning
+title: 分类问题
 ---
 
 

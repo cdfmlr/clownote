@@ -1,9 +1,9 @@
 ---
-title: python请求库requests
+categories:
+- Crawler
 date: 2019-02-12 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: python请求库requests
 ---
 
 # 爬虫请求库的使用之Requests

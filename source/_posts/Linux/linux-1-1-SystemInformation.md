@@ -1,10 +1,10 @@
 ---
-title: linux-1.1-系统信息
+categories:
+- Linux
+- Beginning
 date: 2016-12-19 14:14:14
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-1.1-系统信息
 ---
 
 # 系统信息

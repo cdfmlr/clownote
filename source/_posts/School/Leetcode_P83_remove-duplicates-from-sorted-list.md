@@ -1,6 +1,7 @@
 ---
-title: Leetcode P83 删除排序链表中的重复元素
+date: 2020-03-11 17:09:05
 tags: School
+title: Leetcode P83 删除排序链表中的重复元素
 ---
 
 # Leetcode P83 删除排序链表中的重复元素

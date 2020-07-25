@@ -1,9 +1,9 @@
 ---
-title: Python之CSV
+categories:
+- Crawler
 date: 2019-02-18 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: Python之CSV
 ---
 
 # Python爬虫储存库的使用之CSV

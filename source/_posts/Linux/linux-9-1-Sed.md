@@ -1,10 +1,10 @@
 ---
-title: linux-9.1-sed
+categories:
+- Linux
+- Beginning
 date: 2017-01-11 19:52:41
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-9.1-sed
 ---
 
 # sed

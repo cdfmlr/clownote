@@ -1,10 +1,10 @@
 ---
-title: linux-9.2-awk
+categories:
+- Linux
+- Beginning
 date: 2017-01-12 20:04:37
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-9.2-awk
 ---
 
 # awk

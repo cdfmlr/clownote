@@ -1,10 +1,10 @@
 ---
-title: golang-更多类型：指针、struct、slice和映射
+categories:
+- Golang
+- Beginning
 date: 2019-08-31 10:24:03
 tags: Golang
-categories:
-	- Golang
-	- Beginning
+title: golang-更多类型：指针、struct、slice和映射
 ---
 
 ## 更多类型：指针、struct、slice 和映射

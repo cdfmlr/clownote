@@ -1,10 +1,10 @@
 ---
-title: Octave 入门
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-09-10 21:49:09
+tags: Machine Learning
+title: Octave 入门
 ---
 
 

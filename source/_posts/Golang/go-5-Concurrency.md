@@ -1,10 +1,10 @@
 ---
-title: golang-并发
+categories:
+- Golang
+- Beginning
 date: 2020-02-07 21:25:59
 tags: Golang
-categories:
-	- Golang
-	- Beginning
+title: golang-并发
 ---
 
 ## 并发

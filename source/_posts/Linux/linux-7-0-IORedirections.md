@@ -1,10 +1,10 @@
 ---
-title: linux-7.0-文件描述符与重定向
+categories:
+- Linux
+- Beginning
 date: 2017-01-06 19:31:16
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-7.0-文件描述符与重定向
 ---
 
 # 文件描述符与重定向

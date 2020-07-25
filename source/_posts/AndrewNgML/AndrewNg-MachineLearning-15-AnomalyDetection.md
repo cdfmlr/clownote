@@ -1,10 +1,10 @@
 ---
-title: 异常检测
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-11-26 15:02:40
+tags: Machine Learning
+title: 异常检测
 ---
 
 

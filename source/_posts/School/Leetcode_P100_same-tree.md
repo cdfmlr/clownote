@@ -1,6 +1,7 @@
 ---
-title: 从「Leetcode 100. 相同的树」出发讨论为什么用「并发」
+date: 2020-04-21 15:34:10
 tags: School
+title: 从「Leetcode 100. 相同的树」出发讨论为什么用「并发」
 ---
 
 # 从「Leetcode [100. 相同的树](https://leetcode-cn.com/problems/same-tree/)」出发讨论为什么用「并发」

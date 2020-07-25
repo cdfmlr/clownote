@@ -1,6 +1,7 @@
 ---
-title: Leetcode 3. 无重复字符的最长子串
+date: 2020-04-07 08:12:39
 tags: School
+title: Leetcode 3. 无重复字符的最长子串
 ---
 
 # Leetcode [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)

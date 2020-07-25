@@ -1,10 +1,10 @@
 ---
-title: linux-6-计算与逃逸
+categories:
+- Linux
+- Beginning
 date: 2017-01-05 09:33:44
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-6-计算与逃逸
 ---
 
 # 计算与逃逸

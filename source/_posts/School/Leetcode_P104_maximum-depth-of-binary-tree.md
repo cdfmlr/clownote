@@ -1,6 +1,7 @@
 ---
-title: Leetcode 104. 二叉树的最大深度
+date: 2020-04-28 09:35:35
 tags: School
+title: Leetcode 104. 二叉树的最大深度
 ---
 
 # Leetcode [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)

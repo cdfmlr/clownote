@@ -1,11 +1,12 @@
 ---
-title: Python深度学习之神经网络入门
-tag:
-  - Machine Learning
-  - Deep Learning
 categories:
-  - Machine Learning
-  - Deep Learning with Python
+- Machine Learning
+- Deep Learning with Python
+date: 2020-07-08 11:35:00
+tag:
+- Machine Learning
+- Deep Learning
+title: Python深度学习之神经网络入门
 ---
 
 # Deep Learning with Python

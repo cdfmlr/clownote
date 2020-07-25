@@ -1,10 +1,10 @@
 ---
-title: linux-9.0-grep
+categories:
+- Linux
+- Beginning
 date: 2017-01-10 19:51:00
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-9.0-grep
 ---
 
 # grep/egrep/fgrep

@@ -1,9 +1,10 @@
 ---
-title: Python基础手册P2 基本数据类型基本类型
-tag: Python
 categories:
-	- Python
-	- 基础手册
+- Python
+- 基础手册
+date: 2020-03-28 22:46:39
+tag: Python
+title: Python基础手册P2 基本数据类型基本类型
 ---
 
 # Python 基本数据类型

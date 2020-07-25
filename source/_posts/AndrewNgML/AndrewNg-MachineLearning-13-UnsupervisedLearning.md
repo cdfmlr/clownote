@@ -1,10 +1,10 @@
 ---
-title: 无监督学习
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-11-07 10:51:48
+tags: Machine Learning
+title: 无监督学习
 ---
 
 

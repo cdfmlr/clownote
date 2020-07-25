@@ -1,10 +1,10 @@
 ---
-title: Java-条件
+categories:
+- Java
+- Beginning
 date: 2019-04-20 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-条件
 ---
 
 # Java 条件语句

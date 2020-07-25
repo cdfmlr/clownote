@@ -1,6 +1,7 @@
 ---
-title: Leetcode P26 删除排序数组中的重复项
+date: 2020-02-19 21:58:03
 tags: School
+title: Leetcode P26 删除排序数组中的重复项
 ---
 
 # Leetcode P26 删除排序数组中的重复项

@@ -1,10 +1,10 @@
 ---
-title: linux-1.2-帮助信息
+categories:
+- Linux
+- Beginning
 date: 2016-12-20 14:18:40
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-1.2-帮助信息
 ---
 
 # 帮助信息

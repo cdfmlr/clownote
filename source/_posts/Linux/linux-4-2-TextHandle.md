@@ -1,10 +1,10 @@
 ---
-title: linux-4.2-正文处理
+categories:
+- Linux
+- Beginning
 date: 2017-01-03 12:55:26
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-4.2-正文处理
 ---
 
 # 正文.处理

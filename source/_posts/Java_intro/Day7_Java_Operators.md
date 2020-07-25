@@ -1,10 +1,10 @@
 ---
-title: Java-基本运算
+categories:
+- Java
+- Beginning
 date: 2019-04-18 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-基本运算
 ---
 
 # Java 运算符

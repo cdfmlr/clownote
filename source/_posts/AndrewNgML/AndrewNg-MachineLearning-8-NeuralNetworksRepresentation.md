@@ -1,10 +1,10 @@
 ---
-title: 神经网络的描述
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-10-13 11:09:05
+tags: Machine Learning
+title: 神经网络的描述
 ---
 
 

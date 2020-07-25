@@ -1,10 +1,10 @@
 ---
-title: linux-0.0-Linux?
+categories:
+- Linux
+- Beginning
 date: 2016-12-15 13:34:47
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-0.0-Linux?
 ---
 
 我会发一系列 Linux 学习笔记（它们最多可以算是“操作手册”，我不认为它们可以代替一本正经的入门书），这些东西是很久以前写的了，可能在 排版、内容 上质量都不高，请见谅。

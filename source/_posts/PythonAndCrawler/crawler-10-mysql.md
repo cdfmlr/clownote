@@ -1,9 +1,9 @@
 ---
-title: Python之MySQL
+categories:
+- Crawler
 date: 2019-02-19 22:49:55
 tags: Crawler
-categories:
-	- Crawler
+title: Python之MySQL
 ---
 
 # Python爬虫储存库的使用之MySQL

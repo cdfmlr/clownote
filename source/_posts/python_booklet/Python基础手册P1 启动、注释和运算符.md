@@ -1,9 +1,10 @@
 ---
-title: Python基础手册P1 启动、注释和运算符
-tag: Python
 categories:
-	- Python
-	- 基础手册
+- Python
+- 基础手册
+date: 2020-03-23 14:55:09
+tag: Python
+title: Python基础手册P1 启动、注释和运算符
 ---
 
 

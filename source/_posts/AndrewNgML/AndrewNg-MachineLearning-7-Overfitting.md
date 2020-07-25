@@ -1,10 +1,10 @@
 ---
-title: 过拟合
-tags: Machine Learning
 categories:
-  - Machine Learning
-  - AndrewNg
+- Machine Learning
+- AndrewNg
 date: 2019-09-26 16:59:34
+tags: Machine Learning
+title: 过拟合
 ---
 
 

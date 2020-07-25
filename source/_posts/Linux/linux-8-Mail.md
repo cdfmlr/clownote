@@ -1,10 +1,10 @@
 ---
-title: linux-8-邮件系统
+categories:
+- Linux
+- Beginning
 date: 2017-01-09 19:43:44
 tags: Linux
-categories:
-	- Linux
-	- Beginning
+title: linux-8-邮件系统
 ---
 
 # 邮件系统

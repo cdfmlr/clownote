@@ -1,6 +1,7 @@
 ---
-title: Leetcode 101. 对称二叉树
+date: 2020-04-21 17:34:34
 tags: School
+title: Leetcode 101. 对称二叉树
 ---
 
 # Leetcode [101. 对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)

@@ -1,10 +1,10 @@
 ---
-title: Java-基础语法
+categories:
+- Java
+- Beginning
 date: 2019-04-12 16:37:53
 tag: Java
-categories:
-	- Java
-	- Beginning
+title: Java-基础语法
 ---
 
 # Java 基础语法
