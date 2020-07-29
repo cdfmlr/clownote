@@ -282,17 +282,6 @@ Keras 的 Conv2D 层里可以用 `padding` 参数来设置使用填充。`paddin
 
 总而言之，使用最大池化/其他下采样的原因，一是减少需要处理的特征图的元素个数，二是通过让一系列的卷积层观察到越来越大的窗口(看到的覆盖越来越多比例的原始输入)，从而学到空间层级结构。
 
----
-categories:
-- Machine Learning
-- Deep Learning with Python
-date: 2020-07-24 23:18:05
-tag:
-- Machine Learning
-- Deep Learning
-title: Python深度学习之小型数据集上训练卷积神经网络
----
-
 
 
 
@@ -555,58 +544,7 @@ history = model.fit_generator(
     100/100 [==============================] - 97s 967ms/step - loss: 0.6901 - acc: 0.5450 - val_loss: 0.6785 - val_acc: 0.5270
     Epoch 2/30
     100/100 [==============================] - 86s 865ms/step - loss: 0.6661 - acc: 0.5875 - val_loss: 0.6525 - val_acc: 0.6060
-    Epoch 3/30
-    100/100 [==============================] - 109s 1s/step - loss: 0.6344 - acc: 0.6405 - val_loss: 0.6360 - val_acc: 0.6450
-    Epoch 4/30
-    100/100 [==============================] - 122s 1s/step - loss: 0.5856 - acc: 0.6905 - val_loss: 0.6407 - val_acc: 0.6170
-    Epoch 5/30
-    100/100 [==============================] - 113s 1s/step - loss: 0.5503 - acc: 0.7160 - val_loss: 0.6254 - val_acc: 0.6530
-    Epoch 6/30
-    100/100 [==============================] - 86s 858ms/step - loss: 0.5258 - acc: 0.7495 - val_loss: 0.6445 - val_acc: 0.6410
-    Epoch 7/30
-    100/100 [==============================] - 117s 1s/step - loss: 0.4907 - acc: 0.7550 - val_loss: 0.5918 - val_acc: 0.6910
-    Epoch 8/30
-    100/100 [==============================] - 132s 1s/step - loss: 0.4614 - acc: 0.7825 - val_loss: 0.5789 - val_acc: 0.6830
-    Epoch 9/30
-    100/100 [==============================] - 143s 1s/step - loss: 0.4379 - acc: 0.7835 - val_loss: 0.5427 - val_acc: 0.7360
-    Epoch 10/30
-    100/100 [==============================] - 132s 1s/step - loss: 0.4063 - acc: 0.8240 - val_loss: 0.5462 - val_acc: 0.7370
-    Epoch 11/30
-    100/100 [==============================] - 133s 1s/step - loss: 0.3821 - acc: 0.8305 - val_loss: 0.5641 - val_acc: 0.7290
-    Epoch 12/30
-    100/100 [==============================] - 138s 1s/step - loss: 0.3583 - acc: 0.8465 - val_loss: 0.5581 - val_acc: 0.7280
-    Epoch 13/30
-    100/100 [==============================] - 134s 1s/step - loss: 0.3359 - acc: 0.8615 - val_loss: 0.5796 - val_acc: 0.7260
-    Epoch 14/30
-    100/100 [==============================] - 144s 1s/step - loss: 0.3173 - acc: 0.8610 - val_loss: 0.5668 - val_acc: 0.7220
-    Epoch 15/30
-    100/100 [==============================] - 146s 1s/step - loss: 0.2967 - acc: 0.8800 - val_loss: 0.5762 - val_acc: 0.7340
-    Epoch 16/30
-    100/100 [==============================] - 149s 1s/step - loss: 0.2738 - acc: 0.8810 - val_loss: 0.6362 - val_acc: 0.7270
-    Epoch 17/30
-    100/100 [==============================] - 152s 2s/step - loss: 0.2511 - acc: 0.8960 - val_loss: 0.6082 - val_acc: 0.7270
-    Epoch 18/30
-    100/100 [==============================] - 153s 2s/step - loss: 0.2276 - acc: 0.9115 - val_loss: 0.6246 - val_acc: 0.7250
-    Epoch 19/30
-    100/100 [==============================] - 154s 2s/step - loss: 0.1992 - acc: 0.9230 - val_loss: 0.6372 - val_acc: 0.7240
-    Epoch 20/30
-    100/100 [==============================] - 155s 2s/step - loss: 0.1783 - acc: 0.9360 - val_loss: 0.7024 - val_acc: 0.7280
-    Epoch 21/30
-    100/100 [==============================] - 161s 2s/step - loss: 0.1674 - acc: 0.9445 - val_loss: 0.6692 - val_acc: 0.7260
-    Epoch 22/30
-    100/100 [==============================] - 157s 2s/step - loss: 0.1470 - acc: 0.9515 - val_loss: 0.7322 - val_acc: 0.7180
-    Epoch 23/30
-    100/100 [==============================] - 157s 2s/step - loss: 0.1231 - acc: 0.9585 - val_loss: 0.9741 - val_acc: 0.7060
-    Epoch 24/30
-    100/100 [==============================] - 156s 2s/step - loss: 0.1123 - acc: 0.9640 - val_loss: 0.7344 - val_acc: 0.7230
-    Epoch 25/30
-    100/100 [==============================] - 163s 2s/step - loss: 0.0958 - acc: 0.9670 - val_loss: 0.7832 - val_acc: 0.7300
-    Epoch 26/30
-    100/100 [==============================] - 160s 2s/step - loss: 0.0862 - acc: 0.9750 - val_loss: 0.8550 - val_acc: 0.7290
-    Epoch 27/30
-    100/100 [==============================] - 162s 2s/step - loss: 0.0683 - acc: 0.9810 - val_loss: 0.9302 - val_acc: 0.7190
-    Epoch 28/30
-    100/100 [==============================] - 163s 2s/step - loss: 0.0601 - acc: 0.9845 - val_loss: 0.8815 - val_acc: 0.7300
+    ......
     Epoch 29/30
     100/100 [==============================] - 160s 2s/step - loss: 0.0533 - acc: 0.9860 - val_loss: 0.9298 - val_acc: 0.7310
     Epoch 30/30
@@ -1683,47 +1621,6 @@ print(loss_value, grads_value)
        [0. 0. 0.]
        [0. 0. 0.]
        ...
-       [0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]]
-    
-      [[0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]
-       ...
-       [0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]]
-    
-      [[0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]
-       ...
-       [0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]]
-    
-      ...
-    
-      [[0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]
-       ...
-       [0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]]
-    
-      [[0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]
-       ...
-       [0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]]
-    
-      [[0. 0. 0.]
-       [0. 0. 0.]
-       [0. 0. 0.]
        ...
        [0. 0. 0.]
        [0. 0. 0.]
@@ -1760,7 +1657,7 @@ plt.show()
 
 ![png](https://tva1.sinaimg.cn/large/007S8ZIlgy1gh86752ufkj307907074x.jpg)
 
-Emmm，刚才这个画图是我随便写的啦，为了正规地画出图来,下面好好处理一下：
+Emmm，刚才这个画图是我随便写的啦，所以爆了个 Warning，为了正规地画出图来,下面好好处理一下：
 
 ```python
 # 将张量转换为有效图像的 utility 函数
@@ -1903,10 +1800,6 @@ from tensorflow.keras.applications.vgg16 import VGG16
 model = VGG16(weights='imagenet')    # 注意这个是带有分类器的，比较大，下载稍慢（有500+MB）
 ```
 
-    WARNING:tensorflow:From /usr/local/lib/python3.7/site-packages/tensorflow_core/python/ops/resource_variable_ops.py:1630: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
-    Instructions for updating:
-    If using Keras pass *_constraint arguments to layers.
-
 
 
 ```python
@@ -1974,15 +1867,6 @@ model.summary()
 ![creative_commons_elephant](https://tva1.sinaimg.cn/large/007S8ZIlgy1gh83vzik31j30oz0goq7t.jpg)
 
 这是两只亚洲象🐘哦，把这个图片处理成 VGG16 模型需要的样子：
-
-
-```python
-!pwd
-```
-
-    /Users/c/pylab/Deep Learning with Python/ch5
-
-
 
 ```python
 from tensorflow.keras.preprocessing import image
