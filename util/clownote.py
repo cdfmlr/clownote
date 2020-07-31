@@ -92,7 +92,7 @@ def push(**kwargs):
         '\n\n[clownotecl automatically]'
 
     # Git 提交
-    n_cmd = partial(run, stdout=None) if verbose else run   # 如果 verbose，就要把信息显示到屏幕
+    n_cmd = partial(run, stdout=None, stderr=None) if verbose else run   # 如果 verbose，就要把信息显示到屏幕
 
     n_cmd(['git', 'add', '.'])
     n_cmd(['git', 'commit', '-m', commit_msg])
