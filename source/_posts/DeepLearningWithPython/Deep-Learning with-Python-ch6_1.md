@@ -1,5 +1,11 @@
 ---
+categories:
+- Machine Learning
+- Deep Learning with Python
 date: 2020-08-11 15:00:52
+tag:
+- Machine Learning
+- Deep Learning
 title: Python深度学习之处理文本数据
 ---
 # Deep Learning with Python
