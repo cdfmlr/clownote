@@ -1,6 +1,6 @@
 ---
 date: 2020-08-11 15:00:52
-title: 深度学习之处理文本数据
+title: Python深度学习之处理文本数据
 ---
 # Deep Learning with Python
 
