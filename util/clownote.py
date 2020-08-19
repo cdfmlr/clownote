@@ -5,6 +5,7 @@
 @File    : clownote.py
 @Author  : CDFMLR
 @Time    : 2020/07/31 15:30
+@Update  : 2020/08/19 10:33
 
 clownote Hexo 博客实用工具。
 
@@ -50,6 +51,9 @@ def check_changed(**kwargs):
 
     os.chdir(CLOWNOTE_PATH)
 
+    # 添加“尚未暂存以备提交的变更”
+    run(['git', 'add', '-N', '.'])
+    
     # 获取改变了的文件
     res = run(['git', 'diff', '--name-only'])
     changed = res.stdout.strip().split('\n')
