@@ -5,7 +5,6 @@
 @File    : clownote.py
 @Author  : CDFMLR
 @Time    : 2020/07/31 15:30
-@Update  : 2020/08/19 10:33
 
 clownote Hexo 博客实用工具。
 
@@ -131,7 +130,7 @@ def main():
         'push', aliases=['p'], help=description_push, description=description_push)
     parser_push.set_defaults(func=push)
     parser_push.add_argument('-m', '--message',
-                             help='Use the given MESSAGE as the commit message.', action='store')
+                             help='Use the given MESSAGE as the commit message.', action='store', default='')
 
     # check、push 通用的 verbose 选项
     for p in [parser_check, parser_push]:
@@ -145,8 +144,7 @@ def main():
     if not hasattr(args, 'func'):
         parser.print_help()
     elif args.func is check_changed:
-        preview = not args.no_preview if hasattr(
-            args, 'no_preview') else False
+        preview = not args.no_preview if hasattr(args, 'no_preview') else False
         check_changed(preview_serve=preview, verbose=args.verbose)
     elif args.func is push:
         message = args.message if hasattr(args, 'message') else ''
