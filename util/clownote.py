@@ -53,7 +53,7 @@ def check_changed(**kwargs):
 
     # 添加“尚未暂存以备提交的变更”
     run(['git', 'add', '-N', '.'])
-    
+
     # 获取改变了的文件
     res = run(['git', 'diff', '--name-only'])
     changed = res.stdout.strip().split('\n')
@@ -81,22 +81,28 @@ def push(**kwargs):
 
     kwargs:
 
-    - preview_serve: bool: 是否调用 hexo serve 预览站点 (default: True);
+    - message: str : git commit 提交的 message 信息；
     - verbose: bool: 显示更详细的执行信息;
     '''
+    message = kwargs.get('message', '')
+    if len(message) != 0:
+        message += '\n\n'
     verbose = kwargs.get('verbose', False)
 
     os.chdir(CLOWNOTE_PATH)
 
     # 检查有更改的文件的配置，不预览
-    changed = check_changed(preview_serve=False, verbose=verbose)
-    names = map(lambda f: os.path.basename(f).rstrip('.md'), changed)
-    commit_msg = 'changed: ' + \
-        ', '.join(names) + \
-        '\n\n[clownotecl automatically]'
+    changed_articles = check_changed(preview_serve=False, verbose=verbose)
+    if len(changed_articles) == 0:
+        changed_articles.append('None')
+    names = map(lambda f: os.path.basename(f).rstrip('.md'), changed_articles)
+    commit_msg = message + \
+        'changed article: ' + ', '.join(names) + \
+        '\n\n[Automatically， clownote]'
 
     # Git 提交
-    n_cmd = partial(run, stdout=None, stderr=None) if verbose else run   # 如果 verbose，就要把信息显示到屏幕
+    # 如果 verbose，就要把提交过程的输出信息显示到屏幕
+    n_cmd = partial(run, stdout=None, stderr=None) if verbose else run
 
     n_cmd(['git', 'add', '.'])
     n_cmd(['git', 'commit', '-m', commit_msg])
@@ -111,7 +117,7 @@ def main():
         title='subcommands', description='valid subcommands')
 
     # 子命令 check
-    description_check = '调用 blogconfc.py 检查并自动补全博客文章配置，并自动开启 hexo serve 预览改变'
+    description_check = '调用 blogconfc.py 检查并自动补全博客文章配置，启动 hexo serve 预览站点'
     parser_check = subparsers.add_parser(
         'check', aliases=['c'], help=description_check, description=description_check)
     parser_check.set_defaults(func=check_changed)
@@ -123,6 +129,8 @@ def main():
     parser_push = subparsers.add_parser(
         'push', aliases=['p'], help=description_push, description=description_push)
     parser_push.set_defaults(func=push)
+    parser_push.add_argument('-m', '--message',
+                             help='Use the given MESSAGE as the commit message.', action='store')
 
     # check、push 通用的 verbose 选项
     for p in [parser_check, parser_push]:
@@ -134,9 +142,14 @@ def main():
 
     # 执行相应的函数，或打印帮助
     if hasattr(args, 'func'):
-        preview = not args.no_preview if hasattr(args, 'no_preview') else False
-        args.func(preview_serve=preview, verbose=args.verbose)
-        return
+        if args.func is check_changed:
+            preview = not args.no_preview if hasattr(
+                args, 'no_preview') else False
+            check_changed(preview_serve=preview, verbose=args.verbose)
+            return
+        elif args.func is push:
+            message = args.message if hasattr(args, 'message') else ''
+            push(message=message, verbose=args.verbose)
     parser.print_help()
 
 
