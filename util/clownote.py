@@ -99,7 +99,7 @@ def push(**kwargs):
     names = map(lambda f: os.path.basename(f).rstrip('.md'), changed)
     commit_msg = message + \
         'changed files: ' + ', '.join(names) + \
-        '\n\n[Automatically， clownote]'
+        '\n\n[Automatically, clownote]'
 
     # Git 提交
     # 如果 verbose，就要把提交过程的输出信息显示到屏幕
