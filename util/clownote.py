@@ -39,7 +39,8 @@ run = partial(subprocess.run, shell=False, stdout=subprocess.PIPE,
 
 def check_changed(**kwargs):
     '''
-    检查、补全配置，调用 hexo serve 预览站点
+    检查、补全配置，调用 hexo serve 预览站点。
+    返回仓库中所有改变的文件路径（包括一切文章与非文章文件）。
 
     kwargs:
 
@@ -92,12 +93,12 @@ def push(**kwargs):
     os.chdir(CLOWNOTE_PATH)
 
     # 检查有更改的文件的配置，不预览
-    changed_articles = check_changed(preview_serve=False, verbose=verbose)
-    if len(changed_articles) == 0:
-        changed_articles.append('None')
-    names = map(lambda f: os.path.basename(f).rstrip('.md'), changed_articles)
+    changed = check_changed(preview_serve=False, verbose=verbose)
+    if len(changed) == 0:
+        changed.append('None')
+    names = map(lambda f: os.path.basename(f).rstrip('.md'), changed)
     commit_msg = message + \
-        'changed article: ' + ', '.join(names) + \
+        'changed files: ' + ', '.join(names) + \
         '\n\n[Automatically， clownote]'
 
     # Git 提交
@@ -141,16 +142,17 @@ def main():
     args = parser.parse_args()
 
     # 执行相应的函数，或打印帮助
-    if hasattr(args, 'func'):
-        if args.func is check_changed:
-            preview = not args.no_preview if hasattr(
-                args, 'no_preview') else False
-            check_changed(preview_serve=preview, verbose=args.verbose)
-            return
-        elif args.func is push:
-            message = args.message if hasattr(args, 'message') else ''
-            push(message=message, verbose=args.verbose)
-    parser.print_help()
+    if not hasattr(args, 'func'):
+        parser.print_help()
+    elif args.func is check_changed:
+        preview = not args.no_preview if hasattr(
+            args, 'no_preview') else False
+        check_changed(preview_serve=preview, verbose=args.verbose)
+    elif args.func is push:
+        message = args.message if hasattr(args, 'message') else ''
+        push(message=message, verbose=args.verbose)
+    else:
+        parser.print_help()
 
 
 if __name__ == "__main__":
