@@ -8,7 +8,7 @@
 
 clownote Hexo 博客实用工具。
 
-该程序将 clownote 使用实践中高复用的 hexo, git 以及 blogconfc.py 调用流程封装在一起，以简化工作流程。
+该程序将 clownote 使用实践中高复用的 hexo, git 以及 blogconfc.py 调用流程封装在一起，以简化工作。
 
 目前提供如下接口:
 
