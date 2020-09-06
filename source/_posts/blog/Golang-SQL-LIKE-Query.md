@@ -1,5 +1,6 @@
 ---
 date: 2020-02-27 19:13:09
+tags: Golang
 title: Golang SQL 查询使用 LIKE 分句的坑
 ---
 # Golang SQL 查询使用 LIKE 分句的坑

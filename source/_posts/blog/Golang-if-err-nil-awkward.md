@@ -1,5 +1,6 @@
 ---
 date: 2020-02-27 20:37:08
+tags: Golang
 title: 关于 Golang if err != nil 泛滥成灾的优化方案
 ---
 

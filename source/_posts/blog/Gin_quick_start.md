@@ -1,8 +1,13 @@
 ---
 date: 2020-09-03 22:50:28.321135
-title: Gin_quick_start
+tags:
+- Web
+- Golang
+title: Gin入门
 ---
 # Gin 入门
+
+用 Go 好久了，也写了好几个小 Web 服务，基本都是在用标准库的 `net/http` + `database/sql`，其实开发难度、性能都还不错啦。写的多了还是觉得用标准库有些部分代码重复性还是很高的，慢慢地自己总结出一些通用的“框架”，但不成熟，问题很多。所以开始学一些成熟的框架，之前我开始用 Gorm 简化数据库这方面的流程，这次是考虑学一个 Web 框架啦—— Gin 足够简洁，使用的也比较广泛，所以就它了。
 
 ## 安装
 
@@ -734,3 +739,52 @@ Gin 还提供很多其他的关于绑定的功能，比如路径参数的绑定�
 
 ## 中间件
 
+之前我们都是用 `r = gin.Default()` 来实例化 Gin 的，这样搞出来的 r 是自带 Logger 和 Recovery 中间件的，要创建一个全新的，没有中间件的实例，使用 `New` 来替换 `Default`：
+
+```go
+r := gin.New()
+```
+
+通过 `r.Use(中间件())` 来添加中间件：
+
+```go
+func main() {
+	// Creates a router without any middleware by default
+	r := gin.New()
+
+	// Global middleware
+	// Logger middleware will write the logs to gin.DefaultWriter even if you set with GIN_MODE=release.
+	// By default gin.DefaultWriter = os.Stdout
+	r.Use(gin.Logger())
+
+	// Recovery middleware recovers from any panics and writes a 500 if there was one.
+	r.Use(gin.Recovery())
+
+	// Per route middleware, you can add as many as you desire.
+	r.GET("/benchmark", MyBenchLogger(), benchEndpoint)
+
+	// Authorization group
+	// authorized := r.Group("/", AuthRequired())
+	// exactly the same as:
+	authorized := r.Group("/")
+	// per group middleware! in this case we use the custom created
+	// AuthRequired() middleware just in the "authorized" group.
+	authorized.Use(AuthRequired())
+	{
+		authorized.POST("/login", loginEndpoint)
+		authorized.POST("/submit", submitEndpoint)
+		authorized.POST("/read", readEndpoint)
+
+		// nested group
+		testing := authorized.Group("testing")
+		testing.GET("/analytics", analyticsEndpoint)
+	}
+
+	// Listen and serve on 0.0.0.0:8080
+	r.Run(":8080")
+}
+```
+
+。。。
+
+写不动了，了解更多 Gin 请到 [gin 的 readme](https://github.com/gin-gonic/gin)。
