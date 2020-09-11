@@ -1,5 +1,6 @@
 ---
 date: 2020-09-09 22:26:38.909962
+qqqqqhw3klhelHelHeldate: 2020-09-09 22:26:38.909962
 title: Go RPC
 ---
 # Go RPC
@@ -153,7 +154,7 @@ Hello, world
 
 ```go
 // HelloServiceName is the name of HelloService
-const HelloServiceName = "path/to/pkg.HelloService"
+const HelloServiceName = "HelloService"
 
 // HelloServiceInterface is a interface for HelloService
 type HelloServiceInterface interface {
@@ -220,19 +221,113 @@ fmt.Println(reply)
 
 ## net/rpc/jsonrpc
 
-`net/rpc/jsonrpc` 大致上和 `net/rpc` 相同，但是使用 JSON 而不是 Gob 编码，可以跨语言服务。
+`net/rpc` 允许 RPC 数据打包时通过插件实现自定义的编码和解码：
+
+```go
+// 服务段的编码
+rpc.ServeCodec(SomeServerCodec(conn)) // SomeServerCodec 是个编码器
+
+// 客户端的解码
+conn, _ := net.Dial("tcp", "localhost:1234")
+client := rpc.NewClientWithCodec(SomeClientCodec(conn)) // SomeClientCodec 是个解码器
+```
+
+`net/rpc/jsonrpc` 就是这样的一种实现，它使用  JSON 而不是 Gob 编码，可以用来做跨语言 RPC。在真实的使用中，`net/rpc/jsonrpc` 在内部封装了上面提到的编码、解码实现，提供大致上和 `net/rpc` 相同的 API。
 
 服务端在之前的 Hello World 基础上，只需要改动 main 的最后一行代码（不算 `}`）即可变为使用 JSON RPC：
 
 ```go
 // Instead of `go rpc.ServeConn(conn)`
-go rpc.ServeCodec(jsonrpc.NewServerCodec(conn))
+go jsonrpc.ServeConn(conn)
 ```
 
+> `jsonrpc.ServeConn` 的实现是 `rpc.ServeCodec(jsonrpc.NewServerCodec(conn))`
+
+在调用时，将 `DialHelloService` 中连接服务的代码改一改就可以使用了：
+
+```go
+// Instead of `c, err := rpc.Dial(network, address)`
+c, err := jsonrpc.Dial(network, address)
+```
+
+> 这里也可以用：
+>
+> ```go
+> conn, _ := net.Dial("tcp", "localhost:1234")
+> client := rpc.NewClientWithCodec(jsonrpc.NewClientCodec(conn))
+> ```
+
+这样开的服务是基于 TCP 的。我们可以关闭服务端程序，运行 `nc -l 1234` 启动一个 TCP 服务，然后再次运行客户端程序，nc 会输出客户端请求的内容：
+
+```sh
+$ nc -l 1234
+{"method":"HelloService.Hello","params":["world"],"id":0}
+```
+
+可以看到请求体是 JSON 数据。反过来，模仿这个请求体，我们可以手动向正在运行的客户端发送模拟请求，查看响应体：
+
+```sh
+$ echo -e '{"method":"HelloService.Hello","params":["JSON-RPC"],"id":1}' | nc localhost 1234
+{"id":1,"result":"Hello, JSON-RPC","error":null}
+```
+
+总结一下，请求、响应的结构体大概为：
+
+```go
+type Request struct {
+    Method string           `json:"method"`
+    Params *json.RawMessage `json:"params"`
+    Id     *json.RawMessage `json:"id"`
+}
+
+type Response struct {
+    Id     uint64           `json:"id"`
+    Result *json.RawMessage `json:"result"`
+    Error  interface{}      `json:"error"`
+}
+```
+
+（其实真正的实现中，客户端和服务端请求、响应定义是略有区别的）
+
+使用其他语言，只要遵循这样的请求/响应结构，就可以和 Go 的 RPC 服务进行通信了。
+
+### JSON-RPC in HTTP
+
+刚才的实现是基于 TCP 的，有时候不方便使用，我们可能更希望使用熟悉的 HTTP 协议。
+
+`net/rpc` 的 RPC 服务是建立在抽象的 `io.ReadWriteCloser` 接口之上的（conn），所以略作改变，就可以将 RPC 架设在不同的通讯协议之上。这里我们将尝试将 `net/rpc/jsonrpc` 架设到 HTTP 服务上：
+
+```go
+func main() {
+	RegisterHelloService(new(HelloService))
+
+	// HTTP 服务
+	http.HandleFunc("/jsonrpc", func(w http.ResponseWriter, r *http.Request) {
+		var conn io.ReadWriteCloser = struct {
+			io.Writer
+			io.ReadCloser
+		} {
+			ReadCloser: r.Body,
+			Writer: w,
+		}
+
+		rpc.ServeRequest(jsonrpc.NewServerCodec(conn))
+	})
+
+	http.ListenAndServe(":1234", nil)
+}
+```
+
+然后就可以通过 HTTP 很方便地从不同的语言中访问 RPC 服务了：
+
+```sh
+curl -X POST http://localhost:1234/jsonrpc  --data '{"method":"HelloService.Hello","params":["world"],"id":0}'
+{"id":0,"result":"Hello, world","error":null}
+```
+
+但是，这里有个问题是，不方便使用 Go 写客户端，你需要自己去构建一个客户端实现，来完成请求的编码、发送以及响应的解码、绑定😂。或者，也可以使用一个 JSON-RPC 的库。
 
 
 
 
-。。。
 
-Go语言的RPC框架有两个比较有特色的设计：一个是RPC数据打包时可以通过插件实现自定义的编码和解码；另一个是RPC建立在抽象的io.ReadWriteCloser接口之上的，我们可以将RPC架设在不同的通讯协议之上。这里我们将尝试通过官方自带的net/rpc/jsonrpc扩展实现一个跨语言的RPC。
