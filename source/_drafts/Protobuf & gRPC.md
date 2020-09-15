@@ -16,6 +16,21 @@ title: Protobuf & gRPC
 
 ### 安装
 
+在 macOS 上，使用  homebrew 可以快速安装 protobuf。 `brew` 绝对是我见过最省事的包管理，忽略国内众所周知的原因带来的一些小问题，几乎满足了一切日常安装需要：
+
+```sh
+$ brew install protobuf
+...
+$ protoc --version
+libprotoc 3.13.0
+```
+
+我们要在 Golang 中使用 protobuf，需要把 ptotobuf “编译”成 Golang，需要安装  protoc-gen-go 工具来做这件事：
+
+```sh
+
+```
+
 
 
 ### 语法
@@ -182,10 +197,6 @@ service SearchService {
 ```
 
 编译时 Proto Buffers 会根据选择的语言生成服务接口代码和存根（Stub）。
-
-### 使用
-
-
 
 
 
