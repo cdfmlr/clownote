@@ -156,7 +156,9 @@ Module(body=[FunctionDef(name='add',
 - AstNode 及其子类实现了 ast to node graph；
 - Node 及其子类实现了 node graph to flowchart。
 
-附上完整实现的类图：
+附上项目地址与完整实现的类图：
+
+- https://github.com/cdfmlr/pyflowchart/
 
 ![pyflowchart](https://tva1.sinaimg.cn/large/0081Kckwly1gk09oeitndj33xl0u0wx7.jpg)
 
@@ -164,4 +166,3 @@ Module(body=[FunctionDef(name='add',
 by('CDFMLR', '2020.10.24')
 # 🎉
 ```
-
