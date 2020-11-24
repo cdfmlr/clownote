@@ -75,6 +75,20 @@ def check_changed(**kwargs):
     return changed
 
 
+def removesuffix(self: str, suffix: str) -> str:
+    """[util] remove suffix from a string
+    
+    XXX: use build-in method instead for Python 3.9: 
+        s.removesuffix(suffix)
+
+    From https://www.python.org/dev/peps/pep-0616/
+    """
+    if suffix and self.endswith(suffix):
+        return self[:-len(suffix)]
+    else:
+        return self[:]
+
+
 def push(**kwargs):
     '''
     调用 check(verbose=False) 检查一次配置，然后 git 提交所有文件更改。
@@ -95,7 +109,8 @@ def push(**kwargs):
     changed = check_changed(preview_serve=False, verbose=verbose)
     if len(changed) == 0:
         changed.append('None')
-    names = map(lambda f: os.path.basename(f).rstrip('.md'), changed)
+    # names = map(lambda f: os.path.basename(f).removesuffix('.md'), changed)  # for Python 3.9
+    names = map(lambda f: removesuffix(os.path.basename(f), '.md'), changed)
     commit_msg = message + \
         'changed files: ' + ', '.join(names) + \
         '\n\n[Automatically, clownote]'
