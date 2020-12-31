@@ -77,7 +77,7 @@ def check_changed(**kwargs):
 
 def removesuffix(self: str, suffix: str) -> str:
     """[util] remove suffix from a string
-    
+
     XXX: use build-in method instead for Python 3.9: 
         s.removesuffix(suffix)
 
