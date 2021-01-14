@@ -137,7 +137,9 @@ HTTPS 相较于 HTTP 有以下优点：
 
 ### HTML, 超文本标记语言
 
-详见 [HTML 教程](http://www.w3school.com.cn/html/index.asp)
+详见 [HTML 教程](http://www.w3school.com.cn/html/index.asp)。
+
+Another recommended HTML guide: [https://www.websiteplanet.com/blog/html-guide-beginners/](https://www.websiteplanet.com/blog/html-guide-beginners/)
 
 ### CSS, 层叠样式表
 
