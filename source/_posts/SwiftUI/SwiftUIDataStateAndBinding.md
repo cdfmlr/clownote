@@ -163,7 +163,7 @@ ParentView().environmentObject(Model())
 
 用 EnvironmentObject 让所有子都访问到父的 Model，可以避免逐层手动传递对象。
 
-完整源码实现：[SwiftUIDataStateAndBinding.playground](SwiftUIDataStateAndBinding/SwiftUIDataStateAndBinding.playground)。
+完整源码实现：[SwiftUIDataStateAndBinding.playground](https://github.com/cdfmlr/clownote/tree/master/source/_posts/SwiftUI/SwiftUIDataStateAndBinding/SwiftUIDataStateAndBinding.playground)。
 
 ## 参考
 
