@@ -1,6 +1,6 @@
 ---
 date: 2020-03-22 11:49:31
-tags: python
+tags: Python
 title: Python学了那么久，那么多库到底怎么用？好哥们儿默默从收藏夹里掏出这篇保姆级教程
 ---
 

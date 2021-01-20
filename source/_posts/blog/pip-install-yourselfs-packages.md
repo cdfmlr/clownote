@@ -1,6 +1,6 @@
 ---
 date: 2020-05-07 10:17:44
-tags: python
+tags: Python
 title: 如何用 pip 安装自己写的包
 ---
 

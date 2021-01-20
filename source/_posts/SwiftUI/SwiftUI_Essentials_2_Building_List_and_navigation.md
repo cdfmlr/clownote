@@ -4,7 +4,6 @@ categories:
 date: 2020-06-24 08:34:24
 tags:
 - SwiftUI
-- iOS
 title: SwiftUI基础——构建列表和导航
 ---
 

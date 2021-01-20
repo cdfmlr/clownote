@@ -1,5 +1,6 @@
 ---
 date: 2020-11-24 12:32:38.584971
+tags: Python
 title: Python删除字符串后缀问题
 ---
 # Python删除字符串后缀问题

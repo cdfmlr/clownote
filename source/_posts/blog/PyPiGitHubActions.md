@@ -1,5 +1,6 @@
 ---
 date: 2021-01-16 13:45:04.867873
+tags: Python
 title: 用GitHub Actions自动打包发布Python项目
 ---
 

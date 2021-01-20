@@ -4,7 +4,6 @@ categories:
 date: 2020-06-23 22:54:34
 tags:
 - SwiftUI
-- iOS
 title: SwiftUI基础——创建并组合视图
 ---
 

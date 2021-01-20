@@ -1,5 +1,7 @@
 ---
 date: 2021-01-14 17:15:39.778239
+tags:
+- SwiftUI
 title: SwiftUI数据状态和绑定
 ---
 # SwiftUI 数据状态和绑定
