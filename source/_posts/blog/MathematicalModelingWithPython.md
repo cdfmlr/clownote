@@ -1,6 +1,6 @@
 ---
 date: 2019-09-17 15:00:38
-tags: null
+tags: Math
 title: 用 Python 做数学建模
 ---
 

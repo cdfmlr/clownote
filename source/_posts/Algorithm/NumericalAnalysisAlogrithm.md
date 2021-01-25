@@ -1,6 +1,8 @@
 ---
 date: 2020-11-28 22:00:27.588389
-tags: Algorithm
+tags:
+- Algorithm
+- Math
 title: 数值分析算法总结
 ---
 # 数值分析算法总结
