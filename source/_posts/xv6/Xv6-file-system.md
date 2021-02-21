@@ -6,8 +6,9 @@ title: Xv6 文件系统接口
 
 ![Meaning Unknown's Head Image](https://api.ixiaowai.cn/api/api.php)
 
-
 # Xv6 文件系统接口
+
+> 参考: [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) 1.4 File system
 
 ## 文件系统调用
 
