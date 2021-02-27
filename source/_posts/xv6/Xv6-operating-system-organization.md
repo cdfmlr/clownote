@@ -52,8 +52,10 @@ Xv6 kernel source files:
 | file.c | File descriptor support. |
 | fs.c | File system. |
 | kalloc.c | Physical page allocator. |
-| kernelvec.S | Handle traps from kernel, and timer interrupts. log.c File system logging and crash recovery. |
-| main.c | Control initialization of other modules during boot. pipe.c Pipes. |
+| kernelvec.S | Handle traps from kernel, and timer interrupts. |
+| log.c | File system logging and crash recovery. |
+| main.c | Control initialization of other modules during boot.|
+| pipe.c | Pipes. |
 | plic.c | RISC-V interrupt controller. |
 | printf.c | Formatted output to the console. |
 | proc.c | Processes and scheduling. |
@@ -65,9 +67,12 @@ Xv6 kernel source files:
 | syscall.c | Dispatch system calls to handling function. |
 | sysfile.c | File-related system calls. |
 | sysproc.c | Process-related system calls. |
-| trampoline.S | Assembly code to switch between user and kernel. trap.c C code to handle and return from traps and interrupts. uart.c Serial-port console device driver. |
+| trampoline.S | Assembly code to switch between user and kernel.|
+| trap.c C | code to handle and return from traps and interrupts.|
+| uart.c | Serial-port console device driver. |
 | virtio_disk.c | Disk device driver. |
 | vm.c | Manage page tables and address spaces. |
+
 
 (From: `pbpaste | awk '{ printf("| %s |", $1); for (i=2; i<=NF; i++) printf(" %s", $i); printf(" |\n"); }' | pbcopy`)
 
@@ -81,7 +86,7 @@ The unit of isolation: a *process*: an illusion to a program that it has its own
 
 - `p->state`: whether the process is allocated, ready to run, running, waiting for I/O, or exiting:
 
-```
+```c
 enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 ```
 
