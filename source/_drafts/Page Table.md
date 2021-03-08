@@ -110,3 +110,42 @@ QEMU physical address space:
     - guard page:  if the kernel overflows a kernel stack into guard page => a kernel panic
     - without guard page:  overflowing stack overwrite other kernel memory => any incorrect operation
 
+##  Creating an address space
+
+>  [vm.c](https://github.com/mit-pdos/xv6-riscv/blob/riscv//kernel/vm.c#L1)
+
+Central data structure:
+
+- `pagetable_t`: a pointer to a RISC-V root page-table page
+
+Functions:
+
+- `kvmXXX`: manipulate the kernel page table
+- `uvmXXX`: manipulate a user page table
+- others: usedfor both
+
+Key functions:
+
+- `walk`: finds the PTE for a virtual addres
+- `mappages`: installs PTEs for new mappings
+- `copyin`: copy from user to kernel (system call arguments)
+- `copyout`: copy from kernel to user
+
+Boot: 
+
+- main -> kvminit: create the kernel’s page table
+- (kvminit -> kvmmap -> mappages -> walk)
+- main -> kvminithart:  install the kernel page table
+- main -> procinit (in kernel/proc.c): allocates a kernel stack for each pro- cess
+
+---
+
+Each RISC-V CPU caches page table entries in a *Translation Look-aside Buffer (TLB)*: 
+
+- xv6 changes a page table => must tell the CPU to invalidate corresponding cached TLB entries.
+  - `sfence.vma` instruction: flushes the current CPU’s TLB
+  - in `kvminithart` after reloading the `satp` register
+  - in the `trampoline` code that switches to a user page table before returning to user space  ([kernel/trampoline.S:79](https://github.com/mit-pdos/xv6-riscv/blob/riscv//kernel/trampoline.S#L79))
+
+## Physical memory allocation
+
