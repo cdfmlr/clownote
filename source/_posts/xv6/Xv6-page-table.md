@@ -1,8 +1,19 @@
 ---
 date: 2021-03-06 11:46:37.038500
-title: Page Table
+tags: xv6
+title: Xv6 Page Table
 ---
-# Page Table
+
+
+![Meaning Unknown's Head Image](https://api.ixiaowai.cn/api/api.php)
+
+
+# Xv6 Page Table
+
+> Learning [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) Chapter 3 Page tables
+> 
+
+[TOC]
 
 Isolate different process’s address spaces and to multiplex them onto a single physical memory.
 
@@ -27,7 +38,7 @@ Isolate different process’s address spaces and to multiplex them onto a single
     - **top 44 bits** come from the PPN in the PTE
     - **bottom 12 bits** are copied from the original virtual address.
 
-![Figure 3.1: RISC-V virtual and physical addresses, with a simplified logical page table.](Page Table/virtual-and-physical-addresses.png)
+![Figure 3.1: RISC-V virtual and physical addresses, with a simplified logical page table.](Xv6-page-table/virtual-and-physical-addresses.png)
 
 Virtual-to-physical address translations: aligned chunks of $2^{12}$ bytes. (Such a chunk is called a *page*.)
 
@@ -35,7 +46,7 @@ Virtual-to-physical address translations: aligned chunks of $2^{12}$ bytes. (Suc
 
 [Actually] Virtual -> Physical address **translation**:
 
-![Figure 3.2: RISC-V address translation details.](Page Table/detailed-address-translation.png)
+![Figure 3.2: RISC-V address translation details.](Xv6-page-table/detailed-address-translation.png)
 
 - page table: three-level tree: pages of PTEs
 - each PTEs page: 4096-bits: contains 512 PTEs to the next level
@@ -94,7 +105,7 @@ Notes about terms:
 
 kernel address space layout: [kernel/memlayout.h](https://github.com/mit-pdos/xv6-riscv/blob/riscv//kernel/memlayout.h)
 
-![xv6’s kernel address space](Page Table/kernel-address-space.png)
+![xv6’s kernel address space](Xv6-page-table/kernel-address-space.png)
 
 QEMU physical address space:
 
@@ -148,4 +159,69 @@ Each RISC-V CPU caches page table entries in a *Translation Look-aside Buffer (T
   - in the `trampoline` code that switches to a user page table before returning to user space  ([kernel/trampoline.S:79](https://github.com/mit-pdos/xv6-riscv/blob/riscv//kernel/trampoline.S#L79))
 
 ## Physical memory allocation
+
+The kernel must allocate and free physical memory at run-time for page tables, user memory, kernel stacks, and pipe buffers.
+
+- uses the physical memory between the end of the kernel and PHYSTOP for run-time allocation
+- allocates and frees whole 4096-byte pages at a time
+- keeps track of which pages are free by a **linked list**：
+  - `allocation`: removing a page from the linked list
+  - `freeing`: adding the freed page to the list
+
+## Physical memory allocator
+
+allocator: [kalloc.c](https://github.com/mit-pdos/xv6-riscv/blob/riscv//kernel/kalloc.c#L1)
+
+- data structure:  *free list*
+  - element: `struct run`
+  - protected: spin lock
+
+main calls `kinit` to initialize the allocator:
+
+- initializes the lock
+- initializes the free list to hold every page in [end of the kernel, PHYSTOP]
+
+## Process address space
+
+- Each process has a separate page table
+- switch processes => change page table
+- process ask for more memory: 
+  - xv6 uses kalloc to allocate physical pages
+  - adds PTEs to the process’s page table
+
+![A process’s user address space, with its initial stack.](Xv6-page-table/user-addrrss-space.png)
+
+## sbrk
+
+`sbrk`: the system call for a process to shrink or grow its memory.
+
+implement:
+
+sbrk => [kernel/proc: growproc](https://github.com/mit-pdos/xv6-riscv/blob/riscv//kernel/proc.c#L253) => uvmalloc / uvmdealloc => kalloc / kfree
+
+## exec
+
+`exec`: creates the user part of an address space.
+
+1. opens the named binary `path` using `namei`
+2.  checks the ELF header
+3. allocates a new page table with no user mappings with `proc_pagetable`
+4. load program into memory: 
+   1. allocates memory for each ELF segment with `uvmalloc`
+   2. loads each segment into memory with `loadseg`
+5. allocates and initializes the user stack
+6. copies the argument strings to the top of the stack, recording the pointers to them in ustack
+
+---
+
+EOF
+
+---
+
+```sh
+# By CDFMLR 2021-03-09
+echo "See you."
+```
+
+顶部图片来自于[小歪API](https://api.ixiaowai.cn)，系随机选取的图片，仅用于检测屏幕显示的机械、光电性能，与文章的任何内容及观点无关，也并不代表本人局部或全部同意、支持或者反对其中的任何内容及观点。如有侵权，联系删除。
 
