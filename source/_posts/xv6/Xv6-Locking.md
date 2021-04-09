@@ -7,6 +7,8 @@ title: Xv6 Locking
 
 # Locking
 
+> Learning [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) Chapter 5 Locking
+
 `Concurrency`: situations in which multiple instruction sreams are interleaved, due to multiprocessor parallelism, threasd switching, or interrupts.
 
 `Concurrency control`: strategies aimed at correctness under concurrency.
