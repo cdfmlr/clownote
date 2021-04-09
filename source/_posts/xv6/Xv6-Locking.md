@@ -1,8 +1,11 @@
 ---
 date: 2021-04-06 16:29:00.060084
-title: Chapter 6 Locking
+title: Xv6 Locking
 ---
-# Chapter 6 Locking
+
+![Meaning Unknown's Head Image](https://api.ixiaowai.cn/api/api.php)
+
+# Locking
 
 `Concurrency`: situations in which multiple instruction sreams are interleaved, due to multiprocessor parallelism, threasd switching, or interrupts.
 
@@ -41,7 +44,7 @@ push(int data)
 
 
 
-![race](Chapter 6 Locking/race.JPEG)
+![race](Xv6-Locking/race.JPEG)
 
  race condition -> offen bug:
 
@@ -181,5 +184,8 @@ Notice:
 - sleep-locks leave interrupts enable: cannot be used in interrupt handlers.
 - sleep-locks may yield the CPU: cannot be used inside spinlock critical sections
 
+---
 
+CDFMLR 2021.04.08
 
+顶部图片来自于[小歪API](https://api.ixiaowai.cn)，系随机选取的图片，仅用于检测屏幕显示的机械、光电性能，与文章的任何内容及观点无关，也并不代表本人局部或全部同意、支持或者反对其中的任何内容及观点。如有侵权，联系删除。
