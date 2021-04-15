@@ -16,6 +16,8 @@ clownote Hexo 博客实用工具。
 - push:  调用 git 提交更新，并推送至远程仓库, 在提交前会自动执行一次 check;
 
 ⚠️ 注意：在该文件中设置有一个全局常量 `CLOWNOTE_PATH`，需将该其值设为 clownote Hexo 博客的根目录绝对路径。
+
+Python >= 3.7
 '''
 
 import argparse
@@ -117,11 +119,21 @@ def push(**kwargs):
 
     # Git 提交
     # 如果 verbose，就要把提交过程的输出信息显示到屏幕
-    n_cmd = partial(run, stdout=None, stderr=None) if verbose else run
+    # 即使不 verbose 也还是要输出 stderr 的。
+    __cnt = [0]
+    def run4push(cmd):
+        if verbose:
+            print(f"{__cnt[0]} >", " ".join(cmd).replace("\n", "\n..> "))
+        res = run(cmd, capture_output=True, stdout=None, stderr=None)
+        if verbose and res.stdout:
+            print(res.stdout)
+        if res.stderr:
+            print(res.stderr)
+        __cnt[0] += 1
 
-    n_cmd(['git', 'add', '.'])
-    n_cmd(['git', 'commit', '-m', commit_msg])
-    n_cmd(['git', 'push'])
+    run4push(['git', 'add', '.'])
+    run4push(['git', 'commit', '-m', commit_msg])
+    run4push(['git', 'push'])
 
 
 def main():
