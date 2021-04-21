@@ -311,7 +311,3 @@ Pipe 是用 `struct pipe` 来表示的:
 
 若父在子之前退出，父会把子转让给 `init`。`init` 漫无止境地调用 wait，所以所有就成都可以执行完后被清除。
 
-要注意解决 wait 和 exit 的竞争和死锁：
-
-- wait：取进程锁 p->lock：避免 lost wake-up
-- 
