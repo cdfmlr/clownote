@@ -1,8 +1,14 @@
 ---
 date: 2021-04-20 16:05:42.063533
-title: Xv6-Scheduling
+title: Xv6 Scheduling
 ---
-# Xv6-Scheduling
+
+![Meaning Unknown's Head Image](https://api.ixiaowai.cn/api/api.php)
+
+
+# Xv6 Scheduling
+
+> Learning [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) Chapter 6 Scheduling
 
 - time-share the CPUs: run more processes than CPUs
 - transparent to user processes
@@ -311,3 +317,8 @@ Pipe 是用 `struct pipe` 来表示的:
 
 若父在子之前退出，父会把子转让给 `init`。`init` 漫无止境地调用 wait，所以所有就成都可以执行完后被清除。
 
+---
+
+CDFMLR 2021.04.22
+
+顶部图片来自于[小歪API](https://api.ixiaowai.cn)，系随机选取的图片，仅用于检测屏幕显示的机械、光电性能，与文章的任何内容及观点无关，也并不代表本人局部或全部同意、支持或者反对其中的任何内容及观点。如有侵权，联系删除。
