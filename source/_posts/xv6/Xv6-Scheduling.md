@@ -8,7 +8,7 @@ title: Xv6 Scheduling
 
 # Xv6 Scheduling
 
-> Learning [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) Chapter 6 Scheduling
+> Learning [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) Chapter 7 Scheduling
 
 - time-share the CPUs: run more processes than CPUs
 - transparent to user processes
