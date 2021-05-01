@@ -1,7 +1,14 @@
 ---
 date: 2021-04-27 16:12:22.007144
-title: Xv6-Lab-Multithreading
+title: 6.S081 Xv6 Lab Multithreading
 ---
+
+
+![Meaning Unknown's Head Image](https://api.ixiaowai.cn/api/api.php)
+
+
+
+
 # 6.S081 Xv6 Lab: Multithreading
 
 > Lab: Multithreading of MIT 6.S081 Fall 2020
@@ -250,3 +257,14 @@ barrier()
 }
 ```
 
+## 实验结果
+
+最后，贴上大家希望看到的满分截图：
+
+![实验结果截屏](https://tva1.sinaimg.cn/large/008i3skNly1gq2rl0t012j30ki0d2dih.jpg)
+
+---
+
+2021.05.01  CDFMLR
+
+顶部图片来自于[小歪API](https://api.ixiaowai.cn)，系随机选取的图片，仅用于检测屏幕显示的机械、光电性能，与文章的任何内容及观点无关，也并不代表本人局部或全部同意、支持或者反对其中的任何内容及观点。如有侵权，联系删除。
