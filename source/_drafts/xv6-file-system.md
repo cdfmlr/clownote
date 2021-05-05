@@ -36,10 +36,10 @@ title: xv6-file-system
 - `block 0`：保留，启动扇区
 - `block 1`：superblock：包含文件系统元数据（文件系统大小、数据块个数、inode个数...）
   - 由 `mkfs` 填写：初始化文件系统
-- `block 2~l`：日志
-- `block l~i`：inodes
-- `block i~b`：位图：记录那些数据块在使用中
-- `block b~`：数据块
+- `block 2~L`：日志
+- `block L~I`：inodes
+- `block I~B`：位图：记录那些数据块在使用中
+- `block B~`：数据块
 
 ## buffer cache 层
 
@@ -75,4 +75,101 @@ buffer cache 是 buffer 组成的双向链表。
 
 - bread 返回上了锁的 buf
 - brelse 释放锁
+
+注意：必须保证一个磁盘扇区只能有一个缓存。
+
+在 Xv6 实现中，太多进程同时请求访问文件系统时，buffers 都在忙，bget 就会直接 panic。更优雅的处理方案是睡眠，直到有可用的空闲 buffer，但这个方案可能会死锁。
+
+## Logging 层
+
+Logging 层用来支持故障情况的恢复：原子操作——要么一组操作完整执行完成，要么完全没做。
+
+磁盘操作可能会是一组的，例如文件截断（truncation，这个词好像是截断吧）——把文件长度设为零 & 释放内容块。
+
+发生故障时，可能会出现先释放了内容块，然而原来的 inode 还指向这个块。这样系统就可以在释放了的块放新文件，然后就有两个 inode 指向同一个文件了，这个很有安全问题。
+
+Xv6 通过 logging 层来解决这种异常情况：
+
+- Xv6 系统调用不直接去写磁盘
+- 而是把写磁盘的愿望写到一个磁盘的 *log* 中（就是把不是去写真正的那个块，而是写到一个临时的拷贝）
+- 当这个系统调用写好了它所有的写愿望后，写入一个特殊的 *commit* 记录，表示这里 log 了一个完整的操作了。
+- 然后系统执行这些 log 了的写操作（就是把那些临时拷贝写到真正的位置上去）
+- 全部执行完成后就把整条 log 删除。
+
+遇到故障重启时，文件系统会在运行任何进程之前做恢复：
+
+- 如果 log 中包含完整的操作（commit了的），则执行这些写；
+- 如果 log 操作不完整（没 commit）就忽略了
+
+（恢复代码执行完成后，log 就空了）
+
+### Log 设计
+
+Log 存放在已知的固定位置，这个位置在 superblock 中指定。
+
+Log 包含：
+
+- header block：头块，包含 log blocks 的个数「conut」、扇区号数组（对应于每个logged block）
+- logged blocks：一系列更新了的块的拷贝
+
+header.count：
+
+- 当提交「commit」时，header 中的 count 会增加。
+- 当把 logged blocks 拷贝到真实的文件系统中后置为 0。
+
+所以：
+
+- 在 commit 前崩溃，则 count 为 0 => 忽略，不执行；
+- 在 commit 后崩溃，则 count 不为 0 => 执行恢复。
+
+*group commit*：把多个文件系统调用集在一个 commit 里：
+
+- 减少磁盘操作的次数
+- 提高并发性
+
+   Xv6 固定了磁盘上放 log 的空间——只有有限个可用的 log 块：
+
+- 对于一般的系统调用时够用的
+- 对于像 write 这种可能操作大量的块的调用，就需要把大的操作分成多个小调用，使每个小调用满足 log 的尺寸限制。
+
+### Log 实现
+
+在系统调用中，对 log 的调用大致如下：
+
+```c
+begin_op();
+...
+bp = bread(...);
+bp->data[...] = ...;
+log_write(bp);
+...
+end_op();
+```
+
+- `begin_op` （`log.c`）开始一个文件系统操作（事务）
+  - 等待，直到无 commit 正在进行
+  - 然后再等待，直到用足够的 log 空间以供使用
+  - 增加 `log.outstanding` (这里 outstanding 意同 unresolved ，未完成的)
+    - 保留空间
+    - 防止 commit 执行
+- `log_write` ：
+  - 在内存中记录块的扇区号
+  - 在硬盘的 log 里为其留下一个位置
+    - 如果多次写一个块则保持用同一个位置
+      - 这个称为 *absorption*：absorption several disk writes into one
+      - 可以节省 log 空间、提高写入性能
+  - 然后标记 buffer 正在使用，以防被回收——块要留在缓存里面直到 commit
+- `end_op` 结束一次文件系统操作（事务）
+  - outstanding 减 1
+  - 如果 outstanding 为 0 则调用 `commit()`：
+    - `write_log()`：把修改了的块从 cache 写到 log
+    - `write_head()`：修改 log header （这里就是 commit 的点：先于这里崩溃则弃之，后于则恢复执行）
+    - `install_trans`：把 log 写到文件系统中的实际位置
+    - 把 log header 的 counter 置为 0，完成事务
+
+系统启动时，在运行用户进程前，会调用 `fsinit` -> `initlog` -> `recover_from_log` -> `install_trans` 实现恢复。
+
+## Block allocator 实现
+
+
 
