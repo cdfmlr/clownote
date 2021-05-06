@@ -171,5 +171,66 @@ end_op();
 
 ## Block allocator 实现
 
+文件和目录储存在磁盘的块中，储存新文件就必须从一个空闲池中分配块。
 
+Xv6 利用「空闲位图」（free bitmap）来维护分配。
+
+位图中用一个 bit 代表一个块：
+
+- 0：表示块空闲
+- 1：表示块在使用中
+
+`mkfs` 会设置好 boot sector、superblock、log blocks、inode blocks 和 bitmap block 对应的位。
+
+块分配主要提供两个函数：
+
+- `balloc`：分配一个置零的块
+  - 考虑每个块，从 0 到 `sb.size`（文件系统中的块总数），这里用了嵌套循环：
+    - 外层循环读取 bitmap 的各个块
+    - 内层循环检查一个 bitmap 块里的所有 BPB 个位。
+  - 若块对应的 bitmap 值为 0 则认为块空闲
+  - 找到空闲的块就更新 bitmap 值，返回块
+- `bfree` 释放块（使空闲）：
+  - 找到正确的 bitmap 块，清除其中对应的位
+
+在 balloc 和 bfree 中不是直接读写 bitmap 中的位，而是间接地通过 bread、brelse 来解决并发问题，避免使用明锁。
+
+注意：balloc、bfree 只能在事务中调用。
+
+## inode 层
+
+inode 有两种：
+
+- on-disk：磁盘上的数据结构：包含文件的大小、数据所在的 block 编号列表
+- in-memry：内存中的 on-disk inode 的拷贝，并附加上内核需要的额外信息
+
+在磁盘中，inode 被放在连续的 inode blocks 里。每个 inode 的长度是固定的，所以容易找到第 n 个 inode —— 这里的 n 即为 inode 号（i-number）。
+
+on-disk inode 定义在 `struct dinode` （`fs.h`）：
+
+- type 字段表示文件的类型（file、dir、dev ...），type 为 0 表示 inode 是空闲的。
+- nlink 字段记录有多少个目录引用了这个 inode。大于 0 时 inode 就不会被释放
+- size：文件内瓤的长度（bytes）
+- addrs：数组，记录文件内容的各个块的编号
+
+in-memory inode 定义为 `struct inode`（`file.h`）：
+
+- 包含 `struct dinode` 的全部字段
+- 只有当有 C 指针指向 inode 时，内核才会储存一个 in-memory inode，放到一个 cache（itable）中
+  - iget：获取一个 inode 指针（`struct inode *`）
+  - iput：释放 inode 指针
+- 拓展的 ref 字段表示引用这个 in-memory inode 的 C 指针数，ref 为 0 后 内核就会丢弃这个 inode
+
+inode 相关的锁机制：
+
+- `icache.lock` (现在的代码里是 itable.lock)
+  - 保证一个 inode 最多只能在 cache（table）中出现一次
+  - 保证缓存下来的 inode （在 table 中的）的 ref 字段等于引用 inode 的指针数
+- `inode.lock`：每个 in-memory inode 都有一个的 sleep lock
+  - 保证互斥访问（同一时间只能有一个访问）：
+    - inode 的各字段（比如文件长度）
+    - inode 的内容块
+- `ilock()`：`iget` 返回的内容可能是无效的（不在缓存中的），为了保证内存拷贝和磁盘中保持一致，必须调用 `ilock`：
+  - ilock 锁住 inode （别的进程不能再 ilock 它） 
+  - 如果需要（还没读取过）则从磁盘读取 inode 
 
