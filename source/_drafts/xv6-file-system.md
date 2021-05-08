@@ -220,6 +220,8 @@ in-memory inode 定义为 `struct inode`（`file.h`）：
   - iget：获取一个 inode 指针（`struct inode *`）
   - iput：释放 inode 指针
 - 拓展的 ref 字段表示引用这个 in-memory inode 的 C 指针数，ref 为 0 后 内核就会丢弃这个 inode
+  - iget：ref++
+  - iput：ref--
 
 inode 相关的锁机制：
 
@@ -232,5 +234,72 @@ inode 相关的锁机制：
     - inode 的内容块
 - `ilock()`：`iget` 返回的内容可能是无效的（不在缓存中的），为了保证内存拷贝和磁盘中保持一致，必须调用 `ilock`：
   - ilock 锁住 inode （别的进程不能再 ilock 它） 
-  - 如果需要（还没读取过）则从磁盘读取 inode 
+  - 如果需要（还没读取过）则从磁盘读取 inode
+
+修改完 inode 后必须立刻调用 `iupdate` 把数据写到磁盘。
+
+### inode 实现
+
+要分配一个新的 inode 时（例如要新建文件），调用 `ialloc`：
+
+- 逐块遍历磁盘上的 inode 表，找一个标记为空闲的
+- 找到后，改其 type，回写磁盘
+- 返回 `iget` 得到的 inode 指针。
+- 正确性：同一时间只有一个进程可以获取到 bp：在找 inode 并修改时，没有其他进程会并发运行。
+
+在读写 inode 的元数据或者内容之前，必须先调用 `ilock`：
+
+-  用 sleep-lock 保证 inode 的互斥（排他）访问
+- 从缓存 or 硬盘读取 inode
+- `iunlock` 释放锁，可能会唤醒睡眠等待中的进程
+
+`iput` ：
+
+- 释放 inode 的 C 指针
+- 减小 inode 的引用数
+- 如果指针引用数降到 0，则释放 inode 的缓存
+- 如果指针引用数为 0，inode 的 link 数也为 0（没有目录引用），则释放 inode 及其数据块：
+  - 调用 `itrunc` 把文件截断（truncate）到 0 长度
+  -  释放数据块
+  - 把 inode type 设置为 0 （表示未使用）
+  - 把 inode 写回硬盘
+
+注意关于 iput：
+
+- 任何有关文件系统的系统调用（即便是 read 什么的，看上去只读的），都可能调用 `iput`，最终导致一次写磁盘的操作（当文件引用为 0 时）。所以任何文件系统的（即使是只读的）系统调用都要把代码包在事务里。
+- iput 不会在无 link 后立即截断文件到 0 大小，因为可能还有指针引用着该 inode，即可能还有进程在读写该文件。这种情况下，如果在最后一个文件描述符释放前（截断文件前）发生故障，则文件会被标记为被分配，但实际上没有任何目录实体指向它。解决方案：
+  - 可以在重启后恢复时，扫描整个文件系统，发现这种文件就释放了
+  - 文件系统在磁盘上记录下这种 link 数为 0 但引用数不为 0 的 inode 号（比如记在superblock里的一个列表） 。当文件系统释放文件时，从列表中删除对应的 inode 编号。在恢复时，直接释放列表中的所有文件
+  - （Xv6 一种解决方案都没有实现，所以随着时间推移，就可能出现这种访问不到的磁盘空间）
+
+ ### inode 内容实现
+
+`struct dinode` 储存了文件大小和块编号列表。
+
+inode 对应的文件数据可以从 `dinode.addrs` 数组获取：
+
+- 前 `NDIRECT` 个块（direct blocks）的编号直接写在数组中
+  - 这里可以储存文件的前 `NDIRECT * BSIZE = 12KB`
+- 接下来的 `NINDIRECT` 个块罗列在一个数据块（indirect block）中，`inode.addrs` 的最后一个元素保存该间接块的地址
+  - 这里可以储存文件接下来的 `NINDIRECT * BSIZE = 256KB` 
+
+`bmap(ip, bn)` 函数返回 inode ip 的第 bn 个数据块的磁盘的 block 号：
+
+- 先看是否在 NDIRECT 内，然后再从 indrect block 里找
+- 若 ip 没有这个块，bmap 会分配一个
+- 若 bn 超过 `NDIRECT + NINDIRECT`，bmap 会 panic
+
+`itrunc` 释放文件的块：
+
+- 先释放直接块
+- 然后释放间接块中的块
+- 最后释放间接块本身 
+
+`readi`：从 inode 读文件内容（数据）
+
+`writei`：往 inode 写文件
+
+`stati`：复制 inode 的元数据到 stat 结构体（通过 stat 系统调用暴露给用户程序）。
+
+## directory 层
 
