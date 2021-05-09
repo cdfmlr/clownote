@@ -27,7 +27,7 @@ title: xv6-file-system
 - buffer cache 层：缓存、同步块
 - logging 层：支持高层事务操作：在故障时，一组操作要么全做了，要么全没做
 - inode 层：为每个文件提供唯一标识 i-number、储存文件的块。
-- directory 层：实现目录——一种特殊的 inode，内容是 directory entries——包含文件名和 i-number。
+- directory 层：实现目录——一种特殊的 inode，内容是「目录条目」directory entries——包含文件名和 i-number。
 - pathname 层：实现分级的路径名，支持递归查询：e.g. `/usr/rtm/xv6/fs.c`
 - file descriptor 层：用文件描述符抽象各种 unix 资源（管道、设备、文件等）
 
@@ -302,4 +302,52 @@ inode 对应的文件数据可以从 `dinode.addrs` 数组获取：
 `stati`：复制 inode 的元数据到 stat 结构体（通过 stat 系统调用暴露给用户程序）。
 
 ## directory 层
+
+目录：
+
+- inode type 为 `T_DIR`
+- 内容是一系列「目录条目」（directory entries）
+
+目录条目：`struct dirent` （`fs.h`）
+
+- 文件 inode 号：0 表示空闲
+- 文件名：最多 `DIRSIZ = 14` 个字符
+
+`dirlookup(dp, name, poff)`：在 inode 为 dp 表示的目录中搜索给定的名字 name，如果找到了就返回 iget 获取到的目标 inode，并把 poff 置为目标条目在 dp 目录中的偏移（byte）。
+
+`dirlink(dp, name, inum)`：往目录 dp 里写一个新的条目（name，inum）
+
+- 先调用 dirlookup 检查文件名是否已存在：如果已存在会返回错误
+- 通过递增偏移量 off 来遍历目录，找一个空闲条目（`inum == 0`），找到就提前退出
+- 把 name、inum 组成的条目写到 off 位置：如果之前找到了空闲的就覆盖了，如果是循环走完了就添加一个（如果不越界的话）
+
+## pathname 层
+
+ Path name 查询是通过一系列 dirlookup 的调用，逐层查找:
+
+- `namei(path)` （fs.c）解析路径，返回对应的 inode。
+- `nameiparent(path, name)` 解析路径，返回其父目录的 inode，把最终的文件名写到 name。
+
+namei 和 nameparent 都是调用 `namex` 来完成真正的工作的。
+
+`namex(path, nameiparent, name)`：
+
+- 判断绝对/相对路径：
+  - path 以 `/` 开头则从根目录开始检索
+  - 否则从当前目录开始
+- 用 `skipelem` 来获取一段名字，逐级查询
+  - 提高并行，并保证正确：在查询每一级目录时把当前目录锁住，查询完再释放
+
+注意有可能 namex 查到某一级时，另一个进程将其删了（unlink），然后查出来的就错了。为了避免这种情况：
+
+- 在 namex 中，调用 dirlookup 里会用 iget 获取 inode
+- iget 会增加 inode 的引用数
+- namex 只有拿到了 dirlookup 返回的 inode 才会释放目录的锁
+- 锁释放之后，另一个线程才可以从目录里 unlink inode
+- 但由于 inode 的引用数还不为 0，所以 inode 还不会被删除
+
+namex 死锁：
+
+- e.g. 解析 `.` 时，next 指向了和 ip 相同的 inode
+- solve：在获取 next 的锁前，先释放当前目录的锁
 
