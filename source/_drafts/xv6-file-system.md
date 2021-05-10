@@ -351,3 +351,34 @@ namex 死锁：
 - e.g. 解析 `.` 时，next 指向了和 ip 相同的 inode
 - solve：在获取 next 的锁前，先释放当前目录的锁
 
+## file descriptor 层
+
+文件描述符层实现了 UNIX 的一切皆文件。
+
+Xv6 为每个进程分配独立的打开文件表（table of open files）、文件描述符。
+
+每个打开的文件都由一个 `struct file` 表示。file 包含：
+- 包装 inode 或 pipe 什么的
+- I/O 偏移量 （offset）
+- ref 字段：用来追踪引用数
+- readable，writable：只读、只写或两者都可
+
+调用 `open` 来打开文件（创建新的 struct file）
+
+- 多个进程打开同一个文件：每个进程有独立的 I/O offsets
+- 一个进程也可以多次打开同一文件（e.g. via dup）
+
+系统中的所有打开文件都会被放进一个全局的文件表——`ftable` (file.c:20)。以下操作都是改动这个表：
+
+- 分配文件：`filealloc`: 在表中找一个引用数为 0 的，ref 置为 1，返回
+- 复制引用：`filedup`：ref++
+- 释放引用：`fileclose`：ref--，引用为 0 时按照文件的类型做清理工作
+- 读写数据：`fileread`，`filewrite`：先检查有没有 readable or writeable，然后再依照不同文件类型（inode，pipe，dev）完成 IO
+- 元数据：`filestat`：只能用于 inode 的文件，调用 `stati` 完成真正的工作
+
+## 系统调用
+
+关于文件系统的系统调用：sysfile.c
+
+基本都是对前面的层的封装。
+
