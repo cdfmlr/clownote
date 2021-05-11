@@ -1,8 +1,14 @@
 ---
 date: 2021-05-04 15:55:36.860873
-title: xv6-file-system
+tags: xv6
+title: Xv6 文件系统
 ---
+
+![Meaning Unknown's Head Image](https://api.ixiaowai.cn/api/api.php)
+
 # Xv6 文件系统
+
+> 学习: [xv6-riscv-book](https://github.com/mit-pdos/xv6-riscv-book) Chapter 8 File system
 
 文件系统：
 
@@ -380,5 +386,19 @@ Xv6 为每个进程分配独立的打开文件表（table of open files）、文
 
 关于文件系统的系统调用：sysfile.c
 
-基本都是对前面的层的封装。
+基本就是对前面的层各种的调用。
+
+---
+
+
+EOF
+
+---
+
+```sh
+# By CDFMLR 2021-05-11
+echo "See you. 🎻"
+```
+
+顶部图片来自于[小歪API](https://api.ixiaowai.cn)，系随机选取的图片，仅用于检测屏幕显示的机械、光电性能，与文章的任何内容及观点无关，也并不代表本人局部或全部同意、支持或者反对其中的任何内容及观点。如有侵权，联系删除。
 
