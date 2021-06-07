@@ -1,10 +1,11 @@
 ---
 date: 2021-05-31 12:21:08.429003
-title: R-da
+tags: Math
+title: 用 R 做数据分析
 ---
 # 用 R 做数据分析
 
-> Vol_1：数据的数字特征及相关分析
+> Vol_0：数据的数字特征及相关分析
 
 ## 导入数据
 
@@ -32,7 +33,7 @@ data
 
 结果：
 
-![截屏2021-05-31 08.31.21](R-da/截屏2021-05-31 08.31.21.png)
+![read_table](R-da/read_table.png)
 
 ### 导入 CSV 数据
 
@@ -69,7 +70,7 @@ data
 
 结果：
 
-![截屏2021-05-31 08.31.58](R-da/截屏2021-05-31 08.31.58.png)
+![read_csv](R-da/read_csv.png)
 
 注：后文里会随机使用这两个导入的数据中的一个作示例。
 
@@ -206,7 +207,7 @@ apply(data[-1], MARGIN=2, FUN=mean)
 
 结果：
 
-![截屏2021-05-31 08.51.42](R-da/截屏2021-05-31 08.51.42.png)
+![apply](R-da/apply.png)
 
 说明：
 
@@ -220,7 +221,7 @@ apply(data[-1], MARGIN=2, FUN=mean)
 
 ```R
 describes <- function(df) {
-    # TODO: 优化重复计算
+    # TODO(CDFMLR): 优化重复计算
     cv <- function(x) sd(x)/mean(x)  # 变异系数
 
     g1 <- function(x) {  # 偏度
@@ -256,7 +257,7 @@ describes(data[-1])
 
 结果：
 
-![截屏2021-05-31 08.59.01](R-da/截屏2021-05-31 08.59.01.png)
+![apply_result](R-da/apply_result.png)
 
 一次性全出来了，这样就很方便。
 
@@ -296,7 +297,7 @@ describe(data[-1], type=2)
 
 结果：
 
-![截屏2021-05-31 09.06.42](R-da/截屏2021-05-31 09.06.42.png)
+![psych_describe](R-da/psych_describe.png)
 
 ## 中位数、上下四分位数、四分位极差
 
@@ -307,7 +308,7 @@ fn <- apply(data[-1], 2, fivenum)
 fn
 ```
 
-![截屏2021-05-31 09.09.30](R-da/截屏2021-05-31 09.09.30.png)
+![fivenum](R-da/fivenum.png)
 
 四分位极差：
 
@@ -375,7 +376,7 @@ apply(data[-1], 2, abnormal)
 stem(Nationwide)
 ```
 
-![截屏2021-05-31 09.27.18](R-da/截屏2021-05-31 09.27.18.png)
+![stem](R-da/stem.png)
 
 ### 直方图
 
@@ -399,7 +400,7 @@ histogram(X1, "X1")
 
 结果：
 
-![截屏2021-05-31 09.33.51](R-da/截屏2021-05-31 09.33.51.png)
+![hist](R-da/hist.png)
 
 ### 经验分布函数图
 
@@ -424,7 +425,7 @@ plot_ecdf(X1, "X1")
 
 结果：
 
-![截屏2021-05-31 09.34.52](R-da/截屏2021-05-31 09.34.52.png)
+![ecdf](R-da/ecdf.png)
 
 ### 正态 Q-Q 图
 
@@ -432,7 +433,7 @@ plot_ecdf(X1, "X1")
 qqnorm(X1)
 ```
 
-![截屏2021-05-31 09.38.31](R-da/截屏2021-05-31 09.38.31.png)
+![qqnorm](R-da/qqnorm.png)
 
 ## Pearson 与 Spearman 相关系数
 
@@ -475,7 +476,7 @@ cor.test(X1, X2, method="pearson")
 
 输出：($\textrm{cor}=r_{xy}$)
 
-![截屏2021-05-31 10.11.43](R-da/截屏2021-05-31 10.11.43.png)
+![pearson](R-da/pearson.png)
 
 【Math Time】关于上面输出的假设检验：
 
@@ -541,7 +542,7 @@ $$
 cor.test(X1, X2, method="spearman")
 ```
 
-![截屏2021-05-31 11.19.01](R-da/截屏2021-05-31 11.19.01.png)
+![spearman](R-da/spearman.png)
 
 还是一样的，有一个假设检验：
 $$
@@ -549,3 +550,11 @@ H_0:\rho_{_{XY}}=0
 \quad \leftrightarrow \quad
 H_1:\rho_{_{XY}}\ne0
 $$
+
+---
+
+【EOF】
+
+暂时就这些了。最近忙，后面如果有时间可能还会写回归分析、方差分析...这些完整一套的。
+
+CDFMLR 2021.06.07
