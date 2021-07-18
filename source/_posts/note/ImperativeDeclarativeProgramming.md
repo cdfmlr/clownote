@@ -1,6 +1,6 @@
 ---
-date: 2021-07-18 12:07:17.149538
-title: ImperativeDeclarativeProgramming
+date: 2021-01-09 22:43:12.990409
+title: 命令式编程 V.S. 声明式编程
 ---
 
 # 命令式编程 V.S. 声明式编程
