@@ -6,7 +6,7 @@ title: 不一样的“人工智能语言”Prolog
 
 TIOBE 说到：“And, even more astonishing, we see Prolog re-entering the top 20 after 15 years... making an unexpected comeback.”
 
-![TIOBE Index for August 2021](Prolog-0/tiobe202108.png)
+![TIOBE Index for August 2021](https://tva1.sinaimg.cn/large/008i3skNgy1gt9psjnjf7j31gm0emgml.jpg)
 
 （图片来自 TIOBE Index for August 2021）
 
@@ -16,7 +16,7 @@ TIOBE 说到：“And, even more astonishing, we see Prolog re-entering the top 
 
 另外，我们还做了一个和本文配套的 Prolog 入门视频，欢迎大家观看。如果视频对你有所帮助，别忘了一键三连哦：）
 
-- [BiliBili: 上古人工智能语言 Prolog 迫害金石大小姐](https://www.bilibili.com/video/BV14A411P7Vq/)
+- [https://www.bilibili.com/video/BV14A411P7Vq/](https://www.bilibili.com/video/BV14A411P7Vq/)
 
 （从脚本到音乐到剪辑全是自己做的，大家支持一下吧：）
 
@@ -342,5 +342,3 @@ aristotle
 [5] 作者未知. Prolog 入门教程. 垂钓听竹轩. 2004
 
 （最后这篇是我近10年前学习 Prolog 时看的文章，写的非常易懂。但如今网络上只有这篇的多手转载，以及其翻译的英文原文了，很难找到这份珍贵的中文译本，目前我只是找到了它最早可能是来自一个叫垂钓听竹轩的网站，但这个网站关了， archive.org 里的备份全是 3xx 错误，，有空我再考古一下了）
-
-http://images.apple.com/legal/sla/docs
