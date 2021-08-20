@@ -1,6 +1,6 @@
 ---
 date: 2021-08-18 19:05:06.912224
-title: mac-quick-open-terminal
+title: macOS 设置快捷键启动终端
 ---
 # macOS 设置快捷键启动终端
 
