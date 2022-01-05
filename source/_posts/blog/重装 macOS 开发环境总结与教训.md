@@ -73,3 +73,5 @@ title: 重装 macOS 开发环境总结与教训
 各种软链接，按照移动硬盘上的 README 来重建。
 
 各种项目目录、文档放回来。
+
+关于 GitHub，`~/.gitconfig` 里面设置了用户名，第一次访问 remote 还是要输入用户名，注意然后密码——去 GitHub -> Settings -> Developer Settings -> Personal access tokens，Regenerate 以前的或者开个新的，复制 token，贴到密码里。
