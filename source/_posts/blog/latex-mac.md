@@ -18,6 +18,7 @@ sudo tlmgr update --self
 sudo tlmgr update texlive-scripts
 sudo tlmgr update --all
 sudo tlmgr install ctex
+# sudo tlmgr install gbt7714  # optional
 
 # LaTeX Workshop 插件依赖
 # latexmk
@@ -53,6 +54,7 @@ sudo tlmgr update --self
 sudo tlmgr update texlive-scripts
 sudo tlmgr update --all
 sudo tlmgr install ctex
+# sudo tlmgr install gbt7714  # optional: 国产文献格式
 ```
 
 3. 装 VS Code 插件：
@@ -79,3 +81,14 @@ sudo cpan YAML::Tiny
 sudo cpan File::HomeDir
 sudo cpan Unicode::GCString
 ```
+
+## Upgrade
+
+如果不幸需要更新大版本:（TexLive 2021 -> 2022）
+
+```sh
+brew upgrade basictex
+# 重做上述所有安装步骤
+fmtutil-user --all
+```
+
