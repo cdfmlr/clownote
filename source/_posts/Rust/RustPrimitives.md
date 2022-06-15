@@ -1,6 +1,10 @@
 ---
+categories:
+- Rust
+- Beginning
 date: 2021-07-29 21:11:32.722286
-title: RustPrimitives
+tags: Rust
+title: Rust 原生类型
 ---
 Rust 原生类型
 ===
