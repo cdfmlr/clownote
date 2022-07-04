@@ -6,7 +6,7 @@ date: 2022-07-04 22:24:23.355340
 tags: Rust
 title: Rust 自定义类型
 ---
-# Rust 自定义类型
+# Rust (3)自定义类型
 
 Rust 自定义类型有结构体（`struct`）和枚举（`enum`）。
 
