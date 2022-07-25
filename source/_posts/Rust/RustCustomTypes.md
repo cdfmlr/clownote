@@ -8,6 +8,8 @@ title: Rust 自定义类型
 ---
 # Rust (3)自定义类型
 
+> 学习 [Rust By Example 3. Custom Types](https://doc.rust-lang.org/stable/rust-by-example/custom_types.html)
+
 Rust 自定义类型有结构体（`struct`）和枚举（`enum`）。
 
 ## 结构体
