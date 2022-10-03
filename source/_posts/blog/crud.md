@@ -38,34 +38,34 @@ DELETE /projects/:ProjectID/todos/:TodoID
 package main
 
 import (
-	"github.com/cdfmlr/crud/orm"
-	"github.com/cdfmlr/crud/router"
+    "github.com/cdfmlr/crud/orm"
+    "github.com/cdfmlr/crud/router"
 )
 
 type Todo struct {
-	orm.BasicModel
-	Title  string `json:"title"`
-	Detail string `json:"detail"`
-	Done   bool   `json:"done"`
+    orm.BasicModel
+    Title  string `json:"title"`
+    Detail string `json:"detail"`
+    Done   bool   `json:"done"`
 }
 
 type Project struct {
-	orm.BasicModel
-	Title string  `json:"title"`
-	Todos []*Todo `json:"todos" gorm:"many2many:project_todos"`
+    orm.BasicModel
+    Title string  `json:"title"`
+    Todos []*Todo `json:"todos" gorm:"many2many:project_todos"`
 }
 
 func main() {
-	orm.ConnectDB(orm.DBDriverSqlite, "todolist.db")
-	orm.RegisterModel(Todo{}, Project{})
+    orm.ConnectDB(orm.DBDriverSqlite, "todolist.db")
+    orm.RegisterModel(Todo{}, Project{})
 
-	r := router.NewRouter()
-	router.Crud[Todo](r, "/todos")
-	router.Crud[Project](r, "/projects",
-		router.CrudNested[Project, Todo]("todos"),
-	)
+    r := router.NewRouter()
+    router.Crud[Todo](r, "/todos")
+    router.Crud[Project](r, "/projects",
+        router.CrudNested[Project, Todo]("todos"),
+    )
 
-	r.Run(":8086")
+    r.Run(":8086")
 }
 ```
 
@@ -120,19 +120,19 @@ func UpdateWaterTime(c *gin.Context) {
 }
 
 func main() {
-	var err error
+    var err error
 
-	if DB, err = gorm.Open(sqlite.Open("plant.db")); err != nil {
-		panic(err)
-	}
-	if err = DB.AutoMigrate(&Plant{}); err != nil {
-		panic(err)
-	}
+    if DB, err = gorm.Open(sqlite.Open("plant.db")); err != nil {
+        panic(err)
+    }
+    if err = DB.AutoMigrate(&Plant{}); err != nil {
+        panic(err)
+    }
 
-	r := gin.Default()
-	r.GET("/plants", GetPlants)
-	r.PUT("/plants/:id/water", UpdateWaterTime)
-	r.Run(":8080")
+    r := gin.Default()
+    r.GET("/plants", GetPlants)
+    r.PUT("/plants/:id/water", UpdateWaterTime)
+    r.Run(":8080")
 }
 ```
 
@@ -249,29 +249,29 @@ orm       :  DB.Model(&Model{}).Where("id = ?", id).Updates(updatedModel)
 
 ```go
 func UpdateHandler[Model any](idParam string) gin.HandlerFunc {
-	return func(c *gin.Context) {
-		id := c.Param(idParam)
+    return func(c *gin.Context) {
+        id := c.Param(idParam)
         var model Model
         // 要更新起码要先存在
-		if err := service.GetByID[Model](id, &model); err != nil {
+        if err := service.GetByID[Model](id, &model); err != nil {
             c.JSON(404, gin.H{ "error": err.Error() })
-			return
-		}
+            return
+        }
         
         // 覆盖更新字段
-		if err := c.ShouldBindJSON(&model); err != nil {
+        if err := c.ShouldBindJSON(&model); err != nil {
             c.JSON(400, gin.H{ "error": err.Error() })
-			return
-		}
+            return
+        }
 
         // 调用更新逻辑
-		err := service.Update(&updatedModel)
-		if err != nil {
-			c.JSON(422, gin.H{ "error": err.Error() })
-			return
-		}
+        err := service.Update(&updatedModel)
+        if err != nil {
+            c.JSON(422, gin.H{ "error": err.Error() })
+            return
+        }
         c.JSON(200, gin.H{ "updated": model })
-	}
+    }
 }
 ```
 
@@ -284,11 +284,11 @@ func UpdateHandler[Model any](idParam string) gin.HandlerFunc {
 ```go
 // package service
 func Update(model any) error {
-	if model == nil {
-		return ErrNilModel
-	}
-	result := orm.DB.Save(model)
-	return result.Error
+    if model == nil {
+        return ErrNilModel
+    }
+    result := orm.DB.Save(model)
+    return result.Error
 }
 ```
 
