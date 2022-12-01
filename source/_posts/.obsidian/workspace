@@ -1,0 +1,146 @@
+{
+  "main": {
+    "id": "4863424b4b9a5040",
+    "type": "split",
+    "children": [
+      {
+        "id": "9d83fed2f51cdb76",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Math/NumericalAnalysisAlogrithm.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7878c78712cf0190",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e0f17032d056d6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1dbe68687ab863a6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "df774067e21ba563",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c89c4da10f8dae14",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "35ebc8f5438a76c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "f3f2118d81836770",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a52ed94202d7b8ae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Math/NumericalAnalysisAlogrithm.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "0942c0f437556198",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Math/NumericalAnalysisAlogrithm.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0f96b306dc0cb35d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "feaab86adf2f8303",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Math/NumericalAnalysisAlogrithm.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "feaab86adf2f8303",
+  "lastOpenFiles": [
+    "DeepLearningWithPython/Deep-Learning with-Python-ch5.md",
+    "PythonAndCrawler/crawler-0-env.md",
+    "blog/mac-localsnapshot-occupy.md",
+    "Rust/Rust101.md",
+    "helloworld.md",
+    "Math/R-da.md",
+    "Math/MathematicalModelingWithPython.md",
+    "Math/NumericalAnalysisAlogrithm.md",
+    "Algorithm/KMP.md",
+    "Algorithm/sort-algorithms.md"
+  ]
+}

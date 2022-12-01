@@ -1,10 +1,12 @@
 ---
-date: 2022-10-03 15:15:55.262666
+date: 2022-10-03 15:38:11.633556
 title: Rust101
 ---
 # Rust 101
 
-Rust 入门，笔记，集合：vol 1
+> Rust 入门，笔记，合集：vol 1 （明示：还有 vol 2，大概过几个月就有时间学了）
+
+久违的学习笔记上新！我满怀热情地学习《[The Rust Programming Language](https://doc.rust-lang.org/stable/book/)》by Steve Klabnik and Carol Nichols, with contributions from the Rust Community。以及伟大的开源中文译本：https://rustwiki.org/zh-CN/book/
 
 ---
 
@@ -1012,7 +1014,7 @@ let     s3 = String::from("hello");
 
 ```rust
 for c in "...".chars() {
-    println!("{}". c);
+    println!("{}", c);
 }
 ```
 
@@ -1159,7 +1161,7 @@ fn main() {
     let f = match f {
         Ok(file) => file,
         Err(error) => {
-            panic!("problem opening file: {:?}". error)
+            panic!("problem opening file: {:?}", error)
         }
     };
 }
@@ -1381,7 +1383,7 @@ fn main () {
     let s2 = "hello";
     
     let r = longest(s1.as_str(), s2);
-    println!("{}". r);
+    println!("{}", r);
 }
 ```
 
@@ -1885,3 +1887,10 @@ Trust me.";
 }
 ```
 
+
+---
+
+> ```rust
+> println!("by CDFMLR");
+> // 2022.10.03 （实际上是两个月前写的了。。）
+> ```
